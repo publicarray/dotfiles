@@ -1,0 +1,10 @@
+# Alias
+alias zshconfig="sublime ~/.zshrc; sublime ~/.zprofile; sublime ~/.zshenv; sublime ~/.zpreztorc"
+alias bashconfig="sublime ~/.bash_profile; sublime ~/.bashrc"
+alias gitconfig="sublime ~/.gitconfig; sublime ~/.gitignore_global"
+alias slt="sublime"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0;ipconfig getifaddr en1;"
+
+# Make vim the default editor
+# export EDITOR="vim";

@@ -1,0 +1,56 @@
+[user]
+	name = Sebastian Schmidt
+	email = publicarray@icloud.com
+[github]
+	user = publicarray
+[core]
+	excludesfile = /Users/seb/.gitignore_global
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+[alias]
+	undo = reset --hard
+	# List contributors with number of commits
+    contributors = shortlog --summary --numbered
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+[color]
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	ui = auto
+[color "branch"]
+	current = green
+    local = cyan
+    remote = magenta
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+[color "status"]
+	branch = yellow bold
+    header = cyan
+    added = green
+    changed = red
+    untracked = magenta
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+[push]
+	# Use the Git 1.x.x default to avoid errors on machines with old Git
+	# installations. To use `simple` instead, add this to your `~/.extra` file:
+	# `git config --global push.default simple`. See http://git.io/mMah-w.
+	default = matching
+[git-ftp]
+	user = home@spage.x10.mx
+	password = ***REMOVED***
+	url = ftp://ftp.spage.x10.mx
+	syncroot = /
