@@ -1,0 +1,30 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2"
+	],
+	"installed_packages":
+	[
+		"Autoprefixer",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"ColorPicker",
+		"Emmet",
+		"GitGutter",
+		"HTML-CSS-JS Prettify",
+		"LESS",
+		"Markdown Preview",
+		"Package Control",
+		"Sass",
+		"Stylus",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-jshint",
+		"Theme - Soda",
+		"Themr"
+	]
+}

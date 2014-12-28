@@ -1,6 +1,6 @@
 #Install Cask
-brew tap phinze/homebrew-cask
-brew install brew-cask
+brew tap caskroom/versions
+brew install caskroom/cask/brew-cask
 
 # upgrade already installed casks
 brew upgrade brew-cask
@@ -16,7 +16,7 @@ brew cask install flash-player
 
 # Development
 brew cask install --appdir="/Applications" github
-brew cask install --appdir="/Applications" sublime-text
+brew cask install --appdir="/Applications" sublime-text3
 brew cask install --appdir="/Applications" atom
 brew cask install --appdir="/Applications" sourcetree
 brew cask install --appdir="/Applications" cyberduck

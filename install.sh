@@ -17,4 +17,4 @@ if [ -d ".dotfiles" ]; then
 fi
 mv -iv dotfiles .dotfiles
 
-sh .dotfiles/setup/install.sh
+bash .dotfiles/setup/install.sh

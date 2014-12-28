@@ -42,7 +42,7 @@ fail() {
 ask() {
     # http://djm.me/ask
     while true; do
- 
+
         if [ "${2:-}" = "Y" ]; then
             prompt="Y/n"
             default=Y
@@ -53,7 +53,7 @@ ask() {
             prompt="y/n"
             default=
         fi
- 
+
         # Ask the question
         question "$1 [$prompt] "
         read -n1 -rp "" REPLY
@@ -63,12 +63,12 @@ ask() {
         if [ -z "$REPLY" ]; then
             REPLY=$default
         fi
- 
+
         # Check if the reply is valid
         case "$REPLY" in
             [Yy]) return 0 ;;
             [Nn]) return 1 ;;
         esac
- 
+
     done
 }

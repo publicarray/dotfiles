@@ -1,0 +1,29 @@
+{
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"dictionary": "Packages/Language - English/en_GB.dic",
+	"spell_check": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"theme": "Soda Dark 3.sublime-theme",
+    // Set to true to removing trailing white space on save
+    "trim_trailing_white_space_on_save": true,
+    // Set to true to ensure the last line of the file ends in a newline
+    // character when saving
+    "ensure_newline_at_eof_on_save": true,
+    // Determines what character(s) are used to terminate each line in new files.
+    // Valid values are 'system' (whatever the OS uses), 'windows' (CRLF) and
+    // 'unix' (LF only).
+    "default_line_ending": "unix",
+    // By default, auto complete will commit the current completion on enter.
+    // This setting can be used to make it complete on tab instead.
+    // Completing on tab is generally a superior option, as it removes
+    // ambiguity between committing the completion and inserting a newline.
+    "auto_complete_commit_on_tab": false,
+    // Display file encoding in the status bar
+    "show_encoding": true,
+    // Display line endings in the status bar
+    "show_line_endings": true
+}

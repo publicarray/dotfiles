@@ -6,12 +6,7 @@ Installation
 
 2. Set Path Variable
 
-        export PATH="$/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin/:$PATH"
-
-3. Use zsh:
-
-open shell preferences and in the General tab, select "shells open with command (complete path):"" and enter `/usr/local/bin/zsh` as the path
-
+        export PATH="$/opt/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 File Descriptions
 -----------------
