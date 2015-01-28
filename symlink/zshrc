@@ -20,5 +20,9 @@ alias localip="ipconfig getifaddr en0;ipconfig getifaddr en1;"
 
 # Add homebrew to the completion path
 fpath=("/usr/local/bin/" $fpath)
+
 # Add AWS to enable zsh auto-completion
 # source /usr/local/share/zsh/site-functions/_aws
+
+# Node Version Manager (nvm)
+source ~/.nvm/nvm.sh
