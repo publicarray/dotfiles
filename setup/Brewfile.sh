@@ -14,7 +14,8 @@ brew install mcrypt php56-mcrypt
 brew install composer
 brew install heroku-toolbelt
 brew install aws-elasticbeanstalk
-# brew install node #recommend to install via http://nodejs.org/
+brew install homebrew/dupes/tidy
+# brew install node #recommend to install via http://nodejs.org/ or nvm (node version manager)
 
 # clean-up
 brew cleanup

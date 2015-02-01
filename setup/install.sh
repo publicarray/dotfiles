@@ -73,25 +73,21 @@ if ask "Do you want to Update your Ruby Gems?"; then
     ruby -v
     gem -v
     gem update
+    gem install compass
     # gem update --system # it is not recommended to mess with OS X gems
-    # brew install cmake
-    # brew install pkg-config
-    # install https://github.com/dingbat/clockout
-    # use 'clock' in a git repository to display the man-hours worked
-    # gem install clockout
     gem cleanup
 fi
 
 # Install nvm, node, npm  and global packages
-if ask "Do you want to Install node, npm and global Packages?" info "yo, bower, grunt-cli, julp, jshint"; then
+if ask "Do you want to Install node, npm and global Packages?" info "yo, bower, gulp, jshint, csslint"; then
     # clone the latest nvm (Node Version Manager) into a folder called .nvm
     git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
     # install latest stable node
     nvm install stable
     nvm use stable
     nvm alias default stable
-    npm install -g yo bower grunt-cli gulp jshint
-    # npm install -g git-hours # alternatively try https://github.com/Xion/coded4
+    # install packages
+    npm install -g yo bower gulp jshint csslint
 fi
 
 # Install sublime text packages

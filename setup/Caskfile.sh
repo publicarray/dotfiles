@@ -1,4 +1,4 @@
-#Install Cask
+# Install Cask
 brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
 
@@ -21,22 +21,21 @@ brew cask install --appdir="/Applications" atom
 brew cask install --appdir="/Applications" sourcetree
 brew cask install --appdir="/Applications" cyberduck
 brew cask install --appdir="/Applications" imageoptim
-brew cask install --appdir="/Applications" codekit # need licence
+brew cask install --appdir="/Applications" codekit # needs licence
 brew cask install --appdir="/Applications" mamp
-brew cask install node # can be installed with Homebrew
-# brew cask install heroku-toolbelt # installed via brew
+# brew cask install --appdir="/Applications" dash # available via appstore
+# brew cask install --appdir="/Applications" virtualbox # If you want it
 
 # Utility
-# brew cask install --appdir="/Applications" caffeine # can be installed via appstore
 brew cask install --appdir="/Applications" flux
 brew cask install --appdir="/Applications" desktoputility
 brew cask install --appdir="/Applications" appcleaner
-brew cask install --appdir="/Applications" macpaw-gemini # need licence
+brew cask install --appdir="/Applications" macpaw-gemini # needs licence
 brew cask install --appdir="/Applications" togglDesktop
-# brew cask install --appdir="/Applications" virtualbox # I don't use it
+# brew cask install --appdir="/Applications" caffeine # available via appstore
 
 # Games
-brew cask install --appdir="/Applications" minecraft # need licence
+brew cask install --appdir="/Applications" minecraft # needs licence
 brew cask install --appdir="/Applications" steam
 
 # Music/Video
@@ -45,6 +44,11 @@ brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" adapter
 brew cask install --appdir="/Applications" handbrake
 brew cask install --appdir="/Applications" burn
+
+# Productivity
+brew cask install --appdir="/Applications" hipchat
+brew cask install --appdir="/Applications" teamviewer
+# brew cask install --appdir="/Applications" slack # available via appstore
 
 # clean-up
 brew cask cleanup
