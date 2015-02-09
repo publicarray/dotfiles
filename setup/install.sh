@@ -52,6 +52,7 @@ if ask "Do you want to symlink dotfiles?"; then
         ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
     done
     bash $DOTFILES/setup/alias.sh
+    source ~/.bash_profile
     source ~/.zprofile
 fi
 
@@ -59,7 +60,6 @@ fi
 if ask "Do you want to install develoepr apps from Brewfile.sh?"; then
     info "installing: wget, git, git-ftp, ruby, python, php56, mcrypt, composer, heroku-toolbelt, aws-elasticbeanstalk, htmltidy"
     sh Brewfile.sh
-    source ~/.zprofile
 fi
 
 # Install Apps
@@ -82,7 +82,7 @@ if ask "Do you want to install node, npm and global packages?"; then
     info "yo, bower, gulp, jshint"
     # clone the latest nvm (Node Version Manager) into a folder called .nvm
     git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-    source ~/.zprofile
+    source ~/.nvm/nvm.sh
     # install latest stable node
     nvm install stable
     nvm use stable
@@ -104,6 +104,7 @@ fi
 if ask "Do you want to install Atom 3 packages? (requires Atom)"; then
     if [[ ! "$(type -P apm)" ]]; then
         ln -s /Applications/Atom.app/Contents/MacOS/Atom /usr/local/bin/atom
+        source ~/.bash_profile
         source ~/.zprofile
     fi
     apm install atom-soda-dark-ui color-picker dash emmet monokai
