@@ -5,7 +5,7 @@ cd ~/.dotfiles/setup
 DOTFILES=~/.dotfiles
 HOME=~
 
-warn "Please Install all AppStore Apps first!"
+warn "Please install all AppStore apps first!"
 info "eg. The Unarchiver, Pocket, Airmail2, BetterSnapTool, Sip, Caffine, Rdio, Dash, Battery Diag, Memory Diag, CleanMyDrive"
 
 heading "Asking for the administrator privileges"
@@ -15,7 +15,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install Xcode Command Line Tools
 if [[ "$OSTYPE" =~ ^darwin ]] && [[ ! "$(type -P gcc)" ]]; then
-    heading "Install Xcode Command Line Tools"
+    heading "Installing Xcode Command Line Tools"
     xcode-select --install
 fi
 
@@ -25,12 +25,12 @@ if [[ "$OSTYPE" =~ ^darwin ]] && [[ ! "$(type -P brew)" ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if ask "Do you want to Run 'brew doctor'?"; then
+if ask "Do you want to run 'brew doctor'?"; then
     brew doctor
 fi
 
-heading "Updating Homebrew"
-brew update
+heading "Updating Homebrew..."
+brew update && brew upgrade
 
 # Install prezto - a configuration framework for Zsh
 if ask "Do you want to install zsh and prezto?"; then
@@ -56,47 +56,57 @@ if ask "Do you want to symlink dotfiles?"; then
 fi
 
 # Install brew packages
-if ask "Do you want to Install Develoepr Apps from Brewfile.sh?"; then
-    info "installing: wget, zsh, git, git-ftp, php56, mcrypt, composer, heroku-toolbelt, aws-elasticbeanstalk"
+if ask "Do you want to install develoepr apps from Brewfile.sh?"; then
+    info "installing: wget, git, git-ftp, ruby, python, php56, mcrypt, composer, heroku-toolbelt, aws-elasticbeanstalk, htmltidy"
     sh Brewfile.sh
     source ~/.zprofile
 fi
 
 # Install Apps
-if ask "Do you want to Install GUI Apps from Caskfile.sh?"; then
-    info "VLC Player, Google Chrome, Firefox, Opera, Skype, Java, flash-player, GitHub, Sublime Text, Atom, SourceTree, Node.js, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter, HandBrake "
+if ask "Do you want to install GUI apps from Caskfile.sh?"; then
+    info "VLC Player, Google Chrome, Firefox, Opera, Skype, Java, Flash player, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter, HandBrake "
     sh Caskfile.sh
 fi
 
 # Update Ruby Gems
-if ask "Do you want to Update your Ruby Gems?"; then
+if ask "Do you want to update your Ruby gems?"; then
     ruby -v
     gem -v
     gem update
-    gem install compass
     # gem update --system # it is not recommended to mess with OS X gems
     gem cleanup
 fi
 
 # Install nvm, node, npm  and global packages
-if ask "Do you want to Install node, npm and global Packages?" info "yo, bower, gulp, jshint, csslint"; then
+if ask "Do you want to install node, npm and global packages?"; then
+    info "yo, bower, gulp, jshint"
     # clone the latest nvm (Node Version Manager) into a folder called .nvm
     git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+    source ~/.zprofile
     # install latest stable node
     nvm install stable
     nvm use stable
     nvm alias default stable
     # install packages
-    npm install -g yo bower gulp jshint csslint
+    npm install -g yo bower gulp jshint
 fi
 
 # Install sublime text packages
-if ask "Do you want to Install sublime text packages?"; then
+if ask "Do you want to install Sublime Text 3 packages?"; then
     # get package control
     wget -nc http://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/
     cp -i $DOTFILES/sublime/Package Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
     cp -i $DOTFILES/sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
     ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+fi
+
+# Install atom.io packages
+if ask "Do you want to install Atom 3 packages? (requires Atom)"; then
+    if [[ ! "$(type -P apm)" ]]; then
+        ln -s /Applications/Atom.app/Contents/MacOS/Atom /usr/local/bin/atom
+        source ~/.zprofile
+    fi
+    apm install atom-soda-dark-ui color-picker dash emmet monokai
 fi
 
 heading "Done!"

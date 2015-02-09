@@ -1,3 +1,5 @@
+. functions.sh
+
 # Install Cask
 brew tap caskroom/versions
 brew install caskroom/cask/brew-cask
@@ -51,4 +53,5 @@ brew cask install --appdir="/Applications" teamviewer
 # brew cask install --appdir="/Applications" slack # available via appstore
 
 # clean-up
+info "Cleaning brew-cask cache"
 brew cask cleanup

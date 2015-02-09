@@ -1,5 +1,4 @@
-# upgrade already installed homebrew packages
-brew upgrade
+. functions.sh
 
 brew tap homebrew/dupes
 brew tap homebrew/versions
@@ -18,4 +17,5 @@ brew install homebrew/dupes/tidy
 # brew install node #recommend to install via http://nodejs.org/ or nvm (node version manager)
 
 # clean-up
+info "Cleaning brew cache"
 brew cleanup
