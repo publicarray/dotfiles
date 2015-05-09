@@ -93,21 +93,33 @@ fi
 
 # Install sublime text packages
 if ask "Do you want to install Sublime Text 3 packages?"; then
+    SUBLFILES=$DOTFILES/sublime/*
+    SUBL=~/Library/Application\ Support/Sublime\ Text\ 3
     # get package control
-    wget -nc http://packagecontrol.io/Package%20Control.sublime-package -P ~/Library/Application\ Support/Sublime\ Text\ 3/Installed\ Packages/
-    cp -i $DOTFILES/sublime/Package Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
-    cp -i $DOTFILES/sublime/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
-    ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
+    wget -nc http://packagecontrol.io/Package%20Control.sublime-package -P $SUBL/Installed\ Packages/
+    for f in $SUBLFILES
+    do
+        name=$(basename "$f")
+        cp -i "$DOTFILES/sublime/$name" "$SUBL/Packages/User/"
+    done
+
+    # cp -i $DOTFILES/sublime/Package Control.sublime-settings $SUBL/Packages/User/
+    # cp -i $DOTFILES/sublime/Preferences.sublime-settings $SUBL/Packages/User/
+    # symbolic link sublime text so you can use in the shell
+    ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 fi
 
 # Install atom.io packages
-if ask "Do you want to install Atom 3 packages? (requires Atom)"; then
+if ask "Do you want to install Atom 3 packages? (requires Atom Shell Commands)"; then
     if [[ ! "$(type -P apm)" ]]; then
         ln -s /Applications/Atom.app/Contents/MacOS/Atom /usr/local/bin/atom
-        source ~/.bash_profile
-        source ~/.zprofile
     fi
-    apm install atom-soda-dark-ui color-picker dash emmet monokai
+    apm install atom-soda-dark-ui monokai file-icons color-picker dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint
+    # optional:
+    # apm install git-control
+    # apm install emmet - slows down start-up a bit >100ms
+    # apm install autocomplete-plus
+    # for autocomplete providers see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers
 fi
 
 heading "Done!"

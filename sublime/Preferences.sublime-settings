@@ -1,5 +1,6 @@
 {
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+    "font_size": 12,
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"spell_check": true,
 	"ignored_packages":
