@@ -58,7 +58,7 @@ fi
 
 # Install brew packages
 if ask "Do you want to install develoepr apps from Brewfile.sh?"; then
-    info "installing: wget, git, git-ftp, ruby, python, php56, mcrypt, composer, heroku-toolbelt, aws-elasticbeanstalk, htmltidy"
+    info "installing: wget, git, git-ftp, ruby, python, php56, mcrypt, composer, htmltidy" # optional heroku-toolbelt, aws-elasticbeanstalk
     sh Brewfile.sh
 fi
 
@@ -78,17 +78,17 @@ if ask "Do you want to update your Ruby gems?"; then
 fi
 
 # Install nvm, node, npm  and global packages
-if ask "Do you want to install node, npm and global packages?"; then
-    info "yo, bower, gulp, jshint"
+if ask "Do you want to install global packages with npm?"; then
+    info "bower, gulp, jshint, csslint"
     # clone the latest nvm (Node Version Manager) into a folder called .nvm
-    git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-    source ~/.nvm/nvm.sh
+    #git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+    #source ~/.nvm/nvm.sh
     # install latest stable node
-    nvm install stable
-    nvm use stable
-    nvm alias default stable
+    #nvm install stable
+    #nvm use stable
+    #nvm alias default stable
     # install packages
-    npm install -g yo bower gulp jshint
+    npm install -g bower gulp jshint csslint #yo
 fi
 
 # Install sublime text packages

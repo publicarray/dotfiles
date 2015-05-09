@@ -11,10 +11,12 @@ brew install python
 brew install php56
 brew install mcrypt php56-mcrypt
 brew install composer
-brew install heroku-toolbelt
-brew install aws-elasticbeanstalk
-brew install homebrew/dupes/tidy
-# brew install node #recommend to install via http://nodejs.org/ or nvm (node version manager)
+brew install homebrew/dupes/tidy # installs htmltidy
+brew install node #alternatives to install via http://nodejs.org/ or nvm (node version manager)
+
+# optional:
+# brew install heroku-toolbelt
+# brew install aws-elasticbeanstalk
 
 # clean-up
 info "Cleaning brew cache"
