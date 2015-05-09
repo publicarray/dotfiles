@@ -1,16 +1,72 @@
 *~
 
-# Folder view configuration files
+# https://github.com/github/gitignore
+
+#
+# OS X
+#
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+#
+# Windows
+#
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
 Desktop.ini
 
-# Thumbnail cache files
-._*
-Thumbs.db
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
 
-#codekit
+# Windows shortcuts
+*.lnk
+
+#
+# Vagrant
+#
+.vagrant/
+
+#
+# CodeKit
+#
 config.codekit
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project

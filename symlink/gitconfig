@@ -25,6 +25,10 @@
 	# normalise line ending to lf
 	autocrlf = input
 
+	# default text editor
+	# options: "atom --wait", "subl -n -w", "mate -w"
+	editor =  "subl -n -w"
+
 [alias]
 	undo = reset --hard
 
