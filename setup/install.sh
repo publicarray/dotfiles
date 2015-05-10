@@ -102,7 +102,7 @@ info "\nIt is recommended to them in order:"
                     heading "Set zsh as default shell"
                     # chsh -s /bin/zsh
                     # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-                    sudo chsh -s /usr/local/bin/zsh $USERNAME
+                    chsh -s /usr/local/bin/zsh $USERNAME
 
                     heading "Download prezto to ${ZDOTDIR:-$HOME}./zprezto"
                     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
