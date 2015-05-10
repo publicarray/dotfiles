@@ -1,46 +1,52 @@
 #!/bin/bash
+#
+# http://wiki.bash-hackers.org/commands/builtin/printf
 
-bold=$(tput bold);
 reset=$(tput sgr0);
+halfbight=$(tput dim);
+bold=$(tput bold);
+underline=$(tput smul);
+
+blackbg=$(tput setab 0);
+whitebg=$(tput setab 7);
+
 black=$(tput setaf 0);
-blue=$(tput setaf 33);
-cyan=$(tput setaf 37);
+red=$(tput setaf 1);
 green=$(tput setaf 2);
-orange=$(tput setaf 166);
-purple=$(tput setaf 125);
-red=$(tput setaf 124);
-violet=$(tput setaf 61);
-white=$(tput setaf 15);
-yellow=$(tput setaf 11);
-magenta=$(tput setaf 125);
+yellow=$(tput setaf 3);
+blue=$(tput setaf 4);
+magenta=$(tput setaf 5);
+cyan=$(tput setaf 6);
+white=$(tput setaf 7);
 
 heading() {
-    printf "\n${green}==== %s ====${reset}\n" "$1"
+    printf "\n${green}${blackbg}==== %s ====${reset}\n" "$1"
 }
 
 info() {
-    printf "${blue}%s${reset}\n" "$1"
+    printf "${black}${whitebg}%b${reset}\n" "$1"
 }
 
 question() {
-    printf "\n${yellow}==== %s ====${reset}" "$1"
+    printf "\n${blue}${whitebg}%b${reset}" "$1"
 }
 
 success() {
-    printf "  [ ${green}OK${reset} ] %s\n" "$1"
+    printf "${blackbg}${white}  [ ${green}OK${white} ] %b${reset}\n" "$1"
 }
 
 warn() {
-    printf "  [${orange}WARN${reset}] %s\n" "$1"
+    printf "${blackbg}${white}  [${yellow}WARN${white}] %b${reset}\n" "$1"
 }
 
 fail() {
-    printf "  [${red}FAIL${reset}] %s\n" "$1"
-    return 8
+    printf "${blackbg}${white}  [${red}FAIL${white}] %b${reset}\n" "$1"
 }
 
 ask() {
     # http://djm.me/ask
+    # or
+    # https://gist.github.com/davejamesmiller/1965569
     while true; do
 
         if [ "${2:-}" = "Y" ]; then
