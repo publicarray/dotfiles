@@ -119,11 +119,11 @@ info "\nIt is recommended to them in order:"
                     # symbolic link preztos own dotfiles
                     mv -v "$HOME/.zprofile" "$DOTFILES/backup"
                     mv -v "$DOTFILES/backup/.zprofile" "$DOTFILES/backup/zprofile"
-                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
+                    ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
 
                     mv -v "$HOME/.zshenv" "$DOTFILES/backup"
-                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
                     mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
+                    ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
                     # symbolic link my modefied dotfiles
                     FILES=$DOTFILES/symlink/*
@@ -160,14 +160,8 @@ info "\nIt is recommended to them in order:"
                     SUBL=~/Library/Application\ Support/Sublime\ Text\ 3
                     # get package control
                     wget -nc "http://packagecontrol.io/Package%20Control.sublime-package" --directory-prefix "$SUBL/Installed Packages/"
-                    for f in $SUBLFILES
-                    do
-                        name=$(basename "$f")
-                        cp -i "$DOTFILES/sublime/$name" "$SUBL/Packages/User/"
-                    done
-
-                    # cp -i $DOTFILES/sublime/Package Control.sublime-settings $SUBL/Packages/User/
-                    # cp -i $DOTFILES/sublime/Preferences.sublime-settings $SUBL/Packages/User/
+                    # copy files
+                    cp -a -i "$DOTFILES/sublime/." "$SUBL/Packages/User/"
                     # symbolic link sublime text so you can use in the shell
                     heading "Symlinking Sublime Shell Command (subl) to the /usr/local/bin directory"
                     ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
