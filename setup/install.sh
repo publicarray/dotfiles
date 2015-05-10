@@ -109,16 +109,23 @@ info "\nIt is recommended to them in order:"
 
                     heading "Install Theme"
                     cp "$DOTFILES/setup/prompt_josh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_josh_setup"
-                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
-                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
                     heading "Symlinking Dotfiles"
-
                     info "if dotfiles are found in your home directory they will be moved to $DOTFILES/backup."
-                    # symbolic link dotfiles
+
                     # if ask "Do you want to symlink dotfiles?"; then
                     sleep 2
                     mkdir "$DOTFILES/backup"
+                    # symbolic link preztos own dotfiles
+                    mv -v "$HOME/.zprofile" "$DOTFILES/backup"
+                    mv -v "$DOTFILES/backup/.zprofile" "$DOTFILES/backup/zprofile"
+                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
+
+                    mv -v "$HOME/.zshenv" "$DOTFILES/backup"
+                    ln -s "{ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
+                    mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
+
+                    # symbolic link my modefied dotfiles
                     FILES=$DOTFILES/symlink/*
                     for f in $FILES
                     do
@@ -152,7 +159,7 @@ info "\nIt is recommended to them in order:"
                     SUBLFILES=$DOTFILES/sublime/*
                     SUBL=~/Library/Application\ Support/Sublime\ Text\ 3
                     # get package control
-                    wget -nc http://packagecontrol.io/Package%20Control.sublime-package -P $SUBL/Installed\ Packages/
+                    wget -nc "http://packagecontrol.io/Package%20Control.sublime-package" --directory-prefix "$SUBL/Installed Packages/"
                     for f in $SUBLFILES
                     do
                         name=$(basename "$f")
