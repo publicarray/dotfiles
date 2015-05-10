@@ -146,10 +146,10 @@ info "\nIt is recommended to them in order:"
             "Setup Text Editors")
                 # Install sublime text packages
                 if ask "Do you want to install Sublime Text 3 packages and preferences?" Y; then
-                    if [pgrep "Sublime Text"]; then
+                    if pgrep "Sublime Text"; then
                         warn "If Sublime Text is open, please close it now or I will close it in 6 seconds"
                         sleep 6
-                        if [pgrep "Sublime Text"]; then
+                        if pgrep "Sublime Text"; then
                             warn "Closing Sublime Text"
                             sleep 1
                             osascript -e 'quit app "Sublime Text"'
