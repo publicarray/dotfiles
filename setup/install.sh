@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# cd ~/.dotfiles/setup
-. functions.sh
+cd ~/.dotfiles/setup
 DOTFILES=~/.dotfiles
 HOME=~
+source "$DOTFILES/setup/functions.sh"
 
 clear
 printf "${black}${whitebg}\n"
