@@ -135,7 +135,7 @@ info "\nIt is recommended to them in order:"
                         ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
                         info "Symlinked $HOME/.$name to $HOME/.$name"
                     done
-                    source ~/.bashhrc
+                    source ~/.bashrc
                     source ~/.zshrc
                     # fi
                 else
