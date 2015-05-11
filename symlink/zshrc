@@ -11,8 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Alias
+alias update='brew update && brew upgrade --all && npm update -g && softwareupdate -l && sudo softwareupdate -iva'
+alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
+alias dotfiles-install='~/.dotfiles/setup/install.sh'
 alias shellconfig='subl ~/.zshrc; subl ~/.bashrc'
-alias prestoconfig='subl ~/.zprofile; subl ~/.zshenv; subl ~/.zpreztorc'
+alias preztoconfig='subl ~/.zprofile; subl ~/.zshenv; subl ~/.zpreztorc'
 alias bashconfig='subl ~/.bash_profile; subl ~/.bashrc'
 alias gitconfig='subl ~/.gitconfig; subl ~/.gitignore_global'
 alias slt='subl'
@@ -27,6 +30,8 @@ alias localip='ipconfig getifaddr en0;ipconfig getifaddr en1;'
 alias ls='ls -G'
 alias ll='ls -l -a'
 alias l.='ls -d -G .*'
+alias npml='npm list -g --depth=0'
+alias brewl='brew leaves'
 alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
