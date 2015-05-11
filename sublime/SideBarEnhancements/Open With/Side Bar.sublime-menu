@@ -1,0 +1,69 @@
+[
+	{"id": "side-bar-files-open-with",
+		"children":
+		[
+
+			//application 1
+			{
+				"caption": "Photoshop",
+				"id": "side-bar-files-open-with-photoshop",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "Adobe Photoshop CC 2014.app", // OSX
+									"extensions":"psd|png|jpg|jpeg",  //any file with these extensions
+									"args":[]
+								},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+
+			//separator
+			{"caption":"-"},
+
+			//application 2
+			{
+				"caption": "Atom",
+				"id": "side-bar-files-open-with-atom",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "Atom.app",
+									"extensions":"", //open all even folders
+									"args":[]
+								},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+			//application n
+			{
+				"caption": "Chrome",
+				"id": "side-bar-files-open-with-chrome",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "Google Chrome.app",
+									"extensions":".*", //any file with extension
+									"args":[]
+						},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+			{
+				"caption": "Terminal",
+				"id": "side-bar-files-open-with-terminal",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "Terminal.app",
+									"extensions":"", //open all even folders
+									"args":[]
+						},
+				"open_automatically" : false // will close the view/tab and launch the application
+			},
+
+			{"caption":"-"}
+		]
+	}
+]
