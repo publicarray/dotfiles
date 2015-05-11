@@ -10,7 +10,6 @@ brew install php56
 brew install mcrypt php56-mcrypt
 brew install composer
 # brew install node #alternatives to install via http://nodejs.org/ or nvm (node version manager)
-brew install cppcheck
 # brew install zsh
 
 # optional:
@@ -27,7 +26,6 @@ brew install cppcheck
 # brew install postgresql
 # brew install awscli
 # brew install cmake
-# brew install imagemagick
 # brew install php56-xcache
 
 # clean-up

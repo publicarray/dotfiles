@@ -31,7 +31,10 @@
 		"SublimeLinter-cppcheck",
 		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
+		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
+		"SublimeLinter-php",
+		"SublimeLinter-shellcheck",
 		"Theme - Soda",
 		"Themr"
 	]

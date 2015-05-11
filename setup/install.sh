@@ -14,9 +14,9 @@ printf "                https://github.com/publicarray/dotfiles              \n"
 printf "                                                                     \n${reset}"
 
 # OSX-only stuff. Abort if not OSX.
-if [[ !["$OSTYPE" =~ ^darwin] ]]; then
+if [[ "$OSTYPE" != darwin* ]]; then
     fail "Your operating system is not supported.\n Exiting."
-    return -1
+    return 1
 fi
 
 info "If you are on a fresh install than please install all AppStore apps first!"
@@ -77,10 +77,10 @@ info "\nIt is recommended to them in order:"
                     #nvm alias default stable
                 fi
                 if [[ "$(type -P npm)" ]]; then
-                    if ask "Do you want to install global packages with npm?\n This will install: bower, gulp, jshint and csslint"; then
+                    if ask "Do you want to install global packages with npm?\n This will install: bower and gulp"; then
                         # install packages
                         heading "Installing Packages"
-                        npm install -g bower gulp jshint csslint #yo
+                        npm install -g bower gulp #yo
                     fi
                 fi
                 echo
@@ -102,7 +102,7 @@ info "\nIt is recommended to them in order:"
                     heading "Set zsh as default shell"
                     # chsh -s /bin/zsh
                     # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-                    chsh -s /usr/local/bin/zsh $USERNAME
+                    chsh -s "/usr/local/bin/zsh $USERNAME"
 
                     heading "Download prezto to ${ZDOTDIR:-$HOME}./zprezto"
                     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -126,7 +126,7 @@ info "\nIt is recommended to them in order:"
                     ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
                     # symbolic link my modefied dotfiles
-                    FILES=$DOTFILES/symlink/*
+                    FILES="$DOTFILES/symlink/*"
                     for f in $FILES
                     do
                         name=$(basename "$f")
@@ -145,6 +145,23 @@ info "\nIt is recommended to them in order:"
                 ;;
             "Setup Text Editors")
                 # Install sublime text packages
+                if [[ "$(type -P npm)" || "$(type -P brew)"  ]]; then
+                    heading "installing prerequisites e.g linters"
+                    info "This will install: jshint csslint shellcheck and imagemagick"
+                    npm install -g jshint csslint
+                    brew install shellcheck imagemagick # for ColourHighlighter
+                    info "You have the following packages installed:"
+                    npm list -g --depth=0
+                    brew leaves
+                    if [[ ! "$(type -P javac)" ]]; then
+                        info "For Java linting Java SDK (javac) needs to be installed"
+                        sleep 2
+                        info "Opening Browser"
+                        open http://www.oracle.com/technetwork/java/javase/downloads/index.html
+                    fi
+                else
+                    warn "could not find npm or brew to install prerequisites"
+                fi
                 if ask "Do you want to install Sublime Text 3 packages and preferences?" Y; then
                     if pgrep "Sublime Text"; then
                         warn "If Sublime Text is open, please close it now or I will close it in 6 seconds"
@@ -156,7 +173,7 @@ info "\nIt is recommended to them in order:"
                         fi
                     fi
                     heading "Installing Sublime Packages, Themes and Preferences"
-                    SUBLFILES=$DOTFILES/sublime/*
+                    # see https://packagecontrol.io/search/SublimeLinter-%20%3Ast3 for more linters
                     SUBL=~/Library/Application\ Support/Sublime\ Text\ 3
                     # get package control
                     wget -nc "http://packagecontrol.io/Package%20Control.sublime-package" --directory-prefix "$SUBL/Installed Packages/"
@@ -171,6 +188,7 @@ info "\nIt is recommended to them in order:"
                 if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
                     if [[ "$(type -P apm)" ]]; then
                         heading "Installing Sublime Packages and Themes"
+                        # see https://atom.io/packages/linter for more linters
                         apm install atom-soda-dark-ui monokai file-icons color-picker dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint
                         # optional:
                         # apm install git-control
