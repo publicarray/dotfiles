@@ -4,8 +4,10 @@
 	],
 	"installed_packages":
 	[
+		"AutoFileName",
 		"Autoprefixer",
 		"BracketHighlighter",
+		"Clang-Complete",
 		"CodeFormatter",
 		"Color Highlighter",
 		"ColorPicker",
@@ -28,7 +30,7 @@
 		"SublimeAStyleFormatter",
 		"SublimeCodeIntel",
 		"SublimeLinter",
-		"SublimeLinter-cppcheck",
+		"SublimeLinter-contrib-clang",
 		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-javac",

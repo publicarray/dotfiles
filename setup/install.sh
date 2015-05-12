@@ -189,7 +189,9 @@ info "\nIt is recommended to them in order:"
                     if [[ "$(type -P apm)" ]]; then
                         heading "Installing Sublime Packages and Themes"
                         # see https://atom.io/packages/linter for more linters
-                        apm install atom-soda-dark-ui monokai file-icons color-picker dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint
+                        apm install atom-soda-dark-ui monokai file-icons color-picker dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint highlight-selected
+                        # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers
+                        apm install autocomplete-plus autocomplete-plus autocomplete-css autocomplete-hack
                         # optional:
                         # apm install git-control
                         # apm install emmet - slows down start-up a bit >100ms
