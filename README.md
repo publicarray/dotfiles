@@ -4,51 +4,32 @@ Installation
 
         bash <(curl -s https://raw.githubusercontent.com/publicarray/dotfiles/master/install.sh)
 
-2. Set Path Variable
+2. Install my Terminal Theme
 
-        export PATH="$/opt/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+    Download and open the [publicarray.terminal](publicarray.terminal) file.
+    To make it permanent remember to set it as your default.
 
-File Descriptions
+3. Get a better colour picker
+
+    I recommend [skalacolor](http://bjango.com/mac/skalacolor/).
+
+Configuring
 -----------------
+For prezto configuration files see [prezto/runcoms](../../sorin-ionescu/prezto/tree/master/runcoms#configuration-files).
 
-### zshenv
+To add any aliases, exports, functions and shell options. I recommend you add them to `.zshrc` for zsh and `bashrc` for bash.
 
-This file is sourced by all instances of Zsh, and thus, it should be kept as
-small as possible and should only define environment variables.
+If you use Atom and you get the following waring:
 
-### zprofile
+>The linter 'shellcheck' cannot be found
 
-This file is similar to zlogin, but it is sourced before zshrc. It was added
-for [KornShell][1] fans. See the description of zlogin below for what it may
-contain.
-
-zprofile and zlogin are not meant to be used concurrently but can be done so.
-
-### zshrc
-
-This file is sourced by interactive shells. It should define aliases,
-functions, shell options, and key bindings.
-
-### zpreztorc
-
-This file configures Prezto.
-
-### zlogin
-
-This file is sourced by login shells after zshrc, and thus, it should contain
-commands that need to execute at login. It is usually used for messages such as
-[fortune][2], [msgs][3], or for the creation of files.
-
-This is not the file to define aliases, functions, shell options, and key
-bindings. It should not change the shell environment.
-
-### zlogout
-
-This file is sourced by login shells during logout. It should be used for
-displaying messages and the deletion of files.
+Than you should open your terminal and execute `which shellcheck`. Than copy the output path into the shellcheck preferences as the Executable path.
+e.g. `/usr/local/bin/shellcheck`.
 
 Influences
 ----------
-https://github.com/sorin-ionescu/prezto
 https://github.com/travi/dotfiles
+
 https://github.com/paulmillr/dotfiles
+
+https://bitbucket.org/rjchatfield/dotfiles
