@@ -1,3 +1,7 @@
+Screenshot
+----------
+![](https://cloud.githubusercontent.com/assets/5497998/7611396/a1da25b6-f9c7-11e4-993c-5c17a30f2d40.png)
+![](https://cloud.githubusercontent.com/assets/5497998/7610829/54051caa-f9c3-11e4-93df-e0f361d88d60.png)
 Installation
 ============
 1. Run the install script
@@ -15,7 +19,7 @@ Installation
 
 Configuring
 -----------------
-For prezto configuration files see [prezto/runcoms](../../sorin-ionescu/prezto/tree/master/runcoms#configuration-files).
+For prezto configuration files see [prezto/runcoms](https://github.com/sorin-ionescu/prezto/tree/master/runcoms#configuration-files).
 
 To add any aliases, exports, functions and shell options. I recommend you add them to `.zshrc` for zsh and `bashrc` for bash.
 
