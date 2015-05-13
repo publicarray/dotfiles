@@ -52,6 +52,9 @@ brew cask install --appdir="/Applications" hipchat
 brew cask install --appdir="/Applications" teamviewer
 # brew cask install --appdir="/Applications" slack # available via appstore
 
+# Quick look Plug-ins from: https://github.com/sindresorhus/quick-look-plugins
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json betterzipql quicklook-csv qlimagesize suspicious-package
+
 # clean-up
 info "Cleaning brew-cask cache"
 brew cask cleanup
