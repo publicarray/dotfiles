@@ -1,5 +1,5 @@
 # Alias
-alias update='brew update && brew upgrade --all && npm update -g && softwareupdate -l && sudo softwareupdate -iva'
+alias update='echo "Updating Brew" && brew update && brew upgrade --all && npm update -g && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
 alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
 alias dotfiles-install='~/.dotfiles/setup/install.sh'
 alias shellconfig='subl ~/.zshrc; subl ~/.bashrc'
