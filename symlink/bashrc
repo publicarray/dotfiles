@@ -31,23 +31,23 @@ export PATH="/usr/local/sbin:$PATH"
 # # => safari uses 154.69 MBs of RAM.
 function ram() {
   local sum
-  local items
   local app="$1"
   if [ -z "$app" ]; then
     echo "First argument - pattern to grep from processes"
   else
     sum=0
-    for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'`; do
-      sum=$(($i + $sum))
+    for i in $(ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'); do
+      sum=$((i + sum))
     done
     sum=$(echo "scale=2; $sum / 1024.0" | bc)
     if [[ $sum != "0" ]]; then
-      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+      echo "$(tput setaf 4)${app}$(tput sgr0) uses $(tput setaf 2)${sum}$(tput sgr0) MBs of RAM."
     else
-      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+      echo "There are no processes with pattern '$(tput setaf 4)${app}$(tput sgr0)' are running."
     fi
   fi
 }
+alias mem='ram'
 
 # by paulmillr <https://github.com/paulmillr/dotfiles>
 # $ size dir1 file2.js
