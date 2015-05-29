@@ -5,6 +5,9 @@
 [github]
 	user = publicarray
 
+[credential]
+	helper = osxkeychain
+
 [core]
 	# use '.gitignore' file
 	excludesfile = ~/.gitignore_global
@@ -57,24 +60,9 @@
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
 	ui = auto
-
-[color "branch"]
-	current = green
-    local = cyan
-    remote = magenta
-
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-
-[color "status"]
-	branch = yellow bold
-    header = cyan
-    added = green
-    changed = red
-    untracked = magenta
+	branch = auto
+	diff = auto
+	status = auto
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
@@ -84,13 +72,9 @@
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = matching
+	default = simple
 
 [git-ftp]
 	user = home@spage.x10.mx
 	password = ***REMOVED***
 	url = ftp://ftp.spage.x10.mx
-	syncroot = /
-
-[credential]
-	helper = osxkeychain

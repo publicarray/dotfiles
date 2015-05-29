@@ -1,5 +1,5 @@
 # Alias
-alias update='echo "Updating Brew" && brew update && brew upgrade --all && npm update -g && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
+alias update='echo "Updating Packages" && brew update && brew upgrade --all && npm update -g && apm upgrade && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
 alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
 alias dotfiles-install='~/.dotfiles/setup/install.sh'
 alias shellconfig='subl ~/.zshrc; subl ~/.bashrc'
@@ -62,3 +62,10 @@ function size() {
       }
       {gsub(/^[0-9]+/, human($1)); print}'
 }
+
+# A random fortune spoken from cowsay
+# # brew install fortune cowsay coreutils
+#
+# if ! cmd="$(type -p "$cowsay")" || [ -z "$cmd" ] & ! cmd="$(type -p "$fortune")" || [ -z "$cmd" ]; then
+#     fortune | cowsay -nf $(cowsay -l | tr " " "\n"| tail -n +5 | gshuf -n1)
+# fi
