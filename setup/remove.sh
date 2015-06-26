@@ -1,9 +1,8 @@
 #!/bin/bash
 
-cd ~/.dotfiles/setup
-. functions.sh
 DOTFILES=~/.dotfiles
 HOME=~
+source "$DOTFILES/setup/functions.sh"
 
 # remove dotfiles
 if ask "Do you want to restore dotfiles from backup?"; then
@@ -29,3 +28,5 @@ if ask "and remove zsh?"; then
 	brew remove zsh
 	chsh -s /bin/bash
 fi
+
+rm -rf "$DOTFILES"

@@ -9,12 +9,12 @@ brew install git-ftp
 brew install php56
 brew install mcrypt php56-mcrypt
 brew install composer
+brew install ruby
 # brew install node #alternatives to install via http://nodejs.org/ or nvm (node version manager)
 # brew install zsh
 
 # optional:
 # brew install homebrew/dupes/tidy # installs htmltidy
-# brew install ruby
 # brew install python
 # brew install heroku-toolbelt
 # brew install aws-elasticbeanstalk

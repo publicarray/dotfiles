@@ -188,6 +188,7 @@ info "\nIt is recommended to them in order:"
                 if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
                     if [[ "$(type -P apm)" ]]; then
                         heading "Installing Atom Packages and Themes"
+                        apm upgrade
                         # see https://atom.io/packages/linter for more linters
                         apm install atom-soda-dark-ui monokai file-icons color-picker dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint highlight-selected
                         # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers

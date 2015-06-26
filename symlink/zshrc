@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Alias
-alias update='echo "Updating Packages" && brew update && brew upgrade --all && npm update -g && apm upgrade && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
+alias update='echo "Updating Packages" && brew update && brew upgrade --all && brew cleanup && npm update -g && apm upgrade && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
 alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
 alias dotfiles-install='~/.dotfiles/setup/install.sh'
 alias shellconfig='subl ~/.zshrc; subl ~/.bashrc'
@@ -34,7 +34,7 @@ alias npml='npm list -g --depth=0'
 alias brewl='brew leaves'
 alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias afk="open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 export PATH="/usr/local/sbin:$PATH"
 
 # by paulmillr <https://github.com/paulmillr/dotfiles>
