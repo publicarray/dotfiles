@@ -40,7 +40,7 @@
 ## Configuring
 For prezto configuration files see [prezto/runcoms](https://github.com/sorin-ionescu/prezto/tree/master/runcoms#configuration-files).
 
-To add any aliases, exports, functions and shell options. I recommend you add them to `.zshrc` for zsh and `bashrc` for bash.
+To add any aliases, exports, functions and shell options. I recommend you add them to `.usershell` for zsh and bash.
 
 If you use Atom and you get the following waring:
 
