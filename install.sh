@@ -91,8 +91,6 @@ if [[ !["$OSTYPE" =~ ^darwin] ]]; then
     return -1
 fi
 
-# [[ "$OSTYPE" =~ ^darwin ]] || return 1
-
 info "\nI will clone the git repository to ~/.dotfiles"
 
 if [ -d "${HOME}/.dotfiles" ]; then

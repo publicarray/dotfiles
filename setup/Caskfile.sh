@@ -25,7 +25,7 @@ brew cask install --appdir="/Applications" cyberduck
 brew cask install --appdir="/Applications" imageoptim
 brew cask install --appdir="/Applications" codekit # needs licence
 brew cask install --appdir="/Applications" mamp
-# brew cask install --appdir="/Applications" dash # available via appstore
+# brew cask install --appdir="/Applications" dash # available via the appstore
 # brew cask install --appdir="/Applications" virtualbox # If you want it
 
 # Utility
@@ -34,7 +34,7 @@ brew cask install --appdir="/Applications" desktoputility
 brew cask install --appdir="/Applications" appcleaner
 brew cask install --appdir="/Applications" macpaw-gemini # needs licence
 brew cask install --appdir="/Applications" togglDesktop
-# brew cask install --appdir="/Applications" caffeine # available via appstore
+# brew cask install --appdir="/Applications" caffeine # available via the appstore
 
 # Games
 brew cask install --appdir="/Applications" minecraft # needs licence
@@ -50,7 +50,7 @@ brew cask install --appdir="/Applications" burn
 # Productivity
 brew cask install --appdir="/Applications" hipchat
 brew cask install --appdir="/Applications" teamviewer
-# brew cask install --appdir="/Applications" slack # available via appstore
+# brew cask install --appdir="/Applications" slack # available via the appstore
 
 # Quick look Plug-ins from: https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json betterzipql quicklook-csv qlimagesize suspicious-package

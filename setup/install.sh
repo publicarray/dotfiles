@@ -56,7 +56,7 @@ info "\nIt is recommended to them in order:"
                     heading "Installing Packages"
                     sh Brewfile.sh
                 fi
-                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Opera, Skype, Java, Flash player, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter and HandBrake "; then
+                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Opera, Skype, Java, Flash player, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"
                     sh Caskfile.sh
                 fi
@@ -125,7 +125,7 @@ info "\nIt is recommended to them in order:"
                     mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
                     ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
-                    # symbolic link my modefied dotfiles
+                    # symbolic link my modified dotfiles
                     FILES="$DOTFILES/symlink/*"
                     for f in $FILES
                     do
@@ -137,7 +137,6 @@ info "\nIt is recommended to them in order:"
                     done
                     source ~/.bashrc
                     source ~/.zshrc
-                    # fi
                 else
                     fail "Could not find brew. Homebrew is required to install zsh"
                 fi
@@ -154,7 +153,7 @@ info "\nIt is recommended to them in order:"
                     npm list -g --depth=0
                     brew leaves
                     if [[ ! "$(type -P javac)" ]]; then
-                        info "For Java linting Java SDK (javac) needs to be installed"
+                        info "For Java linting, Java SDK (javac) needs to be installed"
                         sleep 2
                         info "Opening Browser"
                         open http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -182,6 +181,7 @@ info "\nIt is recommended to them in order:"
                     # symbolic link sublime text so you can use in the shell
                     heading "Symlinking Sublime Shell Command (subl) to the /usr/local/bin directory"
                     ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+                    info "If you need more linters visit: https://packagecontrol.io/search/SublimeLinter-%20%3Ast3"
                 fi
 
                 # Install atom.io packages
@@ -197,6 +197,8 @@ info "\nIt is recommended to them in order:"
                         # apm install emmet - slows down start-up a bit >100ms
                         # apm install autocomplete-plus
                         # for autocomplete providers see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers
+                        info "If you need more linters visit: https://atom.io/packages/linter for more linters"
+                        info "If require more autocomplete providers see: https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers"
                     else
                         fail "Please Install Atom Shell Commands first."
                         # heading "Symlinking Atom Shell Command (atom) to the /usr/local/bin directory"
