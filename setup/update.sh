@@ -8,5 +8,6 @@ git pull origin master
 
 cd "$DOTFILES"
 # don't overwrite user configurations in the usershell file
-git update-index --assume-unchanged symlink/usershell
+git stash
 git pull origin master
+git stash pop
