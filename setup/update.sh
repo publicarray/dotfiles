@@ -7,7 +7,7 @@ cd ~/.zprezto
 git pull origin master
 
 cd "$DOTFILES"
-# don't overwrite user configurations in the usershell file
+# use git stash to keep user configurations
 git stash
 git pull origin master
 git stash pop
