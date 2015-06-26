@@ -2,7 +2,6 @@
 
 cd ~/.dotfiles/setup
 DOTFILES=~/.dotfiles
-HOME=~
 source "$DOTFILES/setup/functions.sh"
 
 clear
@@ -107,7 +106,7 @@ info "\nIt is recommended to them in order:"
                     heading "Download prezto to ${ZDOTDIR:-$HOME}./zprezto"
                     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-                    heading "Install Theme"
+                    heading "Install zprezto Theme"
                     cp "$DOTFILES/setup/prompt_josh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_josh_setup"
 
                     heading "Symlinking Dotfiles"

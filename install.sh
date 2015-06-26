@@ -86,9 +86,9 @@ printf "                https://github.com/publicarray/dotfiles              \n"
 printf "                                                                     \n${reset}"
 
 # OSX-only stuff. Abort if not OSX.
-if [[ !["$OSTYPE" =~ ^darwin] ]]; then
+if [[ "$OSTYPE" != darwin* ]]; then
     fail "Your operating system is not supported.\n Exiting."
-    return -1
+    return 1
 fi
 
 info "\nI will clone the git repository to ~/.dotfiles"
