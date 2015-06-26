@@ -8,4 +8,3 @@
 # if ! cmd="$(type -p "$cowsay")" || [ -z "$cmd" ] & ! cmd="$(type -p "$fortune")" || [ -z "$cmd" ]; then
 #     fortune | cowsay -nf $(cowsay -l | tr " " "\n"| tail -n +5 | gshuf -n1)
 # fi
-
