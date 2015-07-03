@@ -191,7 +191,7 @@ info "\nIt is recommended to them in order:"
                         # see https://atom.io/packages/linter for more linters
                         apm install atom-soda-dark-ui monokai file-icons color-picker pigments dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint highlight-selected
                         # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers
-                        apm install autocomplete-hack
+                        apm install atom-autocomplete-php # autocomplete-emojis autocomplete-paths
                         # optional:
                         # apm install git-control
                         # apm install emmet - slows down start-up a bit >100ms
