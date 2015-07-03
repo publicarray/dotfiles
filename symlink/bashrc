@@ -3,6 +3,7 @@ alias update='echo "Updating Packages" && brew update && brew upgrade --all && b
 alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
 alias dotfiles-install='~/.dotfiles/setup/install.sh'
 alias shellconfig='subl ~/.usershell;'
+alias zshconfig='subl ~/.zshrc; subl ~/.zprofile; subl subl ~/.zlogin; subl ~/.zlogout'
 alias preztoconfig='subl ~/.zpreztorc; subl ~/.zshenv; subl ~/.zprofile; subl ~/.zshrc; subl ~/.zshenv; subl ~/.zlogin; subl ~/.zlogout'
 alias bashconfig='subl ~/.bash_profile; subl ~/.bashrc'
 alias gitconfig='subl ~/.gitconfig; subl ~/.gitignore_global'
