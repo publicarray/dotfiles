@@ -48,7 +48,9 @@ If you use Atom and you get the following waring:
 
 Than you should open your terminal and execute `which shellcheck`. Than copy the output path into the shellcheck preferences as the Executable path. e.g. `/usr/local/bin/shellcheck`.
 
-## Influences
+## Influences and Thanks...
+[https://github.com/atomantic/dotfiles](https://github.com/atomantic/dotfiles)
+
 [https://github.com/travi/dotfiles](https://github.com/travi/dotfiles)
 
 [https://github.com/paulmillr/dotfiles](https://github.com/paulmillr/dotfiles)

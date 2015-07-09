@@ -3,12 +3,19 @@
 # top-most EditorConfig file
 root = true
 
+# Unix-style line endings
 [*]
-indent_style = space
 end_of_line = lf
 charset = utf-8
+
+# Indentation
+indent_style = space
 indent_size = 4
+
+# Remove whitespace characters preceding the end of a line
 trim_trailing_whitespace = true
+
+# Files have a blank line at the end
 insert_final_newline = true
 
 [{package.json,bower.json,.travis.yml}]
