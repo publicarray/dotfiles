@@ -24,6 +24,8 @@ alias brewl='brew leaves'
 alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias hideDesktop='defaults write com.apple.finder CreateDesktop -bool false; killall Finder;'
+alias showDesktop='defaults write com.apple.finder CreateDesktop -bool true; killall Finder;'
 export PATH="/usr/local/sbin:$PATH"
 
 # by paulmillr <https://github.com/paulmillr/dotfiles>
@@ -62,6 +64,29 @@ function size() {
           return int(x+0.5) substr(s,1,1)
       }
       {gsub(/^[0-9]+/, human($1)); print}'
+}
+
+function cleandir() {
+    echo "♢ This command will delete .DS_Store, .TemporaryItems, .AppleDouble and ._* files"
+    local dir="$1"
+    if [ -z "$dir" ]; then
+        echo -e "\n♢ Searching Current Folder..."
+        dir=.
+    else
+        echo -e "\n♢ Searching ..."
+    fi
+    response='n'
+    find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \);
+    echo
+    read "response?♢ Are you sure you want to delete these files? [y|n] "
+    if [[ $response =~ ^(yes|Yes|y|Y) ]];then
+        echo -en "\n♢ Deleting... "
+        find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \) -delete;
+        echo -e "$(tput setaf 2)[done]$(tput sgr0)"
+         # find . \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".Trashes" -or -name "._*" \) -exec rm -rf "{}" \; -prune
+    else
+        echo -e "$(tput setaf 2)Nothing happened$(tput sgr0)"
+    fi
 }
 
 source ~/.usershell
