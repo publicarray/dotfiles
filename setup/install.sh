@@ -29,7 +29,7 @@ info "\nIt is recommended to them in order:"
 # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
     echo
-    # interactive menu from: http://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script
+    # interactive menu from: <http://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script>
     PS3='Please enter your choice or hit Enter to see the list again: '
     options=("Install Xcode Command Line Tools" "Install Homebrew" "Install node.js and npm" "Update Ruby Gems" "Upgrade shell with prezto" "Setup Text Editors" "Quit")
     select opt in "${options[@]}"
@@ -99,15 +99,56 @@ info "\nIt is recommended to them in order:"
                     brew install zsh
 
                     heading "Set zsh as default shell"
-                    # chsh -s /bin/zsh
-                    # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-                    chsh -s "/usr/local/bin/zsh $USERNAME"
+                    info "I need to gain sudo access to install zsh as you default shell."
+
+                    # check if zsh is in /etc/shells, if not add it to the list
+                    # by AlberT <http://stackoverflow.com/questions/3557037/appending-a-line-to-a-file-only-if-it-doesnt-already-exist-using-sed>
+                    grep -q -f /etc/shells "$(which zsh)"  || sudo bash -c "echo $(which zsh) >> /etc/shells" # command -v zsh | sudo tee -a /etc/shells
+                    # set the shell for the current user
+                    sudo chsh -s "$(which zsh)" "${USER}"
 
                     heading "Download prezto to ${ZDOTDIR:-$HOME}./zprezto"
                     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-                    heading "Install zprezto Theme"
+                    heading "Install zprezto theme"
                     cp "$DOTFILES/setup/prompt_josh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_josh_setup"
+
+                    heading "Install terminal theme"
+
+# by kevinSuttle and mathiasbynens <https://github.com/kevinSuttle/OSXDefaults>
+# modefied to use my theme file
+osascript <<EOD
+tell application "Terminal"
+	local allOpenedWindows
+	local initialOpenedWindows
+	local windowID
+	set themeName to "publicarray"
+	(* Store the IDs of all the open terminal windows. *)
+	set initialOpenedWindows to id of every window
+	(* Open the custom theme so that it gets added to the list
+		of available terminal themes (note: this will open two
+		additional terminal windows). *)
+	do shell script "open '$HOME/.dotfiles/" & themeName & ".terminal'"
+	(* Wait a little bit to ensure that the custom theme is added. *)
+	delay 1
+	(* Set the custom theme as the default terminal theme. *)
+	set default settings to settings set themeName
+	(* Get the IDs of all the currently opened terminal windows. *)
+	set allOpenedWindows to id of every window
+	repeat with windowID in allOpenedWindows
+		(* Close the additional windows that were opened in order
+			to add the custom theme to the list of terminal themes. *)
+		if initialOpenedWindows does not contain windowID then
+			close (every window whose id is windowID)
+		(* Change the theme for the initial opened terminal windows
+			to remove the need to close them in order for the custom
+			theme to be applied. *)
+		else
+			set current settings of tabs of (every window whose id is windowID) to settings set themeName
+		end if
+	end repeat
+end tell
+EOD
 
                     heading "Symlinking Dotfiles"
                     info "if dotfiles are found in your home directory they will be moved to $DOTFILES/backup."

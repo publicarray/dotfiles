@@ -53,6 +53,8 @@ Than you should open your terminal and execute `which shellcheck`. Than copy the
 
 [https://github.com/travi/dotfiles](https://github.com/travi/dotfiles)
 
+[https://github.com/kevinSuttle/OSXDefaults](https://github.com/kevinSuttle/OSXDefaults)
+
 [https://github.com/paulmillr/dotfiles](https://github.com/paulmillr/dotfiles)
 
 [https://bitbucket.org/rjchatfield/dotfiles](https://bitbucket.org/rjchatfield/dotfiles)

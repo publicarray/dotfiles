@@ -81,7 +81,7 @@ clear
 printf "${black}${whitebg}\n"
 printf "                                                                     \n"
 printf "                           Welcome!                                  \n"
-printf "              This script downloads dotfiles for Mac OS X             \n"
+printf "              This script downloads dotfiles for Mac OS X            \n"
 printf "                https://github.com/publicarray/dotfiles              \n"
 printf "                                                                     \n${reset}"
 
@@ -107,6 +107,6 @@ if ask "Do you want to Continue?" Y; then
     git clone --recursive https://github.com/publicarray/dotfiles.git "${HOME}/.dotfiles"
 
     if ask "Do you want to run the install script now?\nYou can run it later with: '~/.dotfiles/setup/install.sh'" Y; then
-        bash .dotfiles/setup/install.sh
+        bash ~/.dotfiles/setup/install.sh
     fi
 fi
