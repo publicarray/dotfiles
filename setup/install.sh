@@ -19,7 +19,7 @@ if [[ "$OSTYPE" != darwin* ]]; then
 fi
 
 info "If you are on a fresh install than please install all AppStore apps first!"
-info "eg. The Unarchiver, Pocket, Airmail2, BetterSnapTool, Sip, Caffine, Rdio, Dash, Battery Diag, Memory Diag, CleanMyDrive"
+info "eg. The Unarchiver, Pocket, Airmail2, Sip, Caffine, Spotify, Dash, Memory Diag"
 
 info "\nIt is recommended to them in order:"
 
