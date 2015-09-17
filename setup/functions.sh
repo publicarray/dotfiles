@@ -320,8 +320,12 @@ EOD
         # ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
         # info "Symlinked $HOME/.$name to $HOME/.$name"
     done
-    source ~/.bashrc
-    source ~/.zshrc
+    
+    if [[ $SHELL == *"bash"* ]]; then
+        source ~/.bashrc
+    else
+        source ~/.zshrc
+    fi
     echo
 }
 
