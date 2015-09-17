@@ -229,7 +229,7 @@ function update_gems() {
 # by atomantic <https://github.com/atomantic/dotfiles>
 function promptSudo() {
     # Ask for the administrator password upfront
-    bot "I need you to enter your sudo password so I can install some things:"
+    heading "I need you to enter your sudo password so I can install some things:"
     sudo -v
 
     # Keep-alive: update existing sudo time stamp until the script has finished
@@ -301,13 +301,7 @@ EOD
     mkdir "$DOTFILES/backup"
     # symbolic link my own preztos dotfiles
     symlinkifne zprofile
-    # mv -v "$HOME/.zprofile" "$DOTFILES/backup"
-    # mv -v "$DOTFILES/backup/.zprofile" "$DOTFILES/backup/zprofile"
-    # ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
     symlinkifne zshenv
-    # mv -v "$HOME/.zshenv" "$DOTFILES/backup"
-    # mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
-    # ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
     # symbolic link my modified dotfiles
     FILES="$DOTFILES/symlink/*"
@@ -315,12 +309,8 @@ EOD
     do
         name=$(basename "$f")
         symlinkifne "$name"
-        # mv -v "$HOME/.$name" "$DOTFILES/backup"
-        # mv -v "$DOTFILES/backup/.$name" "$DOTFILES/backup/$name"
-        # ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
-        # info "Symlinked $HOME/.$name to $HOME/.$name"
     done
-    
+
     if [[ $SHELL == *"bash"* ]]; then
         source ~/.bashrc
     else
@@ -433,6 +423,17 @@ function setup_firfox() {
 }
 
 function setup_osx() {
+    promptSudo
     source "${HOME}/.dotfiles/setup/osx"
+
+    info "Killing affected applications..."
+    for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+        "Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
+        "Opera" "Safari" "SizeUp" "Spectacle" "SystemUIServer" \
+        "Transmission" "Twitter"; do
+        killall "${app}" > /dev/null 2>&1
+    done
+    success
+    warn "Note that some of these changes require a logout/restart to take effect."
     echo
 }
