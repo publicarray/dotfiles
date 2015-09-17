@@ -10,96 +10,19 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Alias
-alias update='echo "Updating Packages" && brew update && brew upgrade --all && brew cleanup && npm update -g && apm upgrade && echo "Updating OS X and Apps from App Store." && sudo softwareupdate -iva'
-alias dotfiles-remove='~/.dotfiles/setup/remove.sh'
-alias dotfiles-install='~/.dotfiles/setup/install.sh'
-alias shellconfig='subl ~/.usershell;'
-alias zshconfig='subl ~/.zshrc; subl ~/.zprofile; subl ~/.zlogin; subl ~/.zlogout'
-alias preztoconfig='subl ~/.zpreztorc; subl ~/.zshenv; subl ~/.zprofile; subl ~/.zshrc; subl ~/.zshenv; subl ~/.zlogin; subl ~/.zlogout'
-alias bashconfig='subl ~/.bash_profile; subl ~/.bashrc'
-alias gitconfig='subl ~/.gitconfig; subl ~/.gitignore_global'
-alias slt='subl'
-alias c='clear'
-alias wget='wget -c' # Resume wget by default
-alias path='echo -e ${PATH//:/\\n}'
-alias now='date +"%T"'
-alias nowtime=now
-alias nowdate='date +"%d-%m-%Y"'
-alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias localip='ipconfig getifaddr en0;ipconfig getifaddr en1;'
-alias ls='ls -G'
-alias ll='ls -lh'
-alias l.='ls -d -G .*'
-alias npml='npm list -g --depth=0'
-alias brewl='brew leaves'
-alias showHidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideHidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias sleep="pmset sleepnow"
-alias hideDesktop='defaults write com.apple.finder CreateDesktop -bool false; killall Finder;'
-alias showDesktop='defaults write com.apple.finder CreateDesktop -bool true; killall Finder;'
 export PATH="/usr/local/sbin:$PATH"
 
-# by paulmillr <https://github.com/paulmillr/dotfiles>
-# Show how much RAM application uses.
-# $ ram safari
-# # => safari uses 154.69 MBs of RAM.
-function ram() {
-  local sum
-  local app="$1"
-  if [ -z "$app" ]; then
-    echo "First argument - pattern to grep from processes"
-  else
-    sum=0
-    for i in $(ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'); do
-      sum=$((i + sum))
-    done
-    sum=$(echo "scale=2; $sum / 1024.0" | bc)
-    if [[ $sum != "0" ]]; then
-      echo "$(tput setaf 4)${app}$(tput sgr0) uses $(tput setaf 2)${sum}$(tput sgr0) MBs of RAM."
-    else
-      echo "There are no processes with pattern '$(tput setaf 4)${app}$(tput sgr0)' are running."
-    fi
-  fi
-}
-alias mem='ram'
+# add a space in front of a command to prevent it being added to history
+setopt HIST_IGNORE_SPACE
 
-# by paulmillr <https://github.com/paulmillr/dotfiles>
-# $ size dir1 file2.js
-function size() {
-  # du -sh "$@" 2>&1 | grep -v '^du:' | sort -nr
-  du -shck "$@" | sort -rn | awk '
-      function human(x) {
-          s="kMGTEPYZ";
-          while (x>=1000 && length(s)>1)
-              {x/=1024; s=substr(s,2)}
-          return int(x+0.5) substr(s,1,1)
-      }
-      {gsub(/^[0-9]+/, human($1)); print}'
-}
+if [ -f ~/.functions ]; then
+   source ~/.functions
+fi
 
-function cleandir() {
-    echo "♢ This command will delete .DS_Store, .TemporaryItems, .AppleDouble and ._* files"
-    local dir="$1"
-    if [ -z "$dir" ]; then
-        echo -e "\n♢ Searching Current Folder..."
-        dir=.
-    else
-        echo -e "\n♢ Searching ..."
-    fi
-    response='n'
-    find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \);
-    echo
-    read "response?♢ Are you sure you want to delete these files? [y|n] "
-    if [[ $response =~ ^(yes|Yes|y|Y) ]];then
-        echo -en "\n♢ Deleting... "
-        find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \) -delete;
-        echo -e "$(tput setaf 2)[done]$(tput sgr0)"
-         # find . \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".Trashes" -or -name "._*" \) -exec rm -rf "{}" \; -prune
-    else
-        echo -e "$(tput setaf 2)Nothing happened$(tput sgr0)"
-    fi
-}
+if [ -f ~/.aliases ]; then
+   source ~/.aliases
+fi
 
-source ~/.usershell
+if [ -f ~/.usershell ]; then
+   source ~/.usershell
+fi

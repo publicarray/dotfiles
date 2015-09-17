@@ -52,6 +52,12 @@
 	# reset
     uncommit = reset --soft HEAD^   # go back before last commit, with files in uncommitted state
 
+    # By Phil Jackson <http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired>
+
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -70,8 +76,3 @@
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
 	default = simple
-
-[git-ftp]
-	user = home@spage.x10.mx
-	password = ***REMOVED***
-	url = ftp://ftp.spage.x10.mx

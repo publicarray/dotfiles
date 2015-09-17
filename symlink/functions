@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# by paulmillr <https://github.com/paulmillr/dotfiles>
+# Show how much RAM application uses.
+# $ ram safari
+# # => safari uses 154.69 MBs of RAM.
+function ram() {
+  local sum
+  local app="$1"
+  if [ -z "$app" ]; then
+    echo "First argument - pattern to grep from processes"
+  else
+    sum=0
+    for i in $(ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'); do
+      sum=$((i + sum))
+    done
+    sum=$(echo "scale=2; $sum / 1024.0" | bc)
+    if [[ $sum != "0" ]]; then
+      echo "$(tput setaf 4)${app}$(tput sgr0) uses $(tput setaf 2)${sum}$(tput sgr0) MBs of RAM."
+    else
+      echo "There are no processes with pattern '$(tput setaf 4)${app}$(tput sgr0)' are running."
+    fi
+  fi
+}
+alias mem='ram'
+
+# by paulmillr <https://github.com/paulmillr/dotfiles>
+# $ size dir1 file2.js
+function size() {
+  # du -sh "$@" 2>&1 | grep -v '^du:' | sort -nr
+  du -shck "$@" | sort -rn | awk '
+      function human(x) {
+          s="kMGTEPYZ";
+          while (x>=1000 && length(s)>1)
+              {x/=1024; s=substr(s,2)}
+          return int(x+0.5) substr(s,1,1)
+      }
+      {gsub(/^[0-9]+/, human($1)); print}'
+}
+
+function cleandir() {
+    echo "♢ This command will delete .DS_Store, .TemporaryItems, .AppleDouble and ._* files"
+    local dir="$1"
+    if [ -z "$dir" ]; then
+        echo -e "\n♢ Searching Current Folder..."
+        dir=.
+    else
+        echo -e "\n♢ Searching ..."
+    fi
+    response='n'
+    find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \);
+    echo
+    read "response?♢ Are you sure you want to delete these files? [y|n] "
+    if [[ $response =~ ^(yes|Yes|y|Y) ]];then
+        echo -en "\n♢ Deleting... "
+        find "$dir" \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".AppleDouble" -or -name "._*" \) -delete;
+        echo -e "$(tput setaf 2)[done]$(tput sgr0)"
+         # find . \( -name ".DS_Store" -or -name ".TemporaryItems" -or -name ".Trashes" -or -name "._*" \) -exec rm -rf "{}" \; -prune
+    else
+        echo -e "$(tput setaf 2)Nothing happened$(tput sgr0)"
+    fi
+}
+
+function update() {
+    echo "♢ Updating Homebrew"
+    brew update
+    brew upgrade --all
+    brew cleanup
+    brew cask cleanup
+    echo "♢ Updating npm"
+    npm update -g
+    apm upgrade --no-confirm
+    echo "♢ Updating OS X and Apps from App Store"
+    sudo softwareupdate -iva
+
+    # echo "♢ Updating Gems"
+    # sudo gem update
+    echo "♢ Update complete"
+}

@@ -1,3 +1,4 @@
+**Note** These are my personal system configurations. Use with caution as these settings may not work as is.
 # Screenshot
 ![](https://cloud.githubusercontent.com/assets/5497998/7611396/a1da25b6-f9c7-11e4-993c-5c17a30f2d40.png) ![](https://cloud.githubusercontent.com/assets/5497998/7610829/54051caa-f9c3-11e4-93df-e0f361d88d60.png)
 

@@ -14,7 +14,7 @@ brew cask install --appdir="/Applications" firefox
 brew cask install --appdir="/Applications" opera
 brew cask install --appdir="/Applications" skype
 brew cask install java
-brew cask install flash-player
+# brew cask install flash-player
 
 # Development
 brew cask install --appdir="/Applications" github
@@ -29,8 +29,8 @@ brew cask install --appdir="/Applications" mamp
 # brew cask install --appdir="/Applications" virtualbox # If you want it
 
 # Utility
-brew cask install --appdir="/Applications" flux
-brew cask install --appdir="/Applications" desktoputility
+# brew cask install --appdir="/Applications" flux
+# brew cask install --appdir="/Applications" desktoputility
 brew cask install --appdir="/Applications" appcleaner
 brew cask install --appdir="/Applications" macpaw-gemini # needs licence
 brew cask install --appdir="/Applications" togglDesktop
@@ -41,7 +41,7 @@ brew cask install --appdir="/Applications" minecraft # needs licence
 brew cask install --appdir="/Applications" steam
 
 # Music/Video
-brew cask install --appdir="/Applications" rdio
+# brew cask install --appdir="/Applications" rdio
 brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" adapter
 brew cask install --appdir="/Applications" handbrake
@@ -49,7 +49,7 @@ brew cask install --appdir="/Applications" burn
 
 # Productivity
 brew cask install --appdir="/Applications" hipchat
-brew cask install --appdir="/Applications" teamviewer
+# brew cask install --appdir="/Applications" teamviewer
 # brew cask install --appdir="/Applications" slack # available via the appstore
 
 # Quick look Plug-ins from: https://github.com/sindresorhus/quick-look-plugins

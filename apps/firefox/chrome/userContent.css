@@ -1,0 +1,15 @@
+@-moz-document url("about:newtab") {
+    #newtab-grid {
+        perspective: none !important;
+    }
+    .newtab-cell {
+        transform: none !important;
+        border: 2px solid transparent;
+    }
+    .newtab-cell:hover {
+        border: 2px solid #0080FF;
+    }
+    .newtab-title {
+        opacity: 1 !important;
+    }
+}

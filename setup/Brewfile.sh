@@ -20,7 +20,8 @@ brew install ruby
 # brew install aws-elasticbeanstalk
 # brew install php56-pdo-pgsql
 # brew install sqlite
-# brew install ffmpeg
+brew install ffmpeg
+brew install coreutils
 # brew install curl
 # brew install libdvdcss
 # brew install postgresql
