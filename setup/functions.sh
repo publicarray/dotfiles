@@ -122,17 +122,17 @@ function require_dev_tools() {
         heading "Installing Developer Tools..."
         run xcode-select --install
         # sudo xcode-select --switch /Library/Developer/CommandLineTools
-        success
     fi
+    success
 }
 
 function bupdate_brew() {
-    heading "Updating Homebrew..."
+    info "Updating Homebrew..."
     brew update && brew upgrade --all
 }
 
 function require_brew() {
-    # info "Looking for Homebrew..."
+    run brew -v
     if ! command -v brew &>/dev/null; then
         heading "Installing Homebrew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -140,35 +140,27 @@ function require_brew() {
             heading "Running brew doctor..."
             brew doctor
         fi
-        bupdate_brew
-        success
-    # else
-        # info "Homebrew is already Installed"
     fi
+    bupdate_brew
+    success
+}
+
+function bupdate_npm() {
+    info "Updating NPM..."
+    npm update -g
 }
 
 # by atomantic <https://github.com/atomantic/dotfiles> adapted by me
 function require_node() {
-    # info "Looking for Node.js..."
     run node -v
     if [[ $? != 0 ]]; then
         info "node not found, installing via homebrew"
         require_brew
         brew install node
-        success
     fi
+    bupdate_npm
+    success
 }
-
-# function require_npm() {
-#     # info "Looking for Node.js..."
-#     run npm -v
-#     if [[ $? != 0 ]]; then
-#         info "npm not found, installing via homebrew"
-#         require_brew
-#         brew install node
-#         success
-#     fi
-# }
 
 # by atomantic <https://github.com/atomantic/dotfiles>
 # function require_gem() {
@@ -305,54 +297,60 @@ EOD
     info "if dotfiles are found in your home directory they will be moved to $DOTFILES/backup."
 
     # if ask "Do you want to symlink dotfiles?"; then
-    sleep 2
+    # sleep 2
     mkdir "$DOTFILES/backup"
-    # symbolic link preztos own dotfiles
-    mv -v "$HOME/.zprofile" "$DOTFILES/backup"
-    mv -v "$DOTFILES/backup/.zprofile" "$DOTFILES/backup/zprofile"
-    ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
-
-    mv -v "$HOME/.zshenv" "$DOTFILES/backup"
-    mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
-    ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
+    # symbolic link my own preztos dotfiles
+    symlinkifne zprofile
+    # mv -v "$HOME/.zprofile" "$DOTFILES/backup"
+    # mv -v "$DOTFILES/backup/.zprofile" "$DOTFILES/backup/zprofile"
+    # ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zprofile" "$HOME/.zprofile"
+    symlinkifne zshenv
+    # mv -v "$HOME/.zshenv" "$DOTFILES/backup"
+    # mv -v "$DOTFILES/backup/.zshenv" "$DOTFILES/backup/zshenv"
+    # ln -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" "$HOME/.zshenv"
 
     # symbolic link my modified dotfiles
     FILES="$DOTFILES/symlink/*"
     for f in $FILES
     do
         name=$(basename "$f")
-        mv -v "$HOME/.$name" "$DOTFILES/backup"
-        mv -v "$DOTFILES/backup/.$name" "$DOTFILES/backup/$name"
-        ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
-        info "Symlinked $HOME/.$name to $HOME/.$name"
+        symlinkifne "$name"
+        # mv -v "$HOME/.$name" "$DOTFILES/backup"
+        # mv -v "$DOTFILES/backup/.$name" "$DOTFILES/backup/$name"
+        # ln -s "$DOTFILES/symlink/$name" "$HOME/.$name"
+        # info "Symlinked $HOME/.$name to $HOME/.$name"
     done
     source ~/.bashrc
     source ~/.zshrc
     echo
 }
 
-# by atomantic <https://github.com/atomantic/dotfiles>
-# function symlinkifne {
-#     info "$1"
-#
-#     if [[ -e $1 ]]; then
-#         # file exists
-#         if [[ -L $1 ]]; then
-#             # it's already a simlink (could have come from this project)
-#             echo -en '\tsimlink exists, skipped\t';ok
-#             return
-#         fi
-#         # backup file does not exist yet
-#         if [[ ! -e ~/.dotfiles/backup/$1 ]];then
-#             mv $1 ~/.dotfiles/backup/
-#             echo -en 'backed up saved...';
-#         fi
-#     fi
-#     # create the link
-#     ln -s ~/.dotfiles/$1 $1
-#     echo -en '\tlinked';
-#     success
-# }
+# by atomantic <https://github.com/atomantic/dotfiles> adapted by me
+function symlinkifne {
+    echo "♢ $1"
+
+    if [[ -e ".$1" ]]; then
+        # file exists
+        if [[ -L ".$1" ]]; then
+            # it's already a simlink (could have come from this project)
+            echo -en '\tsimlink exists, skipped\t';ok
+            return
+        fi
+        # backup file does not exist yet
+        if [[ ! -e "$DOTFILES/backup/$1" ]];then
+            mv "$HOME/.$1" "$DOTFILES/backup/"
+            mv "$DOTFILES/backup/.$1" "$DOTFILES/backup/$1"
+            echo -en 'backed up saved...';
+        fi
+    fi
+    # create the link
+    # ln -s ~/.dotfiles/symlink/$1 $1
+    # ln -s $1 $2
+    ln -s "$DOTFILES/symlink/$1" "$HOME/.$1"
+
+    echo -en '\tlinked';
+    success
+}
 
 function setup_sublime() {
     require_brew

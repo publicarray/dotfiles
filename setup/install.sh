@@ -19,7 +19,7 @@ if [[ "$OSTYPE" != darwin* ]]; then
 fi
 
 info "If you are on a fresh install than please install all AppStore apps first!"
-info "e.g. The Unarchiver, Pocket, Airmail2, Sip, Caffine, Spotify, Dash, Memory Diag"
+info "eg. The Unarchiver, Pocket, Airmail2, Sip, Caffine, Spotify, Dash, Memory Diag"
 
 info "\nIt is recommended to them in order:"
 
@@ -56,7 +56,7 @@ info "\nIt is recommended to them in order:"
 
                 if [[ "$(type -P npm)" ]]; then
                     if ask "Do you want to install global packages with npm?\n This will install: bower and gulp"; then
-                        require_npm
+                        # require_npm
                         # install packages
                         heading "Installing Packages"
                         npm install -g bower gulp #yo
