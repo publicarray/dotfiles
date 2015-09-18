@@ -10,7 +10,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-export PATH="/usr/local/sbin:$PATH"
+# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 
 # add a space in front of a command to prevent it being added to history
 setopt HIST_IGNORE_SPACE

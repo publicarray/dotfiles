@@ -325,9 +325,9 @@ EOD
 function symlinkifne {
     echo "♢ $1"
 
-    if [[ -e ".$1" ]]; then
+    if [[ -e .$1 ]]; then
         # file exists
-        if [[ -L ".$1" ]]; then
+        if [[ -L .$1 ]]; then
             # it's already a simlink (could have come from this project)
             echo -en '\tsimlink exists, skipped\t';ok
             return
@@ -342,8 +342,8 @@ function symlinkifne {
     # create the link
     ln -s "$DOTFILES/symlink/$1" "$HOME/.$1"
 
-    echo -en '\tlinked';
-    success
+    # echo -en '\tlinked';
+    success "$1 linked"
 }
 
 function setup_sublime() {
@@ -417,7 +417,7 @@ function setup_atom() {
 }
 
 function setup_firfox() {
-    info "Unfortunaly I can't do this automatically yet [working on it] :("
+    info "Unfortunaly I can't do this automatically yet :("
     info "Copy the contents of '~/.dotfiles/apps/firefox/' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
     echo
 }
