@@ -31,7 +31,7 @@ info "\nIt is recommended to them in order:"
     echo
     # interactive menu from: <http://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script>
     PS3='Please enter your choice or hit Enter to see the list again: '
-    options=("Install Xcode Command Line Tools" "Install Homebrew" "Install node.js and npm" "Update Ruby Gems" "Upgrade shell with prezto" "Setup Text Editors" "Setup Firefox" "Setup OS X" "Quit")
+    options=("Install Xcode Command Line Tools" "Install Homebrew" "Install node.js and npm" "Update Ruby Gems" "Upgrade shell with prezto" "Setup Text Editors" "Setup Firefox" "Setup OS X" "Express Install" "Quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -42,7 +42,7 @@ info "\nIt is recommended to them in order:"
                 require_brew
 
                 if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: wget, git, git-ftp, php56, mcrypt and composer" Y; then
-                    heading "Installing Packages"
+                    heading "Installing Homebrew Packages"
                     sh Brewfile.sh
                 fi
                 if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Opera, Skype, Java, Flash player, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter and HandBrake" N; then
@@ -58,7 +58,7 @@ info "\nIt is recommended to them in order:"
                     if ask "Do you want to install global packages with npm?\n This will install: bower and gulp"; then
                         # require_npm
                         # install packages
-                        heading "Installing Packages"
+                        heading "Installing NPM Packages"
                         npm install -g bower gulp #yo
                         npm install -g gitjk
                         npm install -g nodemon pm2
@@ -68,6 +68,7 @@ info "\nIt is recommended to them in order:"
                 ;;
             "Update Ruby Gems")
                 update_gems
+                heading "Installing Gems"
                 gem install bundler
                 echo
                 ;;
@@ -88,6 +89,24 @@ info "\nIt is recommended to them in order:"
                 ;;
             "Setup OS X")
                 setup_osx
+                ;;
+            "Express Install")
+                require_dev_tools
+                require_brew
+                heading "Installing Homebrew Packages"
+                sh Brewfile.sh
+                require_node
+                heading "Installing NPM Packages"
+                npm install -g bower gulp gitjk nodemon pm2
+                update_gems
+                heading "Installing Gems"
+                gem install bundler
+                install_shell
+                setup_sublime
+                setup_atom
+                setup_osx
+                setup_firfox
+                success
                 ;;
             "Quit")
                 break

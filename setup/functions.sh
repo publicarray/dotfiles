@@ -129,6 +129,8 @@ function require_dev_tools() {
 function bupdate_brew() {
     info "Updating Homebrew..."
     brew update && brew upgrade --all
+    brew cleanup
+    brew cask cleanup
 }
 
 function require_brew() {
@@ -338,8 +340,6 @@ function symlinkifne {
         fi
     fi
     # create the link
-    # ln -s ~/.dotfiles/symlink/$1 $1
-    # ln -s $1 $2
     ln -s "$DOTFILES/symlink/$1" "$HOME/.$1"
 
     echo -en '\tlinked';
@@ -395,15 +395,15 @@ function setup_atom() {
     if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
         if [[ "$(type -P apm)" ]]; then
             heading "Installing Atom Packages and Themes"
-            apm upgrade
+            apm upgrade --no-confirm
             # see https://atom.io/packages/linter for more linters
-            apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify linter linter-php linter-javac linter-jshint linter-clang linter-csslint linter-htmlhint highlight-selected
+            apm install linter linter-php linter-javac linter-jshint linter-jsonlint linter-htmlhint linter-csslint linter-scss-lint linter-swiftc linter-clang
+            apm install language-blade
+            apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify highlight-selected
             # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers
-            apm install atom-autocomplete-php # autocomplete-emojis autocomplete-paths
-            # optional:
+            # apm install autocomplete-emojis autocomplete-paths autocomplete-clang atom-autocomplete-php
             # apm install git-control
             # apm install emmet - slows down start-up a bit >100ms
-            # apm install autocomplete-plus
             # for autocomplete providers see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers
             info "If you need more linters visit: https://atom.io/packages/linter for more linters"
             info "If require more autocomplete providers see: https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers"
