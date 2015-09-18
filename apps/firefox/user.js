@@ -47,7 +47,7 @@ user_pref("dom.disable_image_src_set", false);
 
 /******************************************************************************
  * user.js                                                                    *
- * https://github.com/pyllyukko/user.js                                       *
+ * https://github.com/pyllyukko/user.js @8935deb38b                           *
  ******************************************************************************/
 
 /******************************************************************************
@@ -229,7 +229,8 @@ user_pref("toolkit.telemetry.enabled",          false);
 user_pref("privacy.trackingprotection.enabled",     true);
 user_pref("browser.polaris.enabled",            true);
 
-// disable the built-in PDF viewer
+// disable the built-in PDF viewer (CVE-2015-2743)
+// https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2743
 //user_pref("pdfjs.disabled",               true);
 
 // disable sending of the health report
