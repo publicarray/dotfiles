@@ -66,6 +66,7 @@ function update() {
     brew update
     brew upgrade --all
     brew cleanup
+    brew prune
     brew cask cleanup
     echo "♢ Updating npm"
     npm update -g

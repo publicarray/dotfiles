@@ -22,6 +22,7 @@ brew install ruby
 # brew install sqlite
 brew install ffmpeg
 brew install coreutils
+brew install ddrescue # http://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
 # brew install curl
 # brew install libdvdcss
 # brew install postgresql
