@@ -1,0 +1,3 @@
+[submodule "apps/firefox/user.js"]
+	path = apps/firefox/user.js
+	url = git://github.com/pyllyukko/user.js.git
