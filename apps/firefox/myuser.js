@@ -179,3 +179,8 @@ user_pref("privacy.clearOnShutdown.siteSettings",   false);
 // remember browsing history
 user_pref("places.history.enabled",         true);
 
+// Cookie expire time
+// 0 - from server, 1 prompt, 2 end of session (browser closes), 3 num of days (see network.cookie.lifetime.days)
+// http://kb.mozillazine.org/Network.cookie.lifetimePolicy#0
+user_pref("network.cookie.lifetimePolicy",      0);
+// user_pref("network.cookie.lifetime.days",       7);
