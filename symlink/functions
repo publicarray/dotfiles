@@ -70,6 +70,7 @@ function update() {
     brew cask cleanup
     echo "♢ Updating npm"
     npm update -g
+    echo "♢ Updating Atom packages"
     apm upgrade --no-confirm
     echo "♢ Updating OS X and Apps from App Store"
     sudo softwareupdate -iva
