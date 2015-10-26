@@ -123,9 +123,9 @@ user_pref("network.http.referer.XOriginPolicy",         1); // only send if base
 // CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
 user_pref("network.http.sendSecureXSiteReferrer",       false);
 
-// CIS 2.5.1 Accept Only 1st Party Cookies
-// http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
-user_pref("network.cookie.cookieBehavior",      1);
+// CIS Version 1.2.0 October 21st, 2011 2.1.2 Auto Notification of Outdated Plugins
+// https://wiki.mozilla.org/Firefox3.6/Plugin_Update_Awareness_Security_Review
+user_pref("plugins.update.notifyUser",          false); // if true opens on every launch
 
 // enable pocket
 // user_pref("browser.pocket.enabled",           true);
@@ -178,6 +178,10 @@ user_pref("privacy.clearOnShutdown.siteSettings",   false);
 
 // remember browsing history
 user_pref("places.history.enabled",         true);
+
+// CIS 2.5.1 Accept Only 1st Party Cookies
+// http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
+user_pref("network.cookie.cookieBehavior",      1);
 
 // Cookie expire time
 // 0 - from server, 1 prompt, 2 end of session (browser closes), 3 num of days (see network.cookie.lifetime.days)
