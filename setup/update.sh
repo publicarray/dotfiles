@@ -10,4 +10,5 @@ cd "$DOTFILES"
 # use git stash to keep user configurations
 git stash
 git pull origin master
+git submodule update
 git stash pop
