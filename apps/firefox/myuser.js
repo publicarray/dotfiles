@@ -3,16 +3,24 @@
  *                                                                            *
  ******************************************************************************/
 
-// disable sending installed plug-ins/extensions
-// test with https://panopticlick.eff.org
-user_pref("plugins.enumerable_names", "");
+// http://www.ghacks.net/2015/08/18/a-comprehensive-list-of-firefox-privacy-and-security-settings/
 
-// pinned newtab page thumbnails
-user_pref("browser.newtabpage.pinned", "[{\"url\":\"https://github.com/\",\"title\":\"GitHub · Build software better, together.\"},{\"url\":\"http://www.macrumors.com/\",\"title\":\"Mac Rumors: Apple Mac iOS Rumors and News You Care About\"},{\"url\":\"https://www.facebook.com/\",\"title\":\"Facebook\"},{\"url\":\"https://www.privacytools.io/\",\"title\":\"privacy tools - encryption against global mass surveillance 🔒\"}]");
+/****** Start Up ******/
 
 // disable first start / update notifications
-user_pref("browser.startup.homepage override.mstone", "ignore");
-user_pref("startup.homepage welcome url", "about:newtab");
+user_pref("browser.slowStartup.notificationDisabled", true);
+user_pref("browser.slowStartup.maxSamples", 0);
+user_pref("browser.slowStartup.samples", 0);
+user_pref("browser.rights.3.shown", true);
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+user_pref("startup.homepage_welcome_url", "");
+user_pref("startup.homepage_override_url", "");
+user_pref("browser.feeds.showFirstRunUI", false);
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+// user_pref("startup.homepage welcome url", "about:newtab");
+
+/****** Warnings / Notifications ******/
 
 // disable warning on multiple tabs close
 user_pref("browser.tabs.warnOnClose", false);
@@ -23,8 +31,24 @@ user_pref("browser.rights.3.shown", true);
 user_pref("browser.reader.detectedFirstArticle", true);
 user_pref("browser.customizemode.tip0.shown", true);
 
+/****** Plugins ******/
+
+user_pref("plugin.default.state", 0);
+user_pref("plugin.defaultXpi.state", 0);
+user_pref("plugins.click_to_play", true);
+
+// disable sending installed plug-ins/extensions
+// test with https://panopticlick.eff.org or https://amiunique.org/fp or http://www.browserleaks.com/
+user_pref("plugins.enumerable_names", ""); // deprecated: https://bugzilla.mozilla.org/show_bug.cgi?id=1169945
+user_pref("security.xpconnect.plugin.unrestricted", false);
+
+/****** Customisation ******/
+
 // set home page
 user_pref("browser.startup.homepage", "about:newtab");
+
+// pinned newtab page thumbnails
+user_pref("browser.newtabpage.pinned", "[{\"url\":\"https://github.com/\",\"title\":\"GitHub · Build software better, together.\"},{\"url\":\"http://www.macrumors.com/\",\"title\":\"Mac Rumors: Apple Mac iOS Rumors and News You Care About\"},{\"url\":\"https://www.facebook.com/\",\"title\":\"Facebook\"},{\"url\":\"https://www.privacytools.io/\",\"title\":\"privacy tools - encryption against global mass surveillance 🔒\"}]");
 
 // Start with 0 = blank page, 1 = home page, 3 = last session
 // http://kb.mozillazine.org/Browser.startup.page
@@ -33,11 +57,21 @@ user_pref("browser.startup.page", 3);
 // use global zoom
 user_pref("browser.zoom.siteSpecific", false);
 
+
+/****** Security / Fingerprinting ******/
+
 // stop scripts from closing windows
 user_pref("dom.allow_scripts_to_close_windows", false);
 
 // disables image manipulation by scripts
 user_pref("dom.disable_image_src_set", false);
+
+// disable front fingerprinting
+// test with http://www.browserleaks.com/fonts
+user_pref("browser.display.use_document_fonts", 0);
+
+
+/****** Performance ******/
 
 // pipelining
 // http://www.techfragments.com/481/the-12-best-firefox-aboutconfig-performance-tweaks/
