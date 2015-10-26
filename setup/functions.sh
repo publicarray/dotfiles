@@ -417,14 +417,16 @@ function setup_atom() {
 }
 
 function setup_firfox() {
-    info "Unfortunaly I can't do this automatically yet :("
-    info "Copy the contents of '~/.dotfiles/apps/firefox/' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
+    info "created user.js"
+    cat "$DOTFILES/apps/firefox/user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
+    info "Unfortunately I can't do this automatically yet :("
+    info "Copy the contents of '$DOTFILES/apps/firefox/profile' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
     echo
 }
 
 function setup_osx() {
     promptSudo
-    source "${HOME}/.dotfiles/setup/osx"
+    source "$DOTFILES/setup/osx"
 
     info "Killing affected applications..."
     for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
