@@ -89,11 +89,17 @@ user_pref("browser.display.use_document_fonts", 0);
 // user_pref("network.http.pipelining", true);
 // user_pref("network.http.pipelining.ssl", true);
 // user_pref("network.http.proxy.pipelining", true);
+/****** UI Performance ******/
+user_pref("browser.tabs.animate",     false);
 
 /******************************************************************************
  * user.js - Overwrites                                                       *
  * https://github.com/pyllyukko/user.js                                       *
  ******************************************************************************/
+
+// New Tab Page
+user_pref("browser.newtabpage.enabled",     true); // top sites
+user_pref("browser.newtab.preload",     true);
 
 // enable Location-Aware Browsing
 // http://www.mozilla.org/en-US/firefox/geolocation/
