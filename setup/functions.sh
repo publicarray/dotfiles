@@ -416,11 +416,27 @@ function setup_atom() {
     echo
 }
 
+function setup_nano() {
+    if ask "Do you want to install syntax highlighting for the nano text editor?" Y; then
+        require_brew
+        heading "Updating nano to latest version"
+        brew install nano
+        heading "Installing nano syntax highlighting from 'https://github.com/scopatz/nanorc' "
+        curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+    fi
+    echo
+}
+
 function setup_firfox() {
     info "creating user.js"
     cat "$DOTFILES/apps/firefox/user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
-    info "Unfortunately I can't do this automatically yet :("
+    info "Unfortunately I can't do this automatically :("
     info "Copy the contents of '$DOTFILES/apps/firefox/profile' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
+    sleep 5
+    info "Opening the folders..."
+    sleep 2
+    open "$DOTFILES/apps/firefox/profile"
+    open "$HOME/Library/Application\ Support/Firefox/Profiles/"
     echo
 }
 

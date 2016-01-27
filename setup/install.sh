@@ -83,6 +83,9 @@ info "\nIt is recommended to them in order:"
                 # Install atom.io packages
                 setup_atom
 
+                # Install nano syntax highlighting
+                setup_nano
+
                 ;;
             "Setup Firefox")
                 setup_firfox
