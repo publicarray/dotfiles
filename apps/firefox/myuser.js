@@ -136,6 +136,9 @@ user_pref("plugins.update.notifyUser",          false); // if true opens on ever
 // enable pocket
 // user_pref("browser.pocket.enabled",           true);
 
+// Disable firefox hello
+// https://wiki.mozilla.org/Loop
+user_pref("loop.enabled",     false);
 
 // https://wiki.mozilla.org/Platform/Features/Telemetry
 // https://www.mozilla.org/en-US/legal/privacy/firefox.html#telemetry

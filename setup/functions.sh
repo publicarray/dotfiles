@@ -386,6 +386,7 @@ function setup_sublime() {
         heading "Symlinking Sublime Shell Command (subl) to the /usr/local/bin directory"
         ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
         info "If you need more linters visit: https://packagecontrol.io/search/SublimeLinter-%20%3Ast3"
+        info "You may need to restart Sublime Text twice, once for the Package Control installation and again for installing the remaining packages."
         success
     fi
     echo
@@ -407,6 +408,7 @@ function setup_atom() {
             # for autocomplete providers see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers
             info "If you need more linters visit: https://atom.io/packages/linter for more linters"
             info "If require more autocomplete providers see: https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers"
+            success
         else
             error "Please Install Atom Shell Commands first."
             # heading "Symlinking Atom Shell Command (atom) to the /usr/local/bin directory"
@@ -424,6 +426,7 @@ function setup_nano() {
         heading "Installing nano syntax highlighting from 'https://github.com/scopatz/nanorc' "
         curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
     fi
+    success
     echo
 }
 
@@ -436,8 +439,80 @@ function setup_firfox() {
     info "Opening the folders..."
     sleep 2
     open "$DOTFILES/apps/firefox/profile"
-    open "$HOME/Library/Application\ Support/Firefox/Profiles/"
+    open "$HOME/Library/Application Support/Firefox/Profiles/"
     echo
+}
+
+function setup_DNSCrypt() {
+    if ask "Do you want to install DNSCrypt with unbound?" Y; then
+        require_brew
+        brew install dnscrypt-proxy
+        info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
+        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy.plist" /Library/LaunchDaemons # create a daemon
+        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy2.plist" /Library/LaunchDaemons # create a daemon
+        sudo chown root /Library/LaunchDaemons/*.plist # make root the owner
+        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy.plist # start the service
+        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy2.plist # start the service
+        setup_unbound
+        set_network_settings
+        success
+    elif ask "Do you only want to install DNSCrypt?" Y; then
+        require_brew
+        brew install dnscrypt-proxy
+        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy3.plist" /Library/LaunchDaemons # create a demon
+        sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # make root the owner
+        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # start the service
+        set_network_settings
+        success
+    fi
+    echo
+}
+
+function setup_unbound() {
+    # require_brew
+    brew install unbound
+    info "Creating the daemon necessary so that the unbound service will start on every boot"
+    cp -fv "$DOTFILES/apps/unbound/unbound.conf" /usr/local/etc/unbound/unbound.conf # copy configuration
+    sudo cp -fv /usr/local/opt/unbound/*.plist /Library/LaunchDaemons # create a daemon
+    sudo chown root /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # make root the owner
+    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # start the service
+}
+
+function set_network_settings() {
+    # this assumes you have wi-fi, bluetooth and ethernet adapters
+    info "Changing network setting to use DNSCrypt at 127.0.0.1"
+    warn "You may loose internet connectivity for a short period."
+    sudo networksetup -createlocation DNSCrypt populate
+    sudo networksetup -switchtolocation DNSCrypt
+    sudo networksetup -setdnsservers Wi-Fi 127.0.0.1
+    sudo networksetup -setdnsservers Ethernet 127.0.0.1
+    sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
+
+    if ask "Do you want to add GoolegDNS and OpenDNS locations?" Y; then
+        sudo networksetup -createlocation GoogleDNS populate
+        sudo networksetup -switchtolocation GoogleDNS
+        sudo networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4
+        sudo networksetup -setdnsservers Ethernet 8.8.8.8 8.8.4.4
+        sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
+
+        sudo networksetup -createlocation OpenDNS populate
+        sudo networksetup -switchtolocation OpenDNS
+        sudo networksetup -setdnsservers Wi-Fi 208.67.222.222 208.67.220.220
+        sudo networksetup -setdnsservers Ethernet 208.67.222.222 208.67.220.220
+        sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
+
+        sudo networksetup -switchtolocation DNSCrypt # switch back to DNSCrypt
+    fi
+
+    info "I have disabled Bluetooth PAN to increases battery life. You can enable it again in network settings."
+
+    # networkservices="$(networksetup -listnetworkserviceorder | awk '{if (NR!=1) {print}}' | awk -F'\\) ' '/\(?\)/ {print $2}' | awk 'NF > 0')"
+    # echo "$networkservices"
+
+    # for networkservice in $networkservices
+    # do
+    #     sudo networksetup -setdnsservers "$networkservice" 127.0.0.1
+    # done
 }
 
 function setup_osx() {

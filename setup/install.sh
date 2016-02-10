@@ -31,7 +31,7 @@ info "\nIt is recommended to them in order:"
     echo
     # interactive menu from: <http://askubuntu.com/questions/1705/how-can-i-create-a-select-menu-in-a-shell-script>
     PS3='Please enter your choice or hit Enter to see the list again: '
-    options=("Install Xcode Command Line Tools" "Install Homebrew" "Install node.js and npm" "Update Ruby Gems" "Upgrade shell with prezto" "Setup Text Editors" "Setup Firefox" "Setup OS X" "Express Install" "Quit")
+    options=("Install Xcode Command Line Tools" "Install Homebrew" "Install node.js and npm" "Update Ruby Gems" "Upgrade shell with prezto" "Setup Text Editors" "Setup Firefox" "Setup DNSCrypt" "Setup OS X" "Express Install" "Quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -90,6 +90,9 @@ info "\nIt is recommended to them in order:"
             "Setup Firefox")
                 setup_firfox
                 ;;
+            "Setup DNSCrypt")
+                setup_DNSCrypt
+                ;;
             "Setup OS X")
                 setup_osx
                 ;;
@@ -107,8 +110,10 @@ info "\nIt is recommended to them in order:"
                 install_shell
                 setup_sublime
                 setup_atom
-                setup_osx
+                setup_nano
                 setup_firfox
+                setup_DNSCrypt
+                setup_osx
                 success
                 ;;
             "Quit")
