@@ -4,7 +4,10 @@
  *                                                                            *
  ******************************************************************************/
 
+// https://github.com/pyllyukko/user.js
+// http://www.ghacks.net/2016/01/04/the-firefox-privacy-and-security-list-has-been-updated/
 // http://www.ghacks.net/2015/08/18/a-comprehensive-list-of-firefox-privacy-and-security-settings/
+// http://12bytes.org/articles/tech/firefoxgecko-configuration-guide-for-privacy-and-performance-buffs#userjs-contents
 
 /****** Start Up ******/
 
@@ -18,6 +21,7 @@ user_pref("startup.homepage_welcome_url", "");
 user_pref("startup.homepage_override_url", "");
 user_pref("browser.feeds.showFirstRunUI", false);
 user_pref("browser.shell.checkDefaultBrowser", false);
+user_pref("browser.usedOnWindows10.introURL", "");
 
 // user_pref("startup.homepage welcome url", "about:newtab");
 
@@ -34,13 +38,19 @@ user_pref("browser.customizemode.tip0.shown", true);
 
 /****** Plugins ******/
 
+// 0 means it is disabled.
+// 1 means click to play is active
+// 2 means it is enabled
 user_pref("plugin.default.state", 0);
 user_pref("plugin.defaultXpi.state", 0);
 user_pref("plugins.click_to_play", true);
 
+// Java plugin state - never activate
+user_pref("plugin.state.java", 0);
+user_pref("plugin.state.npdeployjava1", 0);
+
 // disable sending installed plug-ins/extensions
 // test with https://panopticlick.eff.org or https://amiunique.org/fp or http://www.browserleaks.com/
-user_pref("plugins.enumerable_names", ""); // deprecated: https://bugzilla.mozilla.org/show_bug.cgi?id=1169945
 user_pref("security.xpconnect.plugin.unrestricted", false);
 
 /****** Customisation ******/
@@ -66,13 +76,38 @@ user_pref("browser.download.folderList",        1);
 // https://developer.mozilla.org/en/Download_Manager_preferences
 user_pref("browser.download.useDownloadDir",        true);
 
+// tab specific max number of pages that can be traversed when moving forward/backward in history - affects total memory consumption
+user_pref("browser.sessionhistory.max_entries", 5);
+
+// keyboard backspace key action: 0=go back, 1=page up, 2=disable
+user_pref("browser.backspace_action", 2);
+
 // default search engine
-// user_pref("browser.search.defaultenginename",         "DuckDcukGo");
+// user_pref("browser.search.defaultenginename",         "DuckDuckGo");
 
 /****** Security / Fingerprinting ******/
 
-// stop scripts from closing windows
-user_pref("dom.allow_scripts_to_close_windows", false);
+// Web GL
+user_pref("pdfjs.enableWebGL", false);
+user_pref("webgl.min_capability_mode", true);
+user_pref("webgl.disable-extensions", true);
+
+// prevent scripts from modifying the window
+user_pref("dom.disable_window_flip", true);                                 // [boolean] whether to disable JS ability to change window z-order
+user_pref("dom.disable_window_move_resize", true);                          // [boolean] whether to disable JS ability to move/resize windows
+user_pref("dom.disable_window_open_feature.close", true);
+user_pref("dom.disable_window_open_feature.directories", true);             // [boolean] whether to disable JS ability to hide bookmarks toolbar
+user_pref("dom.disable_window_open_feature.location", true);
+user_pref("dom.disable_window_open_feature.menubar", true);                 // [boolean] whether to disable JS ability to hide the menu bar
+user_pref("dom.disable_window_open_feature.minimizable", true);             // [boolean] whether to disable JS ability to disable window minimizing
+user_pref("dom.disable_window_open_feature.personalbar", true);             // [boolean] whether to disable JS ability to hide the personal tool bar
+user_pref("dom.disable_window_open_feature.resizable", true);
+user_pref("dom.disable_window_open_feature.scrollbars", true);              // [boolean] whether to disable JS ability to hide scroll bars
+user_pref("dom.disable_window_open_feature.status", true);                  // [boolean] whether to disable JS ability to hide the status bar
+user_pref("dom.disable_window_open_feature.titlebar", false);               // [boolean] whether to disable JS ability to hide the title bar
+user_pref("dom.disable_window_open_feature.toolbar", true);                 // [boolean] whether to disable JS ability to hide the tool bar
+user_pref("dom.event.contextmenu.enabled", false);                          // [boolean] whether JS can alter/hide context menu
+
 
 // disables image manipulation by scripts
 user_pref("dom.disable_image_src_set", false);
@@ -80,17 +115,6 @@ user_pref("dom.disable_image_src_set", false);
 // disable front fingerprinting
 // test with http://www.browserleaks.com/fonts
 user_pref("browser.display.use_document_fonts", 0);
-
-
-/****** Performance ******/
-
-// pipelining
-// http://www.techfragments.com/481/the-12-best-firefox-aboutconfig-performance-tweaks/
-// user_pref("network.http.pipelining", true);
-// user_pref("network.http.pipelining.ssl", true);
-// user_pref("network.http.proxy.pipelining", true);
-/****** UI Performance ******/
-user_pref("browser.tabs.animate",     false);
 
 /******************************************************************************
  * user.js - Overwrites                                                       *
@@ -123,11 +147,10 @@ user_pref("privacy.donottrackheader.enabled",         true);
 // http://kb.mozillazine.org/Network.http.sendRefererHeader#0
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
 // Send a referer header with the target URI as the source
+// You should use a Extension to do this: https://addons.mozilla.org/en-US/firefox/addon/refcontrol/
 user_pref("network.http.sendRefererHeader",         1); // send only when links are clicked
-user_pref("network.http.referer.spoofSource",           true); // spoof the referer and use the target URI instead
+// user_pref("network.http.referer.spoofSource",           false); // spoof the referer and use the target URI instead
 user_pref("network.http.referer.XOriginPolicy",         1); // only send if base domains match
-// CIS Version 1.2.0 October 21st, 2011 2.4.3 Disable Referer from an SSL Website
-user_pref("network.http.sendSecureXSiteReferrer",       false);
 
 // CIS Version 1.2.0 October 21st, 2011 2.1.2 Auto Notification of Outdated Plugins
 // https://wiki.mozilla.org/Firefox3.6/Plugin_Update_Awareness_Security_Review
@@ -185,8 +208,20 @@ user_pref("privacy.clearOnShutdown.passwords",      true);
 user_pref("privacy.clearOnShutdown.sessions",       false);
 user_pref("privacy.clearOnShutdown.siteSettings",   false);
 
-// remember browsing history
-user_pref("places.history.enabled",         true);
+// remember and show browsing history
+user_pref("places.history.enabled",                 true);
+user_pref("browser.urlbar.suggest.history",         true);
+user_pref("browser.urlbar.autocomplete.enabled",    true);
+
+// http://kb.mozillazine.org/About:config_entries#Browser
+// http://kb.mozillazine.org/Inline_autocomplete
+// user_pref("browser.urlbar.autoFill",        false);
+// user_pref("browser.urlbar.autoFill.typed",      false);
+
+// http://www.labnol.org/software/browsers/prevent-firefox-showing-bookmarks-address-location-bar/3636/
+// http://kb.mozillazine.org/Browser.urlbar.maxRichResults
+// "Setting the preference to 0 effectively disables the Location Bar dropdown entirely."
+// user_pref("browser.urlbar.maxRichResults",      0);
 
 // CIS 2.5.1 Accept Only 1st Party Cookies
 // http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
