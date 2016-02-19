@@ -127,9 +127,9 @@ user_pref("devtools.theme", "dark");
 /****** Security / Fingerprinting ******/
 
 // Web GL
-user_pref("pdfjs.enableWebGL", false);
-user_pref("webgl.min_capability_mode", true);
-user_pref("webgl.disable-extensions", true);
+// user_pref("pdfjs.enableWebGL", false);
+// user_pref("webgl.min_capability_mode", true);
+// user_pref("webgl.disable-extensions", true);
 
 // prevent scripts from modifying the window
 user_pref("dom.disable_window_flip", true);                                 // [boolean] whether to disable JS ability to change window z-order
