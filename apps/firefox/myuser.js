@@ -35,7 +35,7 @@ user_pref("extensions.agentSpoof.canvas", false);
 user_pref("extensions.agentSpoof.disableRef", true);
 user_pref("extensions.agentSpoof.ifnone", true);
 user_pref("extensions.agentSpoof.limitTab", false);
-user_pref("extensions.agentSpoof.screenSize", "1280x800");
+user_pref("extensions.agentSpoof.screenSize", "1366x768");
 user_pref("extensions.agentSpoof.scriptInjection", true);
 user_pref("extensions.agentSpoof.timeInterval", "none");
 user_pref("extensions.agentSpoof.tzOffset", "0");
@@ -261,6 +261,11 @@ user_pref("browser.urlbar.autocomplete.enabled",    true);
 // http://kb.mozillazine.org/Browser.urlbar.maxRichResults
 // "Setting the preference to 0 effectively disables the Location Bar dropdown entirely."
 // user_pref("browser.urlbar.maxRichResults",      0);
+
+// Display an error message indicating the entered information is not a valid
+// URL instead of asking from google.
+// http://kb.mozillazine.org/Keyword.enabled#Caveats
+user_pref("keyword.enabled",        true); // enable search in URLbar
 
 // CIS 2.5.1 Accept Only 1st Party Cookies
 // http://kb.mozillazine.org/Network.cookie.cookieBehavior#1
