@@ -9,6 +9,42 @@
 // http://www.ghacks.net/2015/08/18/a-comprehensive-list-of-firefox-privacy-and-security-settings/
 // http://12bytes.org/articles/tech/firefoxgecko-configuration-guide-for-privacy-and-performance-buffs#userjs-contents
 
+/****** Firefox Sync ******/
+
+user_pref("services.sync.engine.history", false);
+user_pref("services.sync.engine.passwords", false);
+user_pref("services.sync.engine.prefs.modified", false);
+user_pref("services.sync.engine.tabs", false);
+user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.myFiltersPane", true);
+user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.myRulesPane", true);
+user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPane", true);
+user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPane", true);
+
+/****** Extensions ******/
+
+user_pref("extensions.ssleuth.ui.urlbar.colorize", true);
+
+user_pref("extensions.omnisidebar.firstEnabled", false);
+
+user_pref("extensions.agentSpoof.acceptDefault", true);
+user_pref("extensions.agentSpoof.acceptEncoding", true);
+user_pref("extensions.agentSpoof.acceptLang", true);
+user_pref("extensions.agentSpoof.acceptLangChoice", "en-US");
+user_pref("extensions.agentSpoof.authorization", false);
+user_pref("extensions.agentSpoof.canvas", false);
+user_pref("extensions.agentSpoof.disableRef", true);
+user_pref("extensions.agentSpoof.ifnone", true);
+user_pref("extensions.agentSpoof.limitTab", false);
+user_pref("extensions.agentSpoof.screenSize", "1280x800");
+user_pref("extensions.agentSpoof.scriptInjection", true);
+user_pref("extensions.agentSpoof.timeInterval", "none");
+user_pref("extensions.agentSpoof.tzOffset", "0");
+user_pref("extensions.agentSpoof.uaChosen", "default");
+user_pref("extensions.agentSpoof.via", false);
+user_pref("extensions.agentSpoof.windowName", true);
+user_pref("extensions.agentSpoof.xff", false);
+
+
 /****** Start Up ******/
 
 // disable first start / update notifications
@@ -82,6 +118,9 @@ user_pref("browser.sessionhistory.max_entries", 5);
 // keyboard backspace key action: 0=go back, 1=page up, 2=disable
 user_pref("browser.backspace_action", 2);
 
+// Devtools theme
+user_pref("devtools.theme", "dark");
+
 // default search engine
 // user_pref("browser.search.defaultenginename",         "DuckDuckGo");
 
@@ -148,7 +187,7 @@ user_pref("privacy.donottrackheader.enabled",         true);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=822869
 // Send a referer header with the target URI as the source
 // You should use a Extension to do this: https://addons.mozilla.org/en-US/firefox/addon/refcontrol/
-user_pref("network.http.sendRefererHeader",         1); // send only when links are clicked
+// user_pref("network.http.sendRefererHeader",         1); // send only when links are clicked
 // user_pref("network.http.referer.spoofSource",           false); // spoof the referer and use the target URI instead
 user_pref("network.http.referer.XOriginPolicy",         1); // only send if base domains match
 
