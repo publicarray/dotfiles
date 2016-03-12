@@ -38,6 +38,9 @@
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
+    # visual representation of git
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
 	# View the current working tree status using the short format
 	s = status -s
 
@@ -81,6 +84,11 @@
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
 	default = simple
+
+[branch]
+    # http://gitready.com/advanced/2009/02/11/pull-with-rebase.html
+    # https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase/
+    # autosetuprebase = always
 
 [difftool "p4merge"]
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE

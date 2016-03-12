@@ -12,6 +12,7 @@ fi
 
 # Exports
 # export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # add a space in front of a command to prevent it being added to history

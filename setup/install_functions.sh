@@ -88,8 +88,8 @@ function require_node() {
 
 function update_gems() {
     heading "Updating Gems..."
-    # ruby -v
-    # gem -v
+    run ruby -v
+    run gem -v
     gem update
     # gem install bundler
     # gem update --system # it is not recommended to mess with OS X gems
