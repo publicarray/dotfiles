@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cd ~/.dotfiles/setup
-DOTFILES=~/.dotfiles
-source "$DOTFILES/setup/functions.sh"
+DOTFILES="$HOME/.dotfiles"
+cd "$DOTFILES" || exit
+source setup/functions.sh
+source setup/install_functions.sh
 
 clear
 printf "\n"
@@ -41,14 +42,21 @@ info "\nIt is recommended to them in order:"
             "Install Homebrew")
                 require_brew
 
-                if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: wget, git, git-ftp, php56, mcrypt and composer" Y; then
+                if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: htop, wget, ssh-copy-id, git, git-ftp, php56, mcrypt, composer, ruby, youtube-dl, ffmpeg, coreutils and ddrescue" Y; then
                     heading "Installing Homebrew Packages"
                     sh Brewfile.sh
                 fi
-                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Opera, Skype, Java, Flash player, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, Flux, DesktopUtility, AppCleaner, Macpaw-Gemini, TogglDesktop, Minecraft, Steam, Rdio, Spotify, Adapter and HandBrake" N; then
+                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Skype, Java, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, AppCleaner, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"
                     sh Caskfile.sh
                 fi
+
+                if ask "Do you want to install Quick-look Plugins?\nThis will install: QLColorCode, QLMarkdown, QuickLookJSON, QLPrettyPatch, QuickLookCSV, BetterZipQL, qlImageSize, WebP, and Suspicious Package" Y; then
+                    heading "Installing Quick-look Plugins"
+                    info "https://github.com/sindresorhus/quick-look-plugins"
+                    install_quicklook_plugins
+                fi
+
                 echo
                 ;;
             "Install node.js and npm")
@@ -113,6 +121,7 @@ info "\nIt is recommended to them in order:"
                 setup_nano
                 setup_firfox
                 setup_DNSCrypt
+                install_quicklook_plugins
                 setup_osx
                 success
                 ;;

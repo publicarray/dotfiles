@@ -10,10 +10,16 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+# Exports
+# export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # add a space in front of a command to prevent it being added to history
 setopt HIST_IGNORE_SPACE
+
+# set default editor
+export VISUAL="nano"
+export EDITOR="nano"
 
 if [ -f ~/.functions ]; then
    source ~/.functions

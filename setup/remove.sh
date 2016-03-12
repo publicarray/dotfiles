@@ -1,8 +1,7 @@
 #!/bin/bash
 
-DOTFILES=~/.dotfiles
-HOME=~
-source "$DOTFILES/setup/functions.sh"
+DOTFILES="$HOME/.dotfiles"
+source setup/functions.sh
 
 # remove dotfiles
 if ask "Do you want to restore dotfiles from backup?"; then
