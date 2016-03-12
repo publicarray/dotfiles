@@ -1,14 +1,14 @@
 {
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
     "font_size": 12,
-	"dictionary": "Packages/Language - English/en_GB.dic",
-	"spell_check": true,
-	"ignored_packages":
-	[
-		"Markdown",
-		"Vintage"
-	],
 	"theme": "Soda Dark 3.sublime-theme",
+    "dictionary": "Packages/Language - English/en_GB.dic",
+    "spell_check": true,
+    "ignored_packages":
+    [
+        "Markdown",
+        "Vintage"
+    ],
     // Set to true to removing trailing white space on save
     "trim_trailing_white_space_on_save": true,
     // Set to true to ensure the last line of the file ends in a newline
