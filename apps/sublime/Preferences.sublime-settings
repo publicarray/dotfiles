@@ -1,7 +1,7 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+    "color_scheme": "Packages/User/Color Highlighter/themes/Material-Theme.tmTheme",
     "font_size": 12,
-	"theme": "Soda Dark 3.sublime-theme",
+    "theme": "Material-Theme.sublime-theme",
     "dictionary": "Packages/Language - English/en_GB.dic",
     "spell_check": true,
     "ignored_packages":
