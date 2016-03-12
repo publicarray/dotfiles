@@ -1,9 +1,9 @@
 #!/bin/bash
 
 DOTFILES="$HOME/.dotfiles"
-cd "$DOTFILES" || exit
-source setup/functions.sh
-source setup/install_functions.sh
+cd "$DOTFILES/setup" || exit
+source functions.sh
+source install_functions.sh
 
 clear
 printf "\n"
@@ -42,7 +42,7 @@ info "\nIt is recommended to them in order:"
             "Install Homebrew")
                 require_brew
 
-                if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: htop, wget, ssh-copy-id, git, git-ftp, php56, mcrypt, composer, ruby, youtube-dl, ffmpeg, coreutils and ddrescue" Y; then
+                if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: htop, wget, ssh-copy-id, git, git-ftp, php70, mcrypt, composer, ruby, youtube-dl, ffmpeg, coreutils and ddrescue" Y; then
                     heading "Installing Homebrew Packages"
                     sh Brewfile.sh
                 fi
