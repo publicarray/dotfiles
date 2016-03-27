@@ -1,0 +1,15 @@
+// https://github.com/airbnb/javascript
+// https://www.npmjs.com/package/eslint-config-airbnb
+//
+// Our default export contains all of our ESLint rules, including EcmaScript 6+ and React. It requires eslint and eslint-plugin-react.
+// "extends": "airbnb"
+//
+// Lints ES6+ but does not lint React. Requires eslint.
+// "extends": "airbnb/base"
+//
+// Lints ES5 and below. Only requires eslint.
+// "extends": "airbnb/legacy"
+
+{
+    "extends": "airbnb/legacy",
+}

@@ -267,9 +267,10 @@ function setup_sublime() {
     require_node
 
     heading "Installing packages for sublime linters..."
-    info "Installing jshint csslint shellcheck and imagemagick..."
-    npm install -g jshint csslint
-    brew install shellcheck imagemagick # for ColourHighlighter
+    info "Installing eslint csslint scss_lint tidy-html5 shellcheck and imagemagick..."
+    npm install -g eslint-config-airbnb eslint-plugin-react eslint csslint
+    gem install scss_lint
+    brew install shellcheck tidy-html5 imagemagick # for ColourHighlighter
     info "You now have the following packages installed:"
     npm list -g --depth=0
     brew leaves
@@ -311,6 +312,10 @@ function setup_sublime() {
 function setup_atom() {
     if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
         if [[ "$(type -P apm)" ]]; then
+            info "Installing jshint csslint scss_lint"
+            npm install -g jshint csslint
+            gem install scss_lint
+            brew install tidy-html5
             heading "Installing Atom Packages and Themes"
             apm upgrade --no-confirm
             # see https://atom.io/packages/linter for more linters
