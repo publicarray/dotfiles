@@ -61,21 +61,43 @@ function cleandir() {
     fi
 }
 
-function update() {
+alias update='updatesystem'
+function updateall() {
+    updatesystem
+    updatepackages
+    updatedotfiles
+    echo "♢ Update complete"
+}
+
+function updatesystem() {
     echo "♢ Updating Homebrew"
     brew update
-    brew upgrade --all
+    brew upgrade
     brew cleanup
     brew prune
     brew cask cleanup
-    echo "♢ Updating npm"
-    npm update -g
     echo "♢ Updating Atom packages"
     apm upgrade --no-confirm
     echo "♢ Updating OS X and Apps from App Store"
     sudo softwareupdate -iva
+}
 
-    # echo "♢ Updating Gems"
-    # sudo gem update
-    echo "♢ Update complete"
+function updatedotfiles() {
+    echo "♢ Updating dotfiles"
+    git -C ~/.dotfiles pull origin master
+    git -C ~/.dotfiles submodule foreach git pull origin master
+    echo "♢ Updating the Prezto framework"
+    git -C ~/.zprezto pull origin master
+    git -C ~/.zprezto submodule foreach git pull origin master
+}
+
+function updatepackages() {
+    echo "♢ Updating npm packages"
+    npm update -g # java-script
+    echo "♢ Updating Gems"
+    gem update -q # ruby
+    echo "♢ Updating Python packages"
+    pip list --outdated | cut -d = -f 1 | xargs -n1 pip install --upgrade # python
+    echo "♢ Updating PHP packages"
+    composer global update # php
 }
