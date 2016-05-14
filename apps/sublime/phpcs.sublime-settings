@@ -1,0 +1,27 @@
+{
+
+    // Show the error list after save.
+    "phpcs_show_errors_on_save": false,
+
+    // It seems python/sublime cannot always find the php application
+    // If empty, then use PATH version of php, else use the set value
+    "phpcs_php_path": "$HOME/.composer/vendor/bin/phpcs",
+    "phpcs_executable_path": "$HOME/.composer/vendor/bin/phpcs",
+
+    // Path to where you have the php-cs-fixer installed
+    "php_cs_fixer_executable_path": "/usr/local/bin/php-cs-fixer",
+
+    // Path to where you have the phpcbf installed
+    "phpcbf_executable_path": "$HOME/.composer/vendor/bin/phpcbf",
+
+    // Additional arguments you can specify into the application
+    "php_cs_fixer_additional_args": {
+        "--level": "psr2",
+    },
+
+    // Additional arguments you can specify into the application
+    "phpcbf_additional_args": {
+        "--standard": "PSR2",
+        // "-n": ""
+    },
+}

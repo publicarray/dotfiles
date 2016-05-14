@@ -1,0 +1,22 @@
+{
+    "parser": "markdown",
+    "build_action": "browser",
+    "enable_highlight": true,
+    "github_inject_header_ids": true,
+    // "css": ["github.csss"],
+    "image_path_conversion": "relative", // base64
+    "file_path_conversions": "relative",
+    "enabled_extensions": [
+        "extra",
+        "github",
+        "toc",
+        "headerid",
+        "smarty(smart_quotes=False)",
+        "meta",
+        "wikilinks",
+        "admonition",
+        "codehilite(guess_lang=False,pygments_style=github)"
+    ],
+    "author": "Sebastian Schmidt"
+
+}
