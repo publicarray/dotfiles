@@ -368,7 +368,7 @@ function setup_DNSCrypt() {
     if ask "Do you want to install DNSCrypt with unbound?" Y; then
         promptSudo
         require_brew
-        brew install dnscrypt-proxy
+        brew install dnscrypt-proxy --with-plugins
         info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
         promptSudo
         sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy.plist" /Library/LaunchDaemons # create a daemon
@@ -382,7 +382,7 @@ function setup_DNSCrypt() {
     elif ask "Do you only want to install DNSCrypt?" Y; then
         promptSudo
         require_brew
-        brew install dnscrypt-proxy
+        brew install dnscrypt-proxy --with-plugins
         info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
         sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy3.plist" /Library/LaunchDaemons # create a demon
         sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # make root the owner
