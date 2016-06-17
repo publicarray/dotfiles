@@ -10,17 +10,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Exports
-# export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 # add a space in front of a command to prevent it being added to history
 setopt HIST_IGNORE_SPACE
 
-# set default editor
-export VISUAL="nano"
-export EDITOR="nano"
+# don't not store failed command in history
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
+
+if [ -f ~/.exports ]; then
+   source ~/.exports
+fi
 
 if [ -f ~/.functions ]; then
    source ~/.functions

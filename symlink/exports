@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# HOMEBREW
+export PATH="/usr/local/sbin:$PATH"
+
+# stop brew analytics ($brew analytics off)
+export HOMEBREW_NO_ANALYTICS=1
+
+# PHP
+# export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+
+# composer
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# set default editor
+export VISUAL="nano"
+export EDITOR="nano"

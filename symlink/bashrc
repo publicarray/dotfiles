@@ -2,6 +2,10 @@
 
 export PATH="/usr/local/sbin:$PATH"
 
+if [ -f ~/.exports ]; then
+   source ~/.exports
+fi
+
 if [ -f ~/.functions ]; then
    source ~/.functions
 fi

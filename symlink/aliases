@@ -28,3 +28,4 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 alias sleep="pmset sleepnow"
 alias hideDesktop='defaults write com.apple.finder CreateDesktop -bool false; killall Finder;'
 alias showDesktop='defaults write com.apple.finder CreateDesktop -bool true; killall Finder;'
+alias gitjk="history 10 | tail -r | gitjk_cmd"
