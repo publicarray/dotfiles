@@ -84,7 +84,9 @@ function updatesystem() {
 
 function updatedotfiles() {
     echo "♢ Updating dotfiles"
+    git -C ~/.dotfiles stash
     git -C ~/.dotfiles pull origin master
+    git -C ~/.dotfiles stash pop
     git -C ~/.dotfiles submodule foreach git pull origin master
     echo "♢ Updating the Prezto framework"
     git -C ~/.zprezto pull origin master

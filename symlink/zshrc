@@ -13,7 +13,7 @@ fi
 # add a space in front of a command to prevent it being added to history
 setopt HIST_IGNORE_SPACE
 
-# don't not store failed command in history
+# don't store failed command in history
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
 if [ -f ~/.exports ]; then

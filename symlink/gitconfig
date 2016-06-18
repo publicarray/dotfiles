@@ -1,56 +1,53 @@
-[user]
-	name = Sebastian Schmidt
-	email = publicarray@icloud.com
-
-[github]
-	user = publicarray
-
-[credential]
-	helper = osxkeychain
+# Local/private config goes in the include
+[include]
+    path = ~/.gitconfig.local
 
 [core]
-	# use '.gitignore' file
-	excludesfile = ~/.gitignore_global
+    # use '.gitignore' file
+    excludesfile = ~/.gitignore_global
 
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space,tab-in-indent,cr-at-eol
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a
+    # whitespace = space-before-tab,-indent-with-non-tab,trailing-space,tab-in-indent,cr-at-eol
+    whitespace = nowarn
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
+    # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+    # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+    precomposeunicode = false
 
-	# Make `git rebase` safer on OS X
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
 
-	# normalise line ending to lf
-	autocrlf = input
+    # normalise line ending to lf
+    autocrlf = input
 
-	# default text editor
-	# options: "atom --wait", "subl -n -w", "mate -w"
-	editor =  "subl -n -w"
+    # default text editor
+    # options: "atom --wait", "subl -n -w", "mate -w"
+    editor =  "subl -n -w"
 
 [alias]
-	undo = reset --hard
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
     # visual representation of git
     tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 	# View the current working tree status using the short format
-	s = status -s
+    s = status -s
 
 	# List contributors with number of commits
     contributors = shortlog --summary --numbered
 
+    praise = blame
+
     # Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
 
 	# reset
     uncommit = reset --soft HEAD^   # go back before last commit, with files in uncommitted state
@@ -62,17 +59,17 @@
     assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
 
 [color]
-	# Use colors in Git commands that are capable of colored output when
-	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-	ui = auto
+    # Use colors in Git commands that are capable of colored output when
+    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+    ui = auto
 
 [merge]
-	# Include summaries of merged commits in newly created merge commit messages
-	log = true
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
     tool = p4merge
     keepBackup = false
 
@@ -80,10 +77,19 @@
     tool = p4merge
 
 [push]
-	# Use the Git 1.x.x default to avoid errors on machines with old Git
-	# installations. To use `simple` instead, add this to your `~/.extra` file:
-	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = simple
+    # Use the Git 1.x.x default to avoid errors on machines with old Git
+    # installations. To use `simple` instead, add this to your `~/.extra` file:
+    # `git config --global push.default simple`. See http://git.io/mMah-w.
+    default = simple
+
+# use ssh <https://gist.github.com/grawity/4392747>
+[url "git@github.com:"]
+    pushInsteadOf = git://github.com/
+    # pushInsteadOf = https://github.com/
+
+[url "git@bitbucket.org:"]
+    pushInsteadOf = git://bitbucket.org/
+    # pushInsteadOf = https://bitbucket.org/
 
 [branch]
     # http://gitready.com/advanced/2009/02/11/pull-with-rebase.html
