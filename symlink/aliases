@@ -29,3 +29,4 @@ alias sleep="pmset sleepnow"
 alias hideDesktop='defaults write com.apple.finder CreateDesktop -bool false; killall Finder;'
 alias showDesktop='defaults write com.apple.finder CreateDesktop -bool true; killall Finder;'
 alias gitjk="history 10 | tail -r | gitjk_cmd"
+alias net='sudo lsof -i -n -P'
