@@ -1,0 +1,4 @@
+{
+    "uncrustify_executable" : "/usr/local/bin/uncrustify",
+    "uncrustify_config" : "/usr/local/Cellar/uncrustify/0.63/share/uncrustify/linux-indent.cfg",
+}

@@ -1,6 +1,7 @@
 {
     "statusbar_modified_time": false,
     "statusbar_modified_time_format": "%A %b %d %H:%M:%S %Y",
+    "statusbar_modified_time_locale": "",
 
     "statusbar_file_size": false,
 
@@ -13,10 +14,10 @@
     "new_files_relative_to_project_root": false,
 
     "disabled_menuitem_edit": true,
-    "disabled_menuitem_edit_to_right": false,
-    "disabled_menuitem_open_run": false,
+    "disabled_menuitem_edit_to_right": true,
+    "disabled_menuitem_open_run": true,
     "disabled_menuitem_open_in_browser": true,
-    "disabled_menuitem_open_in_new_window": false,
+    "disabled_menuitem_open_in_new_window": true,
     "disabled_menuitem_find_in_project": true,
     "disabled_menuitem_copy_name": true,
     "disabled_menuitem_copy_path": true,
