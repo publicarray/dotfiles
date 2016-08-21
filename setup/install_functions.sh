@@ -1,18 +1,4 @@
 #!/bin/bash
-#
-# by atomantic <https://github.com/atomantic/dotfiles>
-# function cask_install() {
-#     # running "brew cask $1"
-#     brew cask list $1 > /dev/null 2>&1 | true
-#     if [[ ${PIPESTATUS[0]} != 0 ]]; then
-#         # info "brew cask install $1 $2"
-#         run brew cask install $1
-#         if [[ $? != 0 ]]; then
-#             error "failed to install $1! aborting..."
-#         fi
-#     fi
-#     success
-# }
 
 # by atomantic <https://github.com/atomantic/dotfiles>
 # function brew_install() {
@@ -41,7 +27,7 @@ function require_dev_tools() {
 
 function update_brew() {
     info "Updating Homebrew..."
-    brew update && brew upgrade --all
+    brew update && brew upgrade
     brew cleanup
     brew cask cleanup
 }
