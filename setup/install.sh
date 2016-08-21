@@ -46,7 +46,7 @@ info "\nIt is recommended to them in order:"
                     heading "Installing Homebrew Packages"
                     sh Brewfile.sh
                 fi
-                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Skype, Java, GitHub, Sublime Text 3, Atom, SourceTree, CyberDuck, ImageOptim, CodeKit, MAMP, AppCleaner, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
+                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Java, GitHub Desktop, Sublime Text 3, Atom, SourceTree, ImageOptim, CodeKit, AppCleaner, BlockBlock, Onyx, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"
                     sh Caskfile.sh
                 fi

@@ -31,7 +31,6 @@ brew cask install owasp-zap
 # brew cask install flux
 brew cask install appcleaner
 brew cask install spectacle # resize apps to maximise desktop space
-brew cask install appcleaner
 brew cask install macpaw-gemini # needs licence
 brew cask install blockblock # security app - warns about demons or agents that install themselves permanently
 brew cask install onyx

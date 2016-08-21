@@ -415,7 +415,7 @@ function set_network_settings() {
         sudo networksetup -switchtolocation DNSCrypt # switch back to DNSCrypt
     fi
 
-    info "I have disabled Bluetooth PAN to increases battery life. You can enable it again in network settings."
+    info "I have disabled Bluetooth PAN. You can enable it again in network settings."
 
     # networkservices="$(networksetup -listnetworkserviceorder | awk '{if (NR!=1) {print}}' | awk -F'\\) ' '/\(?\)/ {print $2}' | awk 'NF > 0')"
     # echo "$networkservices"
