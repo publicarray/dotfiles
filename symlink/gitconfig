@@ -105,3 +105,6 @@
     trustExitCode = false
     keepBackup = false
 
+[gpg]
+    # add homebrew gpg to path for GitHubDesktop
+    program = /usr/local/bin/gpg
