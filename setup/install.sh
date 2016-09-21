@@ -44,7 +44,10 @@ info "\nIt is recommended to them in order:"
 
                 if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: htop, wget, ssh-copy-id, git, git-ftp, php70, mcrypt, composer, ruby, youtube-dl, ffmpeg, coreutils and ddrescue" Y; then
                     heading "Installing Homebrew Packages"
-                    sh Brewfile.sh
+                    brew tap Homebrew/bundle # https://github.com/Homebrew/homebrew-bundle
+                    brew bundle
+                    info "Cleaning brew cache"
+                    brew cleanup
                 fi
                 if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Java, GitHub Desktop, Sublime Text 3, Atom, SourceTree, ImageOptim, CodeKit, AppCleaner, BlockBlock, Onyx, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"

@@ -1,0 +1,100 @@
+cask_args appdir: '/Applications'
+tap 'homebrew/dupes'
+tap 'homebrew/versions'
+tap 'homebrew/homebrew-php'
+
+brew 'htop'
+brew 'wget'
+brew 'curl', args: ['with-libssh2', 'with-nghttp2']
+brew 'ssh-copy-id'
+brew 'git'
+brew 'hub' # github -> https://hub.github.com/
+brew 'bfg'
+brew 'git-ftp'
+brew 'nmap'
+brew 'p7zip'
+brew 'coreutils'
+brew 'ddrescue' # http://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
+brew 'ffmpeg'
+brew 'youtube-dl'
+brew 'php70'
+brew 'php70-mcrypt'
+brew 'composer'
+brew 'ruby'
+brew 'mas' # Mac App Store cl # https://github.com/argon/mas
+
+# optional:
+# brew homebrew/dupes/tidy # installs htmltidy
+# brew python
+# brew heroku-toolbelt
+# brew aws-elasticbeanstalk
+# brew php56-pdo-pgsql
+# brew sqlite
+# brew libdvdcss
+# brew postgresql
+# brew awscli
+# brew cmake
+
+# Brew Cask
+## Core
+# cask 'google-chrome'
+# cask 'firefox'
+## Quick look plugins
+# cask 'betterzipql'
+# cask 'qlcolorcode'
+# cask 'qlimagesize'
+# cask 'qlmarkdown'
+# cask 'qlprettypatch'
+# cask 'quicklook-csv'
+# cask 'quicklook-json'
+# cask 'suspicious-package'
+# cask 'webpquicklook'
+## Music/Video
+# cask 'spotify'
+# cask 'adapter'
+# cask 'handbrake'
+# cask 'burn'
+## Networking/InfoSec
+# cask 'owasp-zap'
+# cask 'wireshark'
+## Dev
+# cask 'java'
+# cask 'virtualbox'
+# cask 'imageoptim'
+# cask 'sublime-text3' # free trial / needs licence
+# cask 'atom'
+# cask 'github-desktop'
+# cask 'sourcetree'
+## ftp clients
+# cask 'filezilla'
+# cask 'cyberduck'
+## Utility
+# cask 'flux' # warm your display colour at night
+# cask 'appcleaner'
+# cask 'spectacle' # resize apps to maximise desktop space
+# cask 'macpaw-gemini' # needs licence
+# cask 'blockblock' # security app - warns about demons or agents that install themselves permanently
+# cask 'gpgtools' # encrypt everything
+# cask 'onyx' # toolbox for mac
+## Games
+# cask 'steam'
+# cask 'minecraft' # needs licence
+
+# MacAPPStore
+# mas 'Keynote', id: 409183694
+# mas 'GarageBand', id: 682658836
+# mas 'The Unarchiver', id: 425424353
+# mas 'Caffeine', id: 411246225
+# mas 'Pixelmator', id: 407963104 # Paid app
+# mas '1Password', id: 443987910 # Paid app
+# mas 'Numbers', id: 409203825
+# mas 'Xcode', id: 497799835
+# mas 'Affinity Photo', id: 824183456 # Paid app
+# mas 'Pages', id: 409201541
+# mas 'iMovie', id: 408981434
+# mas 'Airmail 2', id: 918858936 # Paid app
+# mas 'Slack', id: 803453959
+# mas 'Monit', id: 1014850245
+# mas 'Parcel', id: 639968404
+# mas 'Dash', id: 449589707 # Paid app
+# mas 'Sip', id: 507257563
