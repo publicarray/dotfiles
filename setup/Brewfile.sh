@@ -10,6 +10,7 @@ brew install htop
 brew install wget
 brew install ssh-copy-id
 brew install git
+brew install hub # github -> https://hub.github.com/
 brew install bfg
 brew install git-ftp
 brew install nmap
