@@ -16,6 +16,12 @@ setopt HIST_IGNORE_SPACE
 # don't store failed command in history
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
+# Don't show duplicate history entires
+setopt hist_find_no_dups
+
+# Remove unnecessary blanks from history
+setopt hist_reduce_blanks
+
 if [ -f ~/.exports ]; then
    source ~/.exports
 fi
