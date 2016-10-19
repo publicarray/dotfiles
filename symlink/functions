@@ -71,7 +71,7 @@ function updateall() {
 
 function updatesystem() {
     echo "♢ Updating OS X and Apps from App Store"
-    sudo softwareupdate -iva
+    sudo softwareupdate -ia
     echo "♢ Updating Homebrew"
     brew update
     brew upgrade
@@ -94,8 +94,9 @@ function updatedotfiles() {
 function updatepackages() {
     echo "♢ Updating npm packages"
     npm update -g # java-script
-    echo "♢ Updating Gems"
-    gem update -q # ruby
+    # echo "♢ Updating Gems" # i'am using bundler with specific versions
+    # # gem uninstall -aIx # removes all user installed gems, useful to remove multiple versions of a gem
+    # gem update -q # ruby
     echo "♢ Updating Python packages"
     # pip list --outdated | cut -d = -f 1 | xargs -n1 pip install --upgrade # python
     pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U

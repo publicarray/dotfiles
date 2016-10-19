@@ -31,3 +31,5 @@ alias showDesktop='defaults write com.apple.finder CreateDesktop -bool true; kil
 alias gitjk="history 10 | tail -r | gitjk_cmd"
 alias net='sudo lsof -i -n -P'
 alias git='hub'
+# If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
