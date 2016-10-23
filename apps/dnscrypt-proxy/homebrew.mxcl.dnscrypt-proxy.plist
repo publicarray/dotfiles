@@ -16,7 +16,9 @@
       <string>--resolver-name=cloudns-syd</string>
       <string>--local-address=127.0.0.1:40</string>
       <string>--user=nobody</string>
+      <string>--plugin=libdcplugin_example_logging.so,/private/var/log/dnscrypt-query.log</string>
     </array>
+
     <key>UserName</key>
     <string>root</string>
     <key>StandardErrorPath</key>
