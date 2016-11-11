@@ -14,8 +14,10 @@ alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
-alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip='ipconfig getifaddr en0;ipconfig getifaddr en1;'
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias myip='publicip'
+alias pubip='publicip'
 alias ls='ls -G'
 alias ll='ls -lh'
 alias l.='ls -d -G .*'
@@ -32,4 +34,4 @@ alias gitjk="history 10 | tail -r | gitjk_cmd"
 alias net='sudo lsof -i -n -P'
 alias git='hub'
 # If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
-alias sudo='sudo '
+# alias sudo='sudo '

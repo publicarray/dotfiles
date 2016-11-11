@@ -1,11 +1,14 @@
 cask_args appdir: '/Applications'
 tap 'homebrew/dupes'
+# tap 'caskroom/fonts'
 tap 'homebrew/versions'
+# tap 'homebrew/completions'
 tap 'homebrew/homebrew-php'
 
 brew 'htop'
 brew 'wget'
 brew 'curl', args: ['with-libssh2', 'with-nghttp2']
+brew 'iproute2mac' # add new ip command
 brew 'ssh-copy-id'
 brew 'git'
 brew 'hub' # github -> https://hub.github.com/
@@ -34,6 +37,7 @@ brew 'mas' # Mac App Store cl # https://github.com/argon/mas
 # brew postgresql
 # brew awscli
 # brew cmake
+# brew hashcat
 
 # Brew Cask
 ## Core
