@@ -19,6 +19,10 @@ insert_final_newline = true
 [{package.json,bower.json,.travis.yml}]
 indent_size = 2
 
+# salt state files
+[*.sls]
+indent_size = 2
+
 [*.md]
 trim_trailing_whitespace = false
 
