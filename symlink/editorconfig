@@ -3,7 +3,7 @@
 # top-most EditorConfig file
 root = true
 
-# Unix-style line endings
+# line endings: lf (Unix), cr or crlf (DOS/Windows)
 [*]
 indent_style = space
 indent_size = 4
@@ -22,6 +22,6 @@ indent_size = 2
 [*.md]
 trim_trailing_whitespace = false
 
-[{Make,Makefile}]
+[{Make,make,Makefile,makefile}]
 indent_style = tab
 indent_size = 4
