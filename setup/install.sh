@@ -65,14 +65,25 @@ info "\nIt is recommended to them in order:"
             "Install node.js and npm")
                 require_node
 
+                if ask "Do you want to install global packages with yarn?\n This will install: bower, gulp, pm2, nodemon, gitjk, eslint, fast-cli, npm-check-updates, npm-check, nsp and speed-test"; then
+                    require_brew
+                    heading "Installing yarn" # https://yarnpkg.com/
+
+                    brew install yarn
+                    # install packages
+                    heading "Installing NPM Packages with yarn"
+                    yarn global add bower gulp
+                    yarn global add nodemon pm2
+                    yarn global add gitjk eslint fast-cli npm-check-updates npm-check nsp speed-test
+                fi
+
                 if [[ "$(type -P npm)" ]]; then
-                    if ask "Do you want to install global packages with npm?\n This will install: bower and gulp"; then
-                        # require_npm
+                    if ask "Do you want to install global packages with npm?\n This will install: bower, gulp, pm2, nodemon, gitjk, eslint, fast-cli, npm-check-updates, npm-check, nsp and speed-test"; then
                         # install packages
                         heading "Installing NPM Packages"
                         npm install -g bower gulp #yo
-                        npm install -g gitjk
                         npm install -g nodemon pm2
+                        npm install -g gitjk eslint fast-cli npm-check-updates npm-check nsp speed-test
                     fi
                 fi
                 echo

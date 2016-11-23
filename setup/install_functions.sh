@@ -33,7 +33,6 @@ function update_brew() {
 }
 
 function require_brew() {
-    run brew -v
     if ! command -v brew &>/dev/null; then
         heading "Installing Homebrew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -41,12 +40,13 @@ function require_brew() {
             heading "Running brew doctor..."
             brew doctor
         fi
+        update_brew
+        success
     fi
-    update_brew
-    success
+    run brew -v
 }
 
-function bupdate_npm() {
+function update_npm() {
     info "Updating NPM..."
     npm update -g
 }
@@ -59,7 +59,7 @@ function require_node() {
         require_brew
         brew install node
     fi
-    bupdate_npm
+    update_npm
     success
 }
 
@@ -358,10 +358,10 @@ function setup_DNSCrypt() {
         info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
         promptSudo
         sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy.plist" /Library/LaunchDaemons # create a daemon
-        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy2.plist" /Library/LaunchDaemons # create a daemon
+        # sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy2.plist" /Library/LaunchDaemons # create a daemon
         sudo chown root /Library/LaunchDaemons/*.plist # make root the owner
         sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy.plist # start the service
-        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy2.plist # start the service
+        # sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy2.plist # start the service
         setup_unbound
         set_network_settings
         success
@@ -375,6 +375,8 @@ function setup_DNSCrypt() {
         sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # start the service
         set_network_settings
         success
+    else
+        info "Nothing has changed"
     fi
     echo
 }
