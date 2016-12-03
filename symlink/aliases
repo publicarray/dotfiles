@@ -35,3 +35,20 @@ alias net='sudo lsof -i -n -P'
 alias git='hub'
 # If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
 # alias sudo='sudo '
+
+
+# DOCKER <https://www.calazan.com/docker-cleanup-commands/>
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# Delete all orphaned volumes.
+alias dockercleanv='printf "\n>>> Deleting orphaned volumes\n\n" && docker volume rm $(docker volume ls -qf dangling=true)'
+
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani && dockercleanv'
