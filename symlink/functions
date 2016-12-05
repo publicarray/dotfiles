@@ -120,3 +120,13 @@ function updatepackages() {
         apm upgrade --no-confirm
     fi
 }
+
+function present() {
+    if [ $(defaults read com.apple.finder CreateDesktop) -eq 1 ]; then
+        defaults write com.apple.finder CreateDesktop -bool false;
+    else
+        defaults write com.apple.finder CreateDesktop -bool true;
+    fi
+    killall Finder;
+    clear
+}
