@@ -92,6 +92,13 @@ info "\nIt is recommended to them in order:"
                 update_gems
                 heading "Installing Gems"
                 gem install bundler
+                if [ ! -f /usr/local/bin/istats ]; then
+                    if ask "Would you like to install iStats access information about your Mac temperature and fan speed?"; then
+                        heading "Installing iStats..."
+                        info "sudo gem install iStats -n/usr/local/bin\n"
+                        sudo gem install iStats -n/usr/local/bin
+                    fi
+                fi
                 echo
                 ;;
             "Upgrade shell with prezto")
