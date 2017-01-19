@@ -288,6 +288,10 @@ function setup_sublime() {
         # symbolic link sublime text so you can use in the shell
         heading "Symlinking Sublime Shell Command (subl) to the /usr/local/bin directory"
         ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+        # opt out of Sidebar Enhancement telemetry
+        touch ~/.SideBarEnhancements.optout
+
         info "If you need more linters visit: https://packagecontrol.io/search/SublimeLinter-%20%3Ast3"
         info "You may need to restart Sublime Text twice, once for the Package Control installation and again for installing the remaining packages."
         success

@@ -1,5 +1,9 @@
 {
 	"bootstrapped": true,
+    //* Optionally: disable statistics to packagecontrol.io
+    //* I trust package-control to good things with the data.
+    //* The stats can be seen @ https://packagecontrol.io/stats
+	// "submit_usage": false,
 	"in_process_packages":
 	[
 	],

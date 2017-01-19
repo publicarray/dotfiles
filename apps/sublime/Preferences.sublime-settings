@@ -12,7 +12,7 @@
     "dictionary": "Packages/Language - English/en_GB.dic",
     "ensure_newline_at_eof_on_save": true,
     "font_face": "Fira Mono",
-    "font_size": 12,
+    "font_size": 11,
     "ignored_packages":
     [
         "Vintage"
@@ -22,8 +22,13 @@
         "draw_normal",
         "draw_active"
     ],
-    "material_theme_compact_panel": true,
-    "material_theme_compact_sidebar": false,
+    "material_theme_accent_orange": true,
+    "material_theme_accent_scrollbars": true, // Enable accent color for scrollbars
+    "material_theme_compact_panel": true, // Set minimal padding for the search panel
+    "material_theme_compact_sidebar": true,
+    "material_theme_small_statusbar": true,
+    "material_theme_panel_separator": true, // Show bottom panel separator
+    // "material_theme_contrast_mode": true,
     "overlay_scroll_bars": "enabled",
     "rulers":
     [
