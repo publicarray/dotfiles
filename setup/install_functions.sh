@@ -250,15 +250,12 @@ function symlinkifne {
 
 function setup_sublime() {
     require_brew
-    require_node
 
     heading "Installing packages for sublime linters..."
-    info "Installing eslint csslint scss_lint tidy-html5 shellcheck and imagemagick..."
-    npm install -g eslint-config-airbnb eslint-plugin-react eslint csslint
+    info "Installing scss_lint tidy-html5 shellcheck and imagemagick..."
     gem install scss_lint
     brew install shellcheck tidy-html5 imagemagick # for ColourHighlighter
     info "You now have the following packages installed:"
-    npm list -g --depth=0
     brew leaves
     success
     if [[ ! "$(type -P javac)" ]]; then
@@ -302,16 +299,16 @@ function setup_sublime() {
 function setup_atom() {
     if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
         if [[ "$(type -P apm)" ]]; then
-            info "Installing jshint csslint scss_lint"
-            npm install -g jshint csslint
+            info "Installing scss_lint tidy-html5"
             gem install scss_lint
             brew install tidy-html5
             heading "Installing Atom Packages and Themes"
             apm upgrade --no-confirm
             # see https://atom.io/packages/linter for more linters
-            apm install linter linter-php linter-javac linter-jshint linter-jsonlint linter-htmlhint linter-csslint linter-scss-lint linter-swiftc linter-clang
-            apm install language-blade
-            apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify highlight-selected
+            apm install linter linter-php linter-javac linter-eslint linter-jsonlint linter-htmlhint linter-markdown linter-csslint linter-scss-lint linter-swiftc linter-clang linter-write-good
+            apm install language-blade language-rust language-log language-patch language-salt
+            apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify highlight-selected markdown-preview-opener
+            apm install sync-settings
             # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers
             # apm install autocomplete-emojis autocomplete-paths autocomplete-clang atom-autocomplete-php
             # apm install git-control

@@ -102,12 +102,12 @@ function updatepackages() {
         yarn global upgrade
     fi
 
-    # echo "♢ Updating Gems" # i'am using bundler with specific versions
+    # echo "♢ Updating Gems"
     # # gem uninstall -aIx # removes all user installed gems, useful to remove multiple versions of a gem
     # gem update -q # ruby
 
     if command -v pip >/dev/null; then
-        echo "♢ Updating system Python 2 packages"
+        echo "♢ Updating Python 2.x packages"
         python -V
         pip -V
         # pip list --outdated | cut -d = -f 1 | xargs -n1 pip install --upgrade # python
