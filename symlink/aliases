@@ -37,6 +37,9 @@ alias sysinfo='sw_vers'
 command -v md5sum > /dev/null || alias md5sum="md5" # md5sum -> md5
 command -v sha1sum > /dev/null || alias sha1sum="shasum" # sha1sum -> shasum
 
+# add alias for yarn global until yarnpkg/yarn#2064 is fixed
+alias yarn-global='yarn global --prefix /usr/local'
+
 # DOCKER <https://www.calazan.com/docker-cleanup-commands/>
 # Kill all running containers.
 alias dockerkillall='docker kill $(docker ps -q)'

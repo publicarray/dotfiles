@@ -72,9 +72,9 @@ info "\nIt is recommended to them in order:"
                     brew install yarn
                     # install packages
                     heading "Installing NPM Packages with yarn"
-                    yarn global add bower gulp lighthouse
-                    yarn global add nodemon pm2 npm-check-updates npm-check nsp
-                    yarn global add gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
+                    yarn global --prefix /usr/local add bower gulp lighthouse
+                    yarn global --prefix /usr/local add nodemon pm2 npm-check-updates npm-check nsp
+                    yarn global --prefix /usr/local add gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
                 fi
 
                 if [[ "$(type -P npm)" ]]; then
