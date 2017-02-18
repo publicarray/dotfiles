@@ -32,9 +32,9 @@ function question() {
 }
 
 function run() {
-    printf "\n♢ ${bold}";
-    printf "%s" "$@";
-    printf "${reset}:\n";
+    printf "\n♢ ${bold}">&0
+    printf "%s" "$@">&0
+    printf "${reset}:\n">&0
 }
 
 function run_safe() {
@@ -45,8 +45,9 @@ function run_safe() {
     statuscode=$?
     if [[ "$statuscode" -ne "0" ]]; then
         error "The command executing at the time of the error was:">&2
-        printf "${yellow}%s " "$@">&2
-        echo "on line: ${BASH_LINENO[0]}${reset}">&2
+        printf "${yellow}\"">&2
+        printf "%s " "$@">&2
+        printf "\b\" on line: ${BASH_LINENO[0]}${reset}\n">&2
         exit $statuscode
     fi
 }

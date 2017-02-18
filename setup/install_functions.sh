@@ -16,7 +16,7 @@
 
 function require_dev_tools() {
     # info "Looking for Developer Tools..."
-    run xcode-select -v
+    xcode-select -v
     if [ $? -ne 0 ]; then
         heading "Installing Developer Tools..."
         run_safe xcode-select --install
