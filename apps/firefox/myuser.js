@@ -71,6 +71,16 @@ user_pref("extensions.update.autoUpdateDefault", true);
 // 0380:
 user_pref("services.sync.enabled", true); // (hidden pref)
 
+// 0410: disable safe browsing
+   // I have redesigned this sub-section to differentiate between "real-time"/"user initiated"
+   // data being sent to Google from all other settings such as using local blocklists/whitelists
+   // and updating those lists. There SHOULD be NO privacy issues here. Even *IF* an URL was sent
+   // to Google, they swear it is anonymized and only used to flag malicious sites/activity. Firefox
+   // also takes measures such as striping out identifying parameters and storing safe browsing
+   // cookies in a separate jar. (#Turn on browser.safebrowsing.debug to monitor this activity)
+   // To use safebrowsing but not "leak" binary download info to Google, only use 0410e and 0410f
+   // #Required reading: https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/
+   // https://wiki.mozilla.org/Security/Safe_Browsing
 // 0410a: disable "Block dangerous and deceptive content" This setting is under Options>Security
    // in FF47 and under this is was titled "Block reported web forgeries"
    // this covers deceptive sites such as phishing and social engineering
@@ -88,6 +98,14 @@ user_pref("browser.safebrowsing.downloads.remote.block_dangerous", true);
 user_pref("browser.safebrowsing.downloads.remote.block_dangerous_host", true);
 // 0410c: disable Google safebrowsing downloads, updates
 user_pref("browser.safebrowsing.provider.google.updateURL", "https://safebrowsing.google.com/safebrowsing/downloads?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2&key=%GOOGLE_API_KEY%"); // update google lists
+user_pref("browser.safebrowsing.provider.google.gethashURL", "https://shavar.services.mozilla.com/gethash?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2"); // list hash check
+user_pref("browser.safebrowsing.provider.google4.updateURL", "https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch?$ct=application/x-protobuf&key=%GOOGLE_API_KEY%"); // (FF50+)
+// user_pref("browser.safebrowsing.provider.google4.gethashURL", ""); // (FF50+)
+// 0410d: disable mozilla safebrowsing downloads, updates
+   // NOTE: These two prefs are also used for Tracking Protection (see 0420)
+user_pref("browser.safebrowsing.provider.mozilla.gethashURL", "https://shavar.services.mozilla.com/gethash?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2"); // resolves hash conflicts
+user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.services.mozilla.com/downloads?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2"); // update FF lists
+
 
 // 0812: disable search and form history
    // Under Options>Privacy> if you set Firefox to "use custom settings" there will be a
