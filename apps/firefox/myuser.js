@@ -166,6 +166,15 @@ user_pref("media.autoplay.enabled", true); // [Fix for youtube.com]
    // This is to stop malicious window sizes and screen res leaks etc in conjunction
    // with 2203 dom.disable_window_move_resize=true | 2418 full-screen-api.enabled=false
    user_pref("browser.link.open_newwindow.restriction", 0);
+// 2301: disable workers API and service workers API
+   // https://developer.mozilla.org/en-US/docs/Web/API/Worker
+   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
+   // http://www.ghacks.net/2016/03/02/manage-service-workers-in-firefox-and-chrome/
+   // WARNING: WILL break sites as this gains traction: eg mega.nz requires workers
+// user_pref("dom.workers.enabled", false); [need to investigate, disabled for now]
+// user_pref("dom.serviceWorkers.enabled", false);
+// 2302: disable service workers cache and cache storage
+// user_pref("dom.caches.enabled", false);
 // 2418: disable full-screen API
    // This setting WAS under about:permissions>All Sites>Fullscreen
    // NOTE: about:permissions is no longer available since FF46 but you can still override
@@ -229,6 +238,17 @@ user_pref("svg.disabled", false); // [beaks too many icons. fix for github.com a
 // 2698b: this also isolates OCSP requests by first party domain
    // https://bugzilla.mozilla.org/show_bug.cgi?id=1264562
    user_pref("privacy.firstparty.isolate", true); // [let's test if it blows up in my face]
+// 2701: disable cookies on all sites
+   // you can set exceptions under site permissions or use an extension (eg Cookie Controller [or "Self-Destructing Cookies"])
+   // http://kb.mozillazine.org/Network.cookie.cookieBehavior
+   // 0=allow all 1=allow same host 2=disallow all 3=allow 3rd party if it already set a cookie
+user_pref("network.cookie.cookieBehavior", 1); // [2 is too restrictive, fix: twitter login. Setting also impacts local storage]
+// 2706: disable Storage API (FF51+) which gives sites' code the ability to find out how much space
+   // they can use, how much they are already using, and even control whether or not they need to
+   // be alerted before the user agent disposes of site data in order to make room for other things.
+   // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager
+   // https://developer.mozilla.org/en-US/docs/Web/API/Storage_API
+// user_pref("dom.storageManager.enabled", true); // [Use an extension like "Self-Destructing Cookies"]
 // 2703: set cookie lifetime policy
    // 0=until they expire (default), 2=until you close Firefox, 3=for n days (see next pref)
    // If you use custom settings for History in Options, this is the setting under
@@ -337,11 +357,14 @@ user_pref("browser.download.folderList", 1);
 // https://developer.mozilla.org/en/Download_Manager_preferences
 user_pref("browser.download.useDownloadDir", true);
 
-// [Web GL - only when absolutely needed]
+// [WebGL - only when absolutely needed]
 // user_pref("webgl.disabled", false);
 // user_pref("pdfjs.enableWebGL", false);
 // user_pref("webgl.min_capability_mode", true);
 // user_pref("webgl.disable-extensions", true);
+// 2012: two more webgl preferences (FF51+)
+// user_pref("webgl.dxgl.enabled", false);
+// user_pref("webgl.enable-webgl2", false);
 
 // [Match closer to existing FF support]
 // user_pref("media.ogg.enabled", true);
