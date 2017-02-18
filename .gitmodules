@@ -1,3 +1,6 @@
 [submodule "apps/firefox/user.js"]
 	path = apps/firefox/user.js
 	url = git://github.com/pyllyukko/user.js.git
+[submodule "apps/firefox/ghacks-user.js"]
+	path = apps/firefox/ghacks-user.js
+	url = https://github.com/ghacksuserjs/ghacks-user.js

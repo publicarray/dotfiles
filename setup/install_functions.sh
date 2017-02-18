@@ -340,7 +340,8 @@ function setup_nano() {
 
 function setup_firfox() {
     info "creating user.js"
-    cat "$DOTFILES/apps/firefox/user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
+    # cat "$DOTFILES/apps/firefox/user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
+    cat "$DOTFILES/apps/firefox/ghacks-user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
     info "Unfortunately I can't do this automatically :("
     info "Copy the contents of '$DOTFILES/apps/firefox/profile' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
     sleep 5
