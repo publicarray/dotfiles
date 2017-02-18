@@ -35,18 +35,18 @@ function run() {
     printf "\n♢ ${bold}";
     printf "%s" "$@";
     printf "${reset}:\n";
-    "$@";
 }
 
-function execute_command() {
-    eval "$1"
+function run_safe() {
+    printf "\n♢ ${bold}">&0
+    printf "%s " "$@">&0
+    printf "\b${reset}:\n">&0
+    "$@"
     statuscode=$?
     if [[ "$statuscode" -ne "0" ]]; then
-        error "ERROR!"
-        echo
-        error "The command executing at the time of the error was:"
-        error "$BASH_COMMAND"
-        error "on line: ${BASH_LINENO[0]}"
+        error "The command executing at the time of the error was:">&2
+        printf "${yellow}%s " "$@">&2
+        echo "on line: ${BASH_LINENO[0]}${reset}">&2
         exit $statuscode
     fi
 }

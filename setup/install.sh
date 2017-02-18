@@ -44,14 +44,14 @@ info "\nIt is recommended to them in order:"
 
                 if ask "Do you want to install Brew Packages from Brewfile.sh?\nThis will install: htop, wget, ssh-copy-id, git, git-ftp, php70, mcrypt, composer, ruby, youtube-dl, ffmpeg, coreutils and ddrescue" Y; then
                     heading "Installing Homebrew Packages"
-                    brew tap Homebrew/bundle # https://github.com/Homebrew/homebrew-bundle
-                    brew bundle
+                    run_safe brew tap Homebrew/bundle # https://github.com/Homebrew/homebrew-bundle
+                    run_safe brew bundle
                     info "Cleaning brew cache"
-                    brew cleanup
+                    run_safe brew cleanup
                 fi
                 if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Java, GitHub Desktop, Sublime Text 3, Atom, SourceTree, ImageOptim, CodeKit, AppCleaner, BlockBlock, Onyx, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"
-                    sh Caskfile.sh
+                    run_safe sh Caskfile.sh
                 fi
 
                 if ask "Do you want to install Quick-look Plugins?\nThis will install: QLColorCode, QLMarkdown, QuickLookJSON, QLPrettyPatch, QuickLookCSV, BetterZipQL, qlImageSize, WebP, and Suspicious Package" Y; then
@@ -69,21 +69,21 @@ info "\nIt is recommended to them in order:"
                     require_brew
                     heading "Installing yarn" # https://yarnpkg.com/
 
-                    brew install yarn
+                    run_safe brew install yarn
                     # install packages
-                    heading "Installing NPM Packages with yarn"
-                    yarn global --prefix /usr/local add bower gulp lighthouse
-                    yarn global --prefix /usr/local add nodemon pm2 npm-check-updates npm-check nsp
-                    yarn global --prefix /usr/local add gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
+                    heading "Installing Packages with Yarn"
+                    run_safe yarn global --prefix /usr/local add bower gulp lighthouse
+                    run_safe yarn global --prefix /usr/local add nodemon pm2 npm-check-updates npm-check nsp
+                    run_safe yarn global --prefix /usr/local add gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
                 fi
 
                 if [[ "$(type -P npm)" ]]; then
                     if ask "Do you want to install global packages with npm?\n This will install: bower, gulp, pm2, nodemon, gitjk, eslint, fast-cli, lighthouse, npm-check-updates, npm-check, nsp and speed-test"; then
                         # install packages
                         heading "Installing NPM Packages"
-                        npm install -g bower gulp lighthouse#yo
-                        npm install -g nodemon pm2 npm-check-updates npm-check nsp
-                        npm install -g gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
+                        run_safe npm install -g bower gulp lighthouse #yo
+                        run_safe npm install -g nodemon pm2 npm-check-updates npm-check nsp
+                        run_safe npm install -g gitjk csslint eslint eslint-plugin-unicorn xo fast-cli speed-test
                     fi
                 fi
                 echo
@@ -91,12 +91,12 @@ info "\nIt is recommended to them in order:"
             "Update Ruby Gems")
                 update_gems
                 heading "Installing Gems"
-                gem install bundler
+                run_safe gem install bundler
                 if [ ! -f /usr/local/bin/istats ]; then
                     if ask "Would you like to install iStats access information about your Mac temperature and fan speed?"; then
                         heading "Installing iStats..."
                         info "sudo gem install iStats -n/usr/local/bin\n"
-                        sudo gem install iStats -n/usr/local/bin
+                        run_safe sudo gem install iStats -n/usr/local/bin
                     fi
                 fi
                 echo
@@ -129,13 +129,20 @@ info "\nIt is recommended to them in order:"
                 require_dev_tools
                 require_brew
                 heading "Installing Homebrew Packages"
-                sh Brewfile.sh
+                run_safe brew tap Homebrew/bundle
+                run_safe brew bundle
+                heading "Installing GUI Applications"
+                run_safe sh Caskfile.sh
+                info "Cleaning brew cache"
+                run_safe brew cleanup
                 require_node
-                heading "Installing NPM Packages"
-                npm install -g bower gulp gitjk nodemon pm2
+                heading "Installing Packages with Yarn"
+                run_safe brew install yarn
+                run_safe yarn global --prefix /usr/local add bower gulp nodemon pm2 npm-check-updates
+                run_safe yarn global --prefix /usr/local add npm-check nsp gitjk fast-cli speed-test
                 update_gems
                 heading "Installing Gems"
-                gem install bundler
+                run_safe gem install bundler
                 install_shell
                 setup_sublime
                 setup_atom

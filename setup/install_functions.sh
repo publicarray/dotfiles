@@ -19,7 +19,7 @@ function require_dev_tools() {
     run xcode-select -v
     if [ $? -ne 0 ]; then
         heading "Installing Developer Tools..."
-        run xcode-select --install
+        run_safe xcode-select --install
         # sudo xcode-select --switch /Library/Developer/CommandLineTools
     fi
     success
@@ -35,10 +35,10 @@ function update_brew() {
 function require_brew() {
     if ! command -v brew &>/dev/null; then
         heading "Installing Homebrew..."
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        run_safe ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         if ask "Do you want to run 'brew doctor'?" Y; then
             heading "Running brew doctor..."
-            brew doctor
+            run_safe brew doctor
         fi
         update_brew
         success
@@ -141,23 +141,23 @@ function install_shell() {
     require_brew
 
     heading "Installing zsh"
-    brew install zsh
-    brew cask install p4merge
+    run_safe brew install zsh
+    run_safe brew cask install p4merge
 
     heading "Set zsh as default shell"
     info "I need to gain sudo access to install zsh as you default shell."
 
     # check if zsh is in /etc/shells, if not add it to the list
     # by AlberT <http://stackoverflow.com/questions/3557037/appending-a-line-to-a-file-only-if-it-doesnt-already-exist-using-sed>
-    grep -q -f /etc/shells "$(which zsh)"  || sudo bash -c "echo $(which zsh) >> /etc/shells" # command -v zsh | sudo tee -a /etc/shells
+    run_safe grep -q -f /etc/shells "$(which zsh)"  || sudo bash -c "echo $(which zsh) >> /etc/shells" # command -v zsh | sudo tee -a /etc/shells
     # set the shell for the current user
-    sudo chsh -s "$(which zsh)" "${USER}"
+    run_safe sudo chsh -s "$(which zsh)" "${USER}"
 
     heading "Download prezto to ${ZDOTDIR:-$HOME}./zprezto"
-    git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    run_safe git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
     heading "Install zprezto theme"
-    cp "$DOTFILES/setup/prompt_josh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_josh_setup"
+    run_safe cp "$DOTFILES/setup/prompt_josh_setup" "${ZDOTDIR:-$HOME}/.zprezto/modules/prompt/functions/prompt_josh_setup"
     heading "Install terminal theme"
 
 # by kevinSuttle and mathiasbynens <https://github.com/kevinSuttle/OSXDefaults>
@@ -221,7 +221,7 @@ EOD
     echo
 }
 
-# by atomantic <https://github.com/atomantic/dotfiles> adapted by me
+# by atomantic <https://github.com/atomantic/dotfiles> and adapted by me
 function symlinkifne {
     echo "♢ $1"
 
@@ -234,13 +234,13 @@ function symlinkifne {
         fi
         # backup file does not exist yet
         if [[ ! -e "$DOTFILES/backup/$1" ]];then
-            mv "$HOME/.$1" "$DOTFILES/backup/"
-            mv "$DOTFILES/backup/.$1" "$DOTFILES/backup/$1"
-            echo -en 'backed up saved...';
+            run_safe mv "$HOME/.$1" "$DOTFILES/backup/"
+            run_safe mv "$DOTFILES/backup/.$1" "$DOTFILES/backup/$1"
+            echo -en 'backup saved...';
         fi
     fi
     # create the link
-    ln -s "$DOTFILES/symlink/$1" "$HOME/.$1"
+    run_safe ln -s "$DOTFILES/symlink/$1" "$HOME/.$1"
 
     # echo -en '\tlinked';
     success "$1 linked"
@@ -253,8 +253,8 @@ function setup_sublime() {
 
     heading "Installing packages for sublime linters..."
     info "Installing scss_lint tidy-html5 shellcheck and imagemagick..."
-    gem install scss_lint
-    brew install shellcheck tidy-html5 imagemagick # for ColourHighlighter
+    run_safe gem install scss_lint
+    run_safe brew install shellcheck tidy-html5 imagemagick # for ColourHighlighter
     info "You now have the following packages installed:"
     brew leaves
     success
@@ -279,15 +279,15 @@ function setup_sublime() {
         # see https://packagecontrol.io/search/SublimeLinter-%20%3Ast3 for more linters
         SUBL=~/Library/Application\ Support/Sublime\ Text\ 3
         # get package control
-        wget -nc "http://packagecontrol.io/Package%20Control.sublime-package" --directory-prefix "$SUBL/Installed Packages/"
+        run_safe wget -nc "http://packagecontrol.io/Package%20Control.sublime-package" --directory-prefix "$SUBL/Installed Packages/"
         # copy files
-        cp -a -i "$DOTFILES/apps/sublime/." "$SUBL/Packages/User/"
+        run_safe cp -a -i "$DOTFILES/apps/sublime/." "$SUBL/Packages/User/"
         # symbolic link sublime text so you can use in the shell
         heading "Symlinking Sublime Shell Command (subl) to the /usr/local/bin directory"
-        ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+        run_safe ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
         # opt out of Sidebar Enhancement telemetry
-        touch ~/.SideBarEnhancements.optout
+        run_safe touch ~/.SideBarEnhancements.optout
 
         info "If you need more linters visit: https://packagecontrol.io/search/SublimeLinter-%20%3Ast3"
         info "You may need to restart Sublime Text twice, once for the Package Control installation and again for installing the remaining packages."
@@ -300,15 +300,15 @@ function setup_atom() {
     if ask "Do you want to install Atom packages? (requires Atom Shell Commands)" Y; then
         if [[ "$(type -P apm)" ]]; then
             info "Installing scss_lint tidy-html5"
-            gem install scss_lint
-            brew install tidy-html5
+            run_safe gem install scss_lint
+            run_safe brew install tidy-html5
             heading "Installing Atom Packages and Themes"
-            apm upgrade --no-confirm
+            run_safe apm upgrade --no-confirm
             # see https://atom.io/packages/linter for more linters
-            apm install linter linter-php linter-javac linter-eslint linter-jsonlint linter-htmlhint linter-markdown linter-csslint linter-scss-lint linter-swiftc linter-clang linter-write-good
-            apm install language-blade language-rust language-log language-patch language-salt
-            apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify highlight-selected markdown-preview-opener
-            apm install sync-settings
+            run_safe apm install linter linter-php linter-javac linter-eslint linter-jsonlint linter-htmlhint linter-markdown linter-csslint linter-scss-lint linter-swiftc linter-clang linter-write-good
+            run_safe apm install language-blade language-rust language-log language-patch language-salt
+            run_safe apm install atom-soda-dark-ui monokai editorconfig file-icons color-picker pigments dash atom-beautify highlight-selected markdown-preview-opener
+            run_safe apm install sync-settings
             # see https://github.com/atom-community/autocomplete-plus/wiki/Autocomplete-Providers for more providers
             # apm install autocomplete-emojis autocomplete-paths autocomplete-clang atom-autocomplete-php
             # apm install git-control
@@ -341,7 +341,8 @@ function setup_nano() {
 function setup_firfox() {
     info "creating user.js"
     # cat "$DOTFILES/apps/firefox/user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
-    cat "$DOTFILES/apps/firefox/ghacks-user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
+    run_safe cat "$DOTFILES/apps/firefox/ghacks-user.js/user.js" "$DOTFILES/apps/firefox/myuser.js" > "$DOTFILES/apps/firefox/profile/user.js"
+
     info "Unfortunately I can't do this automatically :("
     info "Copy the contents of '$DOTFILES/apps/firefox/profile' into '~/Library/Application\ Support/Firefox/Profiles/[your profile]/'"
     sleep 5
