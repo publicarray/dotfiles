@@ -239,10 +239,12 @@ user_pref("svg.disabled", false); // [beaks too many icons. fix for github.com a
    // https://bugzilla.mozilla.org/show_bug.cgi?id=1264562
    user_pref("privacy.firstparty.isolate", true); // [let's test if it blows up in my face]
 // 2701: disable cookies on all sites
-   // you can set exceptions under site permissions or use an extension (eg Cookie Controller [or "Self-Destructing Cookies"])
+   // you can set exceptions under site permissions or use an extension (eg Cookie Controller)
    // http://kb.mozillazine.org/Network.cookie.cookieBehavior
    // 0=allow all 1=allow same host 2=disallow all 3=allow 3rd party if it already set a cookie
-user_pref("network.cookie.cookieBehavior", 1); // [2 is too restrictive, fix: twitter login. Setting also impacts local storage]
+   // [2 is too restrictive, fix: twitter login. Setting also impacts local storage and indexedDB.
+   // The problem was that that selectively allowing cookies for Twitter did not allow indexedDB. Twitter needs indexedDB for login]
+user_pref("network.cookie.cookieBehavior", 1);
 // 2706: disable Storage API (FF51+) which gives sites' code the ability to find out how much space
    // they can use, how much they are already using, and even control whether or not they need to
    // be alerted before the user agent disposes of site data in order to make room for other things.
