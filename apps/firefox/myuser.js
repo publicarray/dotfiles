@@ -21,7 +21,7 @@ user_pref("extensions.ublock0.popupFirewallPane", "true");
 
 user_pref("extensions.smart-referer.mode","direct");
 user_pref("extensions.smart-referer.whitelist", "");
-user_pref("extensions.smart-referer.allow", "*.dev>* *.disqus.com disqus.com api.solvemedia.com *.github.com>*.github.com github.com>*.github.com *.github.com>github.com typekit.com *.typekit.com typekit.net *.typekit.net code.google.com>*.googlecode.com 2x2tv.ru>rutube.ru *.abczdrowie.pl>*.wp.pl abczdrowie.pl>*.wp.pl *.baidu.com>*.bdimg.com baidu.com>*.bdimg.com *.dm5.com>*.cdndm5.com dm5.com>*.cdndm5.com drive.google.com>youtube.googleapis.com *.hktvmall.com>*.hktvmall.com *.hktvmall.com>14.198.2*.* login.live.com>* tiles.lyrk.org pokelocate.io>s3.amazonaws.com *>*.postfinance.ch streamcomplet.com>media.vimple.me *.sofort.com *.sofortueberweisung.de tushkan.net>*.hyevo.net *.tushkan.net>*.hyevo.net *>cloud.typography.com videoweed.es>*.coolcdn.ch *.videoweed.es>*.coolcdn.ch novamov.com>*.coolcdn.ch *.novamov.com>*.coolcdn.ch *>*.vivocha.com *>vivocha.com *.ok.ru>*.mycdn.me ok.ru>*.mycdn.me");
+user_pref("extensions.smart-referer.allow", "*.dev>* *.disqus.com disqus.com api.solvemedia.com typekit.com *.typekit.com typekit.net *.typekit.net code.google.com>*.googlecode.com 2x2tv.ru>rutube.ru *.abczdrowie.pl>*.wp.pl abczdrowie.pl>*.wp.pl *.baidu.com>*.bdimg.com baidu.com>*.bdimg.com *.dm5.com>*.cdndm5.com dm5.com>*.cdndm5.com drive.google.com>youtube.googleapis.com *.hktvmall.com>*.hktvmall.com *.hktvmall.com>14.198.2*.* login.live.com>* tiles.lyrk.org pokelocate.io>s3.amazonaws.com *>*.postfinance.ch streamcomplet.com>media.vimple.me *.sofort.com *.sofortueberweisung.de tushkan.net>*.hyevo.net *.tushkan.net>*.hyevo.net *>cloud.typography.com videoweed.es>*.coolcdn.ch *.videoweed.es>*.coolcdn.ch novamov.com>*.coolcdn.ch *.novamov.com>*.coolcdn.ch *>*.vivocha.com *>vivocha.com *.ok.ru>*.mycdn.me ok.ru>*.mycdn.me");
 
 user_pref("extensions.@no-resource-uri-leak.uri.chrome.blocking.enabled", true);
 
@@ -141,14 +141,24 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
 // 1405: disable woff2
 // [use uBlock for more control: https://github.com/gorhill/uBlock/wiki/Per-site-switches#no-remote-fonts]
 user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
+// 1603: referer, WHEN to send
+   // [http://kb.mozillazine.org/Network.http.sendRefererHeader]
+   // [https://github.com/ghacksuserjs/ghacks-user.js/issues/5#issuecomment-280867769]
+   // 0=never, 1=send only when links are clicked, 2=for links and images (default)
+   user_pref("network.http.sendRefererHeader", 1); // [1 can course hot-linking issues/warnings]
 // 1604: referer, SPOOF or NOT (default=false) [caution: can beak websites]
-   user_pref("network.http.referer.spoofSource", true);
-// 1605: referer, HOW to handle cross origins [caution: can beak websites]
+   // true=use the target URI instead
+   // user_pref("network.http.referer.spoofSource", true);
+// 1605: referer, HOW to handle cross origins
    // 0=always (default), 1=only if base domains match, 2=only if hosts match
-   user_pref("network.http.referer.XOriginPolicy", 1);
+   user_pref("network.http.referer.XOriginPolicy", 2);
 // 1606: referer, WHAT to send (limit the information) [caution: can beak websites]
    // 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port
    // user_pref("network.http.referer.trimmingPolicy", 2);
+   // If headers need to be send cross origins, WHAT to send
+   // 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port
+   // [https://github.com/ghacksuserjs/ghacks-user.js/issues/5#issuecomment-280871726]
+   user_pref("network.http.referer.XOriginTrimmingPolicy", 2); // [caution: may beak OAuth 2.0]
 // 1802a: make sure a plugin is in a certain state: 0=deactivated 1=ask 2=enabled (Flash example)
    // you can set all these plugin.state's via Add-ons>Plugins or search for plugin.state in about:config
    // NOTE: you can still over-ride individual sites eg youtube via site permissions
