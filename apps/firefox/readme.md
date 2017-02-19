@@ -14,7 +14,7 @@
 
 [No resource URI leak](https://notabug.org/desktopd/no-resource-uri-leak) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/no-resource-uri-leak/) - Test: https://browserleaks.com/firefox
 
-[Pure-Url](http://veg.by/ru/blog/category/firefox/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/pure-url/)
+[Pure-Url](http://veg.by/en/blog/category/firefox/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/pure-url/)
 
 Don't touch my tabs! (rel=noopener) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/dont-touch-my-tabs/) - Q: why? A: read https://mathiasbynens.github.io/rel-noopener/
 
