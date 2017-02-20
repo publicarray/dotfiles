@@ -288,26 +288,11 @@ user_pref("layout.spellcheckDefault", 2); // [the more spell checking the better
  * https://github.com/pyllyukko/user.js                                       *
  ******************************************************************************/
 
-// Disable dom.mozTCPSocket.enabled (raw TCP socket support)
-// https://trac.torproject.org/projects/tor/ticket/18863
-// https://www.mozilla.org/en-US/security/advisories/mfsa2015-97/
-// https://developer.mozilla.org/docs/Mozilla/B2G_OS/API/TCPSocket
-user_pref("dom.mozTCPSocket.enabled",               false);
-
 // disable Gnome Shell Integration
 // user_pref("plugin.state.libgnome-shell-browser-plugin",     0);
 
 // https://developer.mozilla.org/en-US/docs/Tools/Remote_Debugging/Debugging_Firefox_Desktop#Firefox_37_onwards
 user_pref("devtools.debugger.force-local",          true);
-
-// https://wiki.mozilla.org/Privacy/Reviews/Necko#Principle:_Real_Choice
-user_pref("network.seer.enabled",               false);
-
-// Disallow NTLMv1
-// https://bugzilla.mozilla.org/show_bug.cgi?id=828183
-user_pref("network.negotiate-auth.allow-insecure-ntlm-v1",  false);
-// it is still allowed through HTTPS. uncomment the following to disable it completely.
-user_pref("network.negotiate-auth.allow-insecure-ntlm-v1-https",      false);
 
 // CSP https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
 // [already enabled by default]
@@ -315,13 +300,6 @@ user_pref("network.negotiate-auth.allow-insecure-ntlm-v1-https",      false);
 
 // https://bugzilla.mozilla.org/show_bug.cgi?id=855326 [personal preference]
 user_pref("security.csp.experimentalEnabled",           true);
-
-// http://kb.mozillazine.org/Browser.sessionstore.postdata
-// NOTE: relates to CIS 2.5.7
-user_pref("browser.sessionstore.postdata",          0);
-
-// http://kb.mozillazine.org/Browser.sessionstore.enabled
-// user_pref("browser.sessionstore.enabled",           false);
 
 // CIS Mozilla Firefox 24 ESR v1.0.0 - 3.6 Enable IDN Show Punycode
 // http://kb.mozillazine.org/Network.IDN_show_punycode
