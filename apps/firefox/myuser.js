@@ -138,6 +138,14 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
 // 1217: disable insecure passive content (such as images) on https pages - mixed context
    // current default=false, leave it this way as too many sites break visually
    user_pref("security.mixed_content.block_display_content", true);
+// 1220: disable intermediate certificate caching (fingerprinting attack vector)
+   // NOTE: This affects login/cert/key dbs. AFAIK the only effect is all active logins start anew
+   // per session. This may be better handled under FPI (ticket 1323644, part of Tor Uplift)
+   // https://bugzilla.mozilla.org/show_bug.cgi?id=1334485 // related bug
+   // https://bugzilla.mozilla.org/show_bug.cgi?id=1216882 // related bug (see comment 9)
+   // [https://www.bleepingcomputer.com/news/security/firefox-users-fingerprinted-via-cached-intermediate-https-certificates/]
+   // demo: [https://fiprinca.0x90.eu/poc/]
+   // user_pref("security.nocertdb", true); // (hidden pref)
 // 1405: disable woff2
 // [use uBlock for more control: https://github.com/gorhill/uBlock/wiki/Per-site-switches#no-remote-fonts]
 user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
