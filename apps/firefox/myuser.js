@@ -156,7 +156,7 @@ user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
    user_pref("network.http.sendRefererHeader", 1); // [1 can course hot-linking issues/warnings]
 // 1604: referer, SPOOF or NOT (default=false) [caution: can beak websites]
    // true=use the target URI instead
-   // user_pref("network.http.referer.spoofSource", true);
+   user_pref("network.http.referer.spoofSource", false);
 // 1605: referer, HOW to handle cross origins
    // 0=always (default), 1=only if base domains match, 2=only if hosts match
    user_pref("network.http.referer.XOriginPolicy", 2);
