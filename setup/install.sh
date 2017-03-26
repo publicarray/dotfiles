@@ -70,6 +70,7 @@ info "\nIt is recommended to them in order:"
                     heading "Installing yarn" # https://yarnpkg.com/
 
                     run_safe brew install yarn
+                    run_safe yarn config set prefix /usr/local -g
                     # install packages
                     heading "Installing Packages with Yarn"
                     run_safe yarn global --prefix /usr/local add bower gulp lighthouse
@@ -138,6 +139,7 @@ info "\nIt is recommended to them in order:"
                 require_node
                 heading "Installing Packages with Yarn"
                 run_safe brew install yarn
+                run_safe yarn config set prefix /usr/local -g
                 run_safe yarn global --prefix /usr/local add bower gulp nodemon pm2 npm-check-updates
                 run_safe yarn global --prefix /usr/local add npm-check nsp gitjk fast-cli speed-test
                 update_gems
