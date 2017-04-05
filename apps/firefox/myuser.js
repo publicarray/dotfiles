@@ -71,6 +71,12 @@ user_pref("extensions.update.autoUpdateDefault", true);
 // 0380:
 user_pref("services.sync.enabled", true); // (hidden pref)
 
+// https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/Preference_reference/dom.event.clipboardevents.enabled
+// [This has a security / convenience trade-off. Set to false for better security and
+// to prevent websites to copy any clipboard content]
+// [fixes WISIWIG Github editor, Facebook and Goggle docs copy/paste]
+user_pref("dom.event.clipboardevents.enabled", true);
+
 // 0410: disable safe browsing
    // I have redesigned this sub-section to differentiate between "real-time"/"user initiated"
    // data being sent to Google from all other settings such as using local blocklists/whitelists
