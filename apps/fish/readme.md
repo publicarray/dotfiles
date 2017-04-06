@@ -34,9 +34,10 @@ set -U EDITOR micro
 set -U VISUAL micro
 ```
 
-## other
+## dependencies for all features
 
 ```sh
-brew install archey
-set -U HOMEBREW_NO_ANALYTICS 1
+# set -U HOMEBREW_NO_ANALYTICS 1
+brew install z thefuck hub archey composer php71
+gem install bundler
 ```
