@@ -25,7 +25,7 @@ fisher
 fish_update_completions
 ```
 
-# [Install micro - a modern text editor](https://github.com/zyedidia/micro)
+[Install micro - a modern text editor](https://github.com/zyedidia/micro)
 
 ```sh
 brew install micro
