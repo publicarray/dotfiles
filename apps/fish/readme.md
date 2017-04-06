@@ -20,14 +20,23 @@ Install plug-ins and [prompt](https://github.com/publicarray/pure)
 
 ```sh
 cp ~/.dotfiles/fish/fishfile ~/.config/fish/fishfile 
-fisher up
+cp ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish 
+fisher
 fish_update_completions
 fisher publicarray/pure
 ```
 
-# Install a better editor
+# [Install micro - a modern text editor](https://github.com/zyedidia/micro)
 
 ```sh
 brew install micro
-set -x EDITOR micro
+set -U EDITOR micro
+set -U VISUAL micro
+```
+
+## other
+
+```sh
+brew install archey
+set -U HOMEBREW_NO_ANALYTICS 1
 ```
