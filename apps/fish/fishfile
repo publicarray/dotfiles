@@ -1,4 +1,3 @@
-fisherman/ansible-completion
 edc/bass
 oh-my-fish/plugin-battery
 oh-my-fish/plugin-brew
@@ -10,8 +9,8 @@ fisherman/docker-completion
 oh-my-fish/plugin-errno
 oh-my-fish/plugin-extract
 fisherman/g2
+fisherman/done
 fisherman/getopts
-oh-my-fish/plugin-gi
 fisherman/git_util
 fisherman/gitignore
 oh-my-fish/plugin-grc
@@ -20,6 +19,7 @@ oh-my-fish/plugin-osx
 oh-my-fish/plugin-php
 oh-my-fish/plugin-phpbrew
 publicarray/pure
+publicarray/update
 fisherman/shark
 fisherman/spin
 oh-my-fish/plugin-thefuck
