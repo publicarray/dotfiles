@@ -49,7 +49,3 @@ alias dockercleanv='printf "\n>>> Deleting orphaned volumes\n\n" and docker volu
 
 # Delete all stopped containers and untagged images.
 alias dockerclean='dockercleanc or true and dockercleani and dockercleanv'
-
-function su
-    /bin/su --shell=/usr/local/bin/fish $argv
-end
