@@ -14,7 +14,6 @@ fisherman/done
 fisherman/getopts
 fisherman/git_util
 fisherman/gitignore
-oh-my-fish/plugin-grc
 oh-my-fish/plugin-hash
 oh-my-fish/plugin-osx
 oh-my-fish/plugin-php
