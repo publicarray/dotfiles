@@ -30,7 +30,7 @@ fish_update_completions
 ```sh
 brew install micro
 set -U EDITOR micro
-set -U VISUAL micro
+set -U VISUAL $EDITOR
 ```
 
 ## dependencies for all features

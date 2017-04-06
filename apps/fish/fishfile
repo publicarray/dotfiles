@@ -7,6 +7,7 @@ fisherman/cprintf
 fisherman/debug
 fisherman/docker-completion
 oh-my-fish/plugin-errno
+Shadowigor/plugin-errno-grep
 oh-my-fish/plugin-extract
 fisherman/g2
 fisherman/done
