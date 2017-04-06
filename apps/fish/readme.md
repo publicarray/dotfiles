@@ -19,11 +19,10 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 Install plug-ins and [prompt](https://github.com/publicarray/pure)
 
 ```sh
-cp ~/.dotfiles/fish/fishfile ~/.config/fish/fishfile 
-cp ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish 
+cp ~/.dotfiles/apps/fish/fishfile ~/.config/fish/fishfile
+cp ~/.dotfiles/apps/fish/config.fish ~/.config/fish/config.fish 
 fisher
 fish_update_completions
-fisher publicarray/pure
 ```
 
 # [Install micro - a modern text editor](https://github.com/zyedidia/micro)
