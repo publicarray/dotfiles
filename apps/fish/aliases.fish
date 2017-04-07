@@ -9,7 +9,7 @@ alias preztoconfig='subl ~/.zpreztorc; subl ~/.zshenv; subl ~/.zprofile; subl ~/
 alias bashconfig='subl ~/.bash_profile; subl ~/.bashrc'
 alias gitconfig='subl ~/.gitconfig; subl ~/.gitignore_global'
 alias slt='subl'
-alias c='clear'
+# alias c='clear'
 alias wget='wget -c' # Resume wget by default
 alias path='echo $PATH\n'
 alias now='date +"%T"'
@@ -33,6 +33,7 @@ alias gitjk="history 10 | tail -r | gitjk_cmd"
 alias net='sudo lsof -i -n -P'
 alias git='hub'
 alias sysinfo='sw_vers'
+alias dig="dig +multiline"
 
 # DOCKER <https://www.calazan.com/docker-cleanup-commands/>
 # Kill all running containers.
@@ -68,3 +69,11 @@ if command -v grc > /dev/null
         end
     end
 end
+
+# Utilities from paulirish <https://github.com/paulirish/dotfiles/blob/master/fish/aliases.fish>
+# `cat` with beautiful colors. requires Pygments installed.
+#                              sudo easy_install -U Pygments
+function c; pygmentize -O style=monokai -f console256 -g $argv; end
+alias ungz="gunzip -k"
+# File size
+alias fs="stat -f \"%z bytes\""
