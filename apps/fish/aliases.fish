@@ -49,3 +49,22 @@ alias dockercleanv='printf "\n>>> Deleting orphaned volumes\n\n" and docker volu
 
 # Delete all stopped containers and untagged images.
 alias dockerclean='dockercleanc or true and dockercleani and dockercleanv'
+
+# Colourize commands with grc
+if command -v grc > /dev/null
+    # set -l grc_plugin_execs ant blkid cc configure cvs df diff dig dnf docker \
+    #     docker-machine du env free gcc getfacl getsebool gmake ip ifconfig iostat \
+    #     last ldap lsattr lsblk lspci lsmod make mount mtr netstat nmap php ping \
+    #     ping6 ps sar semanage showmount ss stat sysctl systemctl tail tcpdump \
+    #     traceroute traceroute6 tune2fs ulimit uptime nmap vmstat w wdiff who
+
+    set -l grc_plugin_execs cc configure dig docker docker-machine gcc ip \
+        ifconfig make nmap ping ps sysctl traceroute uptime nmap
+
+    # Set alias for available commands.
+    for cmd in $grc_plugin_execs;
+        if command -v $cmd > /dev/null
+            alias $cmd="grc --colour=auto $cmd";
+        end
+    end
+end
