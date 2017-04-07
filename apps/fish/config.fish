@@ -7,6 +7,11 @@ end
 
 source ~/.config/fish/aliases.fish
 
+if test -f ~/.config/fish/extra.fish
+    # this is where additional user settings go
+    source ~/.config/fish/extra.fish
+end
+
 # colour shell
 set fish_color_normal normal # the default color
 set fish_color_command green # the color for commands
