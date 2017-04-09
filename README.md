@@ -43,7 +43,7 @@ For prezto configuration files see [prezto/runcoms](https://github.com/sorin-ion
 
 To add any aliases, exports, functions and shell options. I recommend you add them to `.usershell` for zsh and bash.
 
-If you use Atom and you get the following waring:
+If you use Atom and you get the following warning:
 
 > The linter 'shellcheck' cannot be found
 
