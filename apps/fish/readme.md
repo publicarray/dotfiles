@@ -1,42 +1,28 @@
 # Install
 
-[Install Fish](http://fishshell.com)
+1. Install [homebrew](https://brew.sh/)
+
+```sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Install [Fish](http://fishshell.com)
 
 ```sh
 brew install fish
-
-# make fish your default shell
-which fish | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/fish
 ```
 
-[Install Fisherman](https://github.com/fisherman/fisherman)
+Install [Fisherman](https://github.com/fisherman/fisherman)
 
 ```sh
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 ```
 
-Install plug-ins and [prompt](https://github.com/publicarray/pure)
+Install plug-ins, [prompt](https://github.com/publicarray/pure) and configure shell to my preferences
+
+**These are my personal preferences and as such it is not recommended to run the commands without knowing what they do. Please inspect [my-fish](https://github.com/publicarray/my-fish/) beforehand**
 
 ```sh
-cp ~/.dotfiles/apps/fish/fishfile ~/.config/fish/fishfile
-cp ~/.dotfiles/apps/fish/config.fish ~/.config/fish/config.fish 
-fisher
-fish_update_completions
-```
-
-[Install micro - a modern text editor](https://github.com/zyedidia/micro)
-
-```sh
-brew install micro
-set -U EDITOR micro
-set -U VISUAL $EDITOR
-```
-
-## dependencies for all features
-
-```sh
-# set -U HOMEBREW_NO_ANALYTICS 1
-brew install z thefuck hub archey composer php71
-gem install bundler
+fisher publicarray/my-fish
+my-fish
 ```
