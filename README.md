@@ -24,7 +24,7 @@
 
 - Install my Terminal Theme
 
-  Download and open the [publicarray.terminal](publicarray.terminal) file.
+  Download and open the [publicarray.terminal](apps/publicarray.terminal) file.
 
   To make it permanent remember to set it as your default.
 
