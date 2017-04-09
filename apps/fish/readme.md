@@ -6,23 +6,23 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Install [Fish](http://fishshell.com)
+2. Install [Fish](http://fishshell.com)
 
 ```sh
 brew install fish
 ```
 
-Install [Fisherman](https://github.com/fisherman/fisherman)
+3. Install [Fisherman](https://github.com/fisherman/fisherman)
 
 ```sh
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 ```
 
-Install plug-ins, [prompt](https://github.com/publicarray/pure) and configure shell to my preferences
-
-**These are my personal preferences and as such it is not recommended to run the commands without knowing what they do. Please inspect [my-fish](https://github.com/publicarray/my-fish/) beforehand**
+4. Install plug-ins, [prompt](https://github.com/publicarray/pure) and configure shell to my preferences
 
 ```sh
 fisher publicarray/my-fish
 my-fish
 ```
+
+**These are my personal preferences and as such it is not recommended to run the commands without knowing what they do. Please inspect [my-fish](https://github.com/publicarray/my-fish/) beforehand**
