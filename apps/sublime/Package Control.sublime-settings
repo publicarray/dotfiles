@@ -9,14 +9,16 @@
 	],
 	"installed_packages":
 	[
+"		"A File Icon",
 		"AdvancedNewFile",
-		// "ApacheConf.tmLanguage",
+		"ApacheConf.tmLanguage",
 		"ApplySyntax",
 		"AutoFileName",
 		"Autoprefixer",
+		"BeautifyRust",
 		"BracketHighlighter",
-		// "CFG Configuration Syntax Highlighting",
 		"Clang-Complete",
+		"CMake"
 		"CodeFormatter",
 		"Color Highlighter",
 		"ColorPicker",
@@ -26,13 +28,13 @@
 		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
 		"Emmet",
-		"Fix Mac Path",
-		// "Generic Config",
-		// "Git Config",
+		"fish-shell",
 		"GitGutter",
+		//"Generic Config",
+		"GitSyntaxes",
+		"Handlebars",
 		"Hayaku - tools for writing CSS faster",
 		"HTML-CSS-JS Prettify",
-		// "jQuery",
 		"Laravel Blade Highlighter",
 		"LESS",
 		"Markdown Preview",
@@ -43,9 +45,11 @@
 		"Package Control",
 		"PHP Companion",
 		"PHP Getters and Setters",
+		"plist",
 		// "Phpcs",
 		"Sass",
 		"SideBarEnhancements",
+		"SSH Config",
 		"Stylus",
 		// "Sublime Tutor",
 		"SublimeAStyleFormatter",
@@ -55,6 +59,7 @@
 		"SublimeLinter-contrib-eslint",
 		// "SublimeLinter-contrib-eslint_d",
 		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-contrib-write-good",
 		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-javac",
@@ -65,5 +70,6 @@
 		"Themr",
 		"Unity Completions Light",
 		"Unity3D"
+		//"Vue Syntax Highlight"
 	]
 }
