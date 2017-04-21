@@ -1,10 +1,10 @@
 module.exports = {
-    "plugins": [
-        "unicorn"
-    ],
+    // "plugins": [
+    //     "unicorn"
+    // ],
 
     "extends": [
-        "plugin:unicorn/recommended",
+        // "plugin:unicorn/recommended",
         "eslint:recommended"
     ],
 

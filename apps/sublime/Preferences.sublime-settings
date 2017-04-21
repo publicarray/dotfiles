@@ -5,12 +5,15 @@
         "Playlist"
     ],
     "always_show_minimap_viewport": false,
+    // "atomic_save": true, // needed for webpack --watch
     "auto_complete_commit_on_tab": false,
+    // "auto_complete_selector": "source, text",
     "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
     "default_line_ending": "unix",
     "draw_white_space": "all",
     "dictionary": "Packages/Language - English/en_GB.dic",
     "ensure_newline_at_eof_on_save": true,
+    "scroll_past_end": true,
     "font_face": "Fira Mono",
     "font_size": 11,
     "ignored_packages":
@@ -27,7 +30,7 @@
     "material_theme_compact_panel": true, // Set minimal padding for the search panel
     "material_theme_compact_sidebar": true,
     "material_theme_small_statusbar": true,
-    "material_theme_panel_separator": true, // Show bottom panel separator
+    // "material_theme_panel_separator": true, // Show bottom panel separator
     // "material_theme_contrast_mode": true,
     "overlay_scroll_bars": "enabled",
     "rulers":
