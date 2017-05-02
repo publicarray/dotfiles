@@ -23,7 +23,8 @@ user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPan
 user_pref("extensions.@no-resource-uri-leak.uri.chrome.blocking.enabled", true);
 
 user_pref("extensions.https_everywhere._observatory.popup_shown", true);
-user_pref("extensions.https_everywhere.firstrun_context_menu", true);
+user_pref("extensions.https_everywhere.firstrun_context_menu", false);
+user_pref("extensions.https_everywhere.toolbar_hint_shown", false);
 
 // [I need to be able to change the setting in the UI]
 // user_pref("extensions.CanvasBlocker@kkapsner.de.blockMode","blockReadout");
