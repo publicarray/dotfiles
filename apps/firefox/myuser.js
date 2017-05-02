@@ -7,6 +7,9 @@
 
 /****** Firefox Sync ******/
 
+// user_pref("webextensions.storage.sync.enabled", true);
+// user_pref("webextensions.storage.sync.serverURL", "https://webextensions.settings.services.mozilla.com/v1");
+
 user_pref("services.sync.engine.history", false);
 user_pref("services.sync.engine.passwords", false);
 user_pref("services.sync.engine.prefs.modified", false);
@@ -259,10 +262,7 @@ user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has 
    user_pref("general.oscpu.override", "Windows NT 6.1"); // (hidden pref)
 /* 2697g: also see 0204 for general.useragent.locale ***/
 
-// 2671: disable SVG (FF53+)
-   // https://bugzilla.mozilla.org/show_bug.cgi?id=1216893
-user_pref("svg.disabled", false); // [beaks too many icons. fix for github.com and youtube.com]
-/*** 2698: FIRST PARTY ISOLATION (FPI) ***/
+/*** 2698: FIRST PARTY ISOLATION (FPI) [Not ready yet] ***/
 /* 2698a: enable first party isolation pref and OriginAttribute (FF51+)
  * [WARNING] breaks lots of cross-domain logins and site functionality until perfected
  * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1260931 ***/
@@ -299,6 +299,7 @@ user_pref("network.cookie.cookieBehavior", 1);
    // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager
    // https://developer.mozilla.org/en-US/docs/Web/API/Storage_API
 // user_pref("dom.storageManager.enabled", true); // [Use an extension like "Self-Destructing Cookies"]
+// user_pref("browser.storageManager.enabled", false);
 // 2703: set cookie lifetime policy
    // 0=until they expire (default), 2=until you close Firefox, 3=for n days (see next pref)
    // If you use custom settings for History in Options, this is the setting under
@@ -382,10 +383,10 @@ user_pref("browser.download.useDownloadDir", true);
 // user_pref("webgl.dxgl.enabled", false);
 // user_pref("webgl.enable-webgl2", false);
 
-// [Match closer to existing FF support]
-// user_pref("media.ogg.enabled", true);
-// user_pref("media.ogg.flac.enabled", true); // (FF51+)
-// user_pref("media.opus.enabled", true);
+// [js contextmenu events]
+// user_pref("dom.event.contextmenu.enabled", false);
+// [disable reader]
+user_pref("reader.parse-on-load.enabled", false);
 
 // [GeoLocation (google maps) - risk of physical security]
 // http://www.mozilla.org/en-US/firefox/geolocation/
