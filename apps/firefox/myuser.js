@@ -396,7 +396,7 @@ user_pref("browser.urlbar.suggest.bookmark", true); // suggest bookmarks
 // http://kb.mozillazine.org/Browser.urlbar.default.behavior
 // user_pref("browser.urlbar.default.behavior", 58); // bookmarks only (2 bookmarks + 8 title + 16 URL + 32 typed)
 user_pref("browser.urlbar.autocomplete.enabled", true); // autocomplete bookmarks
-// user_pref("browser.urlbar.maxRichResults", 6); // number of entries to show in the drop down
+user_pref("browser.urlbar.maxRichResults", 6); // number of entries to show in the drop down
 user_pref("browser.urlbar.oneOffSearches", true); // It's a nice feature (easily switch between duckduckgo or startpage etc.)
 user_pref("keyword.enabled", true); // enable search in URLbar
 
