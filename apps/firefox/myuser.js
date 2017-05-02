@@ -17,12 +17,6 @@ user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPan
 user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPane", true);
 
 /****** Extensions ******/
-user_pref("extensions.ublock0.popupFirewallPane", "true");
-
-user_pref("extensions.smart-referer.mode","direct");
-user_pref("extensions.smart-referer.whitelist", "");
-user_pref("extensions.smart-referer.allow", "*.dev>* *.disqus.com disqus.com api.solvemedia.com typekit.com *.typekit.com typekit.net *.typekit.net code.google.com>*.googlecode.com 2x2tv.ru>rutube.ru *.abczdrowie.pl>*.wp.pl abczdrowie.pl>*.wp.pl *.baidu.com>*.bdimg.com baidu.com>*.bdimg.com *.dm5.com>*.cdndm5.com dm5.com>*.cdndm5.com drive.google.com>youtube.googleapis.com *.hktvmall.com>*.hktvmall.com *.hktvmall.com>14.198.2*.* login.live.com>* tiles.lyrk.org pokelocate.io>s3.amazonaws.com *>*.postfinance.ch streamcomplet.com>media.vimple.me *.sofort.com *.sofortueberweisung.de tushkan.net>*.hyevo.net *.tushkan.net>*.hyevo.net *>cloud.typography.com videoweed.es>*.coolcdn.ch *.videoweed.es>*.coolcdn.ch novamov.com>*.coolcdn.ch *.novamov.com>*.coolcdn.ch *>*.vivocha.com *>vivocha.com *.ok.ru>*.mycdn.me ok.ru>*.mycdn.me");
-
 user_pref("extensions.@no-resource-uri-leak.uri.chrome.blocking.enabled", true);
 
 user_pref("extensions.https_everywhere._observatory.popup_shown", true);
@@ -133,6 +127,9 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
    user_pref("signon.rememberSignons", false); // [Please use a password manager instead]
 // 1012: disable resuming session from crash [personal preference]
 // user_pref("browser.sessionstore.resume_from_crash", true);
+/* 1103: enable WebExtension add-on code to run in a separate process (webext-oop) (FF53+)
+ * [1] https://wiki.mozilla.org/WebExtensions/Implementing_APIs_out-of-process ***/
+   user_pref("extensions.webextensions.remote", true);
 // 1209: control TLS versions with min and max
    // 1=min version of TLS 1.0, 2-min version of TLS 1.1, 3=min version of TLS 1.2 etc
    // WARNING: FF/chrome currently allow TLS 1.0 by default, so this is your call.
@@ -166,14 +163,14 @@ user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
    // user_pref("network.http.referer.spoofSource", false);
 // 1605: referer, HOW to handle cross origins
    // 0=always (default), 1=only if base domains match, 2=only if hosts match
-   user_pref("network.http.referer.XOriginPolicy", 2);
+   // user_pref("network.http.referer.XOriginPolicy", 2);
 // 1606: referer, WHAT to send (limit the information) [caution: can beak websites]
    // 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port
    // user_pref("network.http.referer.trimmingPolicy", 2);
    // If headers need to be send cross origins, WHAT to send
    // 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port
    // [https://github.com/ghacksuserjs/ghacks-user.js/issues/5#issuecomment-280871726]
-   user_pref("network.http.referer.XOriginTrimmingPolicy", 2); // [caution: may beak OAuth 2.0]
+   // user_pref("network.http.referer.XOriginTrimmingPolicy", 2); // [caution: may beak OAuth 2.0]
 // 1802a: make sure a plugin is in a certain state: 0=deactivated 1=ask 2=enabled (Flash example)
    // you can set all these plugin.state's via Add-ons>Plugins or search for plugin.state in about:config
    // NOTE: you can still over-ride individual sites eg youtube via site permissions
@@ -190,7 +187,7 @@ user_pref("media.autoplay.enabled", true); // [Fix for youtube.com]
    // You can still right click a link and select open in a new window
    // This is to stop malicious window sizes and screen res leaks etc in conjunction
    // with 2203 dom.disable_window_move_resize=true | 2418 full-screen-api.enabled=false
-   user_pref("browser.link.open_newwindow.restriction", 0);
+   // user_pref("browser.link.open_newwindow.restriction", 0);
 // 2301: disable workers API and service workers API
    // https://developer.mozilla.org/en-US/docs/Web/API/Worker
    // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API
@@ -229,40 +226,66 @@ user_pref("network.http.spdy.enabled.http2", true); // [sorry, but I <3 http/2]
    // much risk or more (acrobat). 3. Mozilla are very quick to patch these sorts of exploits,
    // they treat them as severe/critical and 4. for convenience
 user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has less of chance of infecting the machine than the preview.app]
-// 2627: Spoof default UA & relevant (navigator) parts (also see 0204 for UA language)
-   // NOTE: may be better handled by an extension (eg whitelisitng), try not to clash with it
-   // NOTE: this is NOT a complete solution (feature detection, some navigator objects leak, resource URI etc)
-   // AIM: match latest TBB settings: Windows, ESR, OS etc
-   // WARNING: If you do not understand fingerprinting then don't use this section
-   // test: http://browserspy.dk/browser.php
-   //       http://browserspy.dk/showprop.php (for buildID)
-   //       http://browserspy.dk/useragent.php
-   // ==start==
-   // A: navigator.userAgent leaks in JS, setting this also seems to break UA extension whitelisting
-   // [match the rest of the user agent properties]
-   user_pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"); // (hidden pref)
+
+/*** 2697: USER AGENT (UA) SPOOFING
+     Spoofing your UA to *LOWER* entropy *does* *not* *work*. It may even cause site breakage
+     depending on your values. Even if you spoof, like TBB (Tor Browser Bundle) does, as the
+     latest ESR, it still *does* *not* *work*. There are two main reasons for this.
+       1. Many of the components that make up your UA can be derived by other means. And when
+          those values differ, you provide more bits and raise entropy. Examples of leaks include
+          navigator objects, resource://URIs, <isindex> locale, feature detection and more.
+       2. You are not in a controlled set of significant numbers, where the values are enforced
+          by default. It works for TBB because for TBB, the spoofed values ARE their default.
+     * We do not recommend UA spoofing yourself, leave it to privacy.resistFingerprinting (see 2699)
+     * Values below are for example only based on the current ESR/TBB at the time of writing
+***/
+/* 2697a: navigator.userAgent leaks in JS
+ * [NOTE] setting this will break any UA spoofing add-on whitelisting ***/
+    user_pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"); // (hidden pref)
                                         // Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0 [Tor]
                                         // Mozilla/5.0 (Windows NT 6.1; rv:51.0) Gecko/20100101 Firefox/51.0 [current FF]
                                         // Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0 [Windows 10, 64bit, v51]
-   // C: navigator.appName
-  // user_pref("general.appname.override", "Netscape"); // (hidden pref)
-   // D: navigator.appVersion
-  // user_pref("general.appversion.override", "5.0 (Windows)"); // (hidden pref)
-   // E: navigator.platform leaks in JS
-  // user_pref("general.platform.override", "Win32"); // (hidden pref)
-   // F: navigator.oscpu
-  // user_pref("general.oscpu.override", "Windows NT 6.1"); // (hidden pref)
+/* 2697b: navigator.buildID (see gecko.buildID in about:config) reveals build time
+ * down to the second which defeats user agent spoofing and can compromise OS etc
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=583181 ***/
+   user_pref("general.buildID.override", "20100101"); // (hidden pref)
+/* 2697c: navigator.appName ***/
+   user_pref("general.appname.override", "Netscape"); // (hidden pref)
+/* 2697d: navigator.appVersion ***/
+   user_pref("general.appversion.override", "5.0 (Windows)"); // (hidden pref)
+/* 2697e: navigator.platform leaks in JS ***/
+   user_pref("general.platform.override", "Win32"); // (hidden pref)
+/* 2697f: navigator.oscpu leaks in JS ***/
+   user_pref("general.oscpu.override", "Windows NT 6.1"); // (hidden pref)
+/* 2697g: also see 0204 for general.useragent.locale ***/
 
 // 2671: disable SVG (FF53+)
    // https://bugzilla.mozilla.org/show_bug.cgi?id=1216893
 user_pref("svg.disabled", false); // [beaks too many icons. fix for github.com and youtube.com]
-/*** 2698: FIRST PARTY ISOLATION (PFI) ***/
-// 2698a: enable first party isolation pref and OriginAttribute (FF51+)
-   // WARNING: breaks lots of cross-domain logins and site funtionality until perfected
-   // https://bugzilla.mozilla.org/show_bug.cgi?id=1260931
-// 2698b: this also isolates OCSP requests by first party domain
-   // https://bugzilla.mozilla.org/show_bug.cgi?id=1264562
-   user_pref("privacy.firstparty.isolate", true); // [let's test if it blows up in my face]
+/*** 2698: FIRST PARTY ISOLATION (FPI) ***/
+/* 2698a: enable first party isolation pref and OriginAttribute (FF51+)
+ * [WARNING] breaks lots of cross-domain logins and site functionality until perfected
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1260931 ***/
+/* 2698b: isolate favicons (FF52+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1277803 ***/
+/* 2698c: isolate OCSP cache (FF52+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1264562 ***/
+/* 2698d: isolate Shared Workers (FF52+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1268726 ***/
+/* 2698e: isolate SSL session cache (FF52+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1316283 ***/
+/* 2698f: isolate media cache (FF53+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1317927 ***/
+/* 2698g: isolate HSTS and HPKP (FF54+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1323644 ***/
+/* 2698h: isolate HTTP Alternative Services (FF54+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1334690 ***/
+/* 2698i: isolate SPDY/HTTP2 (FF55+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1334693 ***/
+/* 2698j: isolate DNS cache (FF55+)
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1337893 ***/
+   // user_pref("privacy.firstparty.isolate", true);  // [let's test if it blows up in my face]
+   // user_pref("privacy.firstparty.isolate.restrict_opener_access", true); // (FF54+)
 // 2701: disable cookies on all sites
    // you can set exceptions under site permissions or use an extension (eg Cookie Controller)
    // http://kb.mozillazine.org/Network.cookie.cookieBehavior
@@ -281,13 +304,6 @@ user_pref("network.cookie.cookieBehavior", 1);
    // If you use custom settings for History in Options, this is the setting under
    // Privacy>Accept cookies from sites>Keep until <they expire/I close Firefox>
    // user_pref("network.cookie.lifetimePolicy", 2); // use extension
-// 2804a: include all open windows/tabs when you run clear recent history
-   user_pref("privacy.cpd.openWindows", true);
-
-// 9999: TO INVESTIGATE - OTHER //
-// 3000's: show system add-ons in about:addons (so you can enable/disable them) - NOT landed yet
-   // https://bugzilla.mozilla.org/show_bug.cgi?id=1231202
-    user_pref("extensions.hideSystemAddons", false); // (hidden pref)
 
 // 3000: PERSONAL SETTINGS //
 // 3002: disable closing browser with last tab
@@ -317,7 +333,7 @@ user_pref("devtools.debugger.force-local",          true);
 user_pref("security.csp.experimentalEnabled",           true);
 
 // CIPHERS
-// [most recent version of FF will have releasable secure ciphers by default]
+// [most recent version of FF will have reasonable secure ciphers by default]
 
 /******************************************************************************
  * My own preferences and overrides                                           *
@@ -376,10 +392,12 @@ user_pref("browser.download.useDownloadDir", true);
 // user_pref("geo.enabled", true);
 
 // [auto-complete bookmarks (warning shoulder surfers can read them too)]
+user_pref("browser.urlbar.suggest.bookmark", true); // suggest bookmarks
 // http://kb.mozillazine.org/Browser.urlbar.default.behavior
-user_pref("browser.urlbar.default.behavior", 58); // bookmarks only (2 bookmarks + 8 title + 16 URL + 32 typed)
-user_pref("browser.urlbar.autocomplete.enabled", true); // needed to show bookmarks
-user_pref("browser.urlbar.maxRichResults", 6); // number of entries to show in the drop down
+// user_pref("browser.urlbar.default.behavior", 58); // bookmarks only (2 bookmarks + 8 title + 16 URL + 32 typed)
+user_pref("browser.urlbar.autocomplete.enabled", true); // autocomplete bookmarks
+// user_pref("browser.urlbar.maxRichResults", 6); // number of entries to show in the drop down
+user_pref("browser.urlbar.oneOffSearches", true); // It's a nice feature (easily switch between duckduckgo or startpage etc.)
 user_pref("keyword.enabled", true); // enable search in URLbar
 
 user_pref("ghacks_user.js.parrot", "9999 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
