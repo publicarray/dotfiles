@@ -354,44 +354,41 @@ function setup_firfox() {
 }
 
 function setup_DNSCrypt() {
-    if ask "Do you want to install DNSCrypt with unbound?" Y; then
-        promptSudo
-        require_brew
-        brew install dnscrypt-proxy --with-plugins
-        info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
-        promptSudo
-        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy.plist" /Library/LaunchDaemons # create a daemon
-        # sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy2.plist" /Library/LaunchDaemons # create a daemon
-        sudo chown root /Library/LaunchDaemons/*.plist # make root the owner
-        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy.plist # start the service
-        # sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy2.plist # start the service
+    promptSudo
+    require_brew
+    run_safe brew install dnscrypt-proxy
+    info "copy configuration"
+    run_safe cp -fv "$DOTFILES/apps/dnscrypt-proxy/dnscrypt-proxy.conf" /usr/local/etc/dnscrypt-proxy.conf
+    info "Creating the LaunchDaemon so that the DNSCrypt-proxy service will start on every boot"
+    sudo brew services start dnscrypt-proxy
+    if ask "Do you want to install DNSCrypt with dnsmasq?" Y; then
+        setup_dnsmasq
+    elif ask "Do you want to install DNSCrypt with unbound?" Y; then
         setup_unbound
-        set_network_settings
-        success
-    elif ask "Do you only want to install DNSCrypt?" Y; then
-        promptSudo
-        require_brew
-        brew install dnscrypt-proxy --with-plugins
-        info "Creating the daemons necessary so that the DNSCrypt-proxy service will start on every boot"
-        sudo cp -fv "$DOTFILES/apps/dnscrypt-proxy/homebrew.mxcl.dnscrypt-proxy3.plist" /Library/LaunchDaemons # create a demon
-        sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # make root the owner
-        sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnscrypt-proxy3.plist # start the service
-        set_network_settings
-        success
-    else
-        info "Nothing has changed"
     fi
+    set_network_settings
+    success
     echo
 }
 
 function setup_unbound() {
     # require_brew
-    brew install unbound
-    info "Creating the daemon necessary so that the unbound service will start on every boot"
-    cp -fv "$DOTFILES/apps/unbound/unbound.conf" /usr/local/etc/unbound/unbound.conf # copy configuration
-    sudo cp -fv /usr/local/opt/unbound/*.plist /Library/LaunchDaemons # create a daemon
-    sudo chown root /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # make root the owner
-    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # start the service
+    run_safe brew install unbound
+    info "Set the LaunchDaemon so that the unbound service will start on every boot"
+    run_safe cp -fv "$DOTFILES/apps/unbound/unbound.conf" /usr/local/etc/unbound/unbound.conf # copy configuration
+    run_safe sudo cp -fv /usr/local/opt/unbound/*.plist /Library/LaunchDaemons # create a daemon
+    run_safe sudo chown root /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # make root the owner
+    run_safe sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.unbound.plist # start the service
+}
+
+function setup_dnsmasq() {
+    # require_brew
+    run_safe brew install gcc@7
+    run_safe brew reinstall dnsmasq --cc=gcc-7 --with-dnssec --with-libidn
+    info "copy configuration"
+    run_safe cp -fv "$DOTFILES/apps/dnsmasq/dnsmasq.conf" /usr/local/etc/dnsmasq.conf
+    info "Set the LaunchDaemon so that the dnsmasq service will start on every boot"
+    run_safe sudo brew services start dnsmasq
 }
 
 function set_network_settings() {
@@ -404,21 +401,22 @@ function set_network_settings() {
     sudo networksetup -setdnsservers Ethernet 127.0.0.1
     sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
 
-    if ask "Do you want to add GoolegDNS and OpenDNS locations?" Y; then
+    if ask "Do you want to add a GoolegDNS location?" Y; then
+    # if ask "Do you want to add GoolegDNS and OpenDNS locations?" Y; then
         sudo networksetup -createlocation GoogleDNS populate
         sudo networksetup -switchtolocation GoogleDNS
         sudo networksetup -setdnsservers Wi-Fi 8.8.8.8 8.8.4.4
         sudo networksetup -setdnsservers Ethernet 8.8.8.8 8.8.4.4
         sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
 
-        sudo networksetup -createlocation OpenDNS populate
-        sudo networksetup -switchtolocation OpenDNS
-        sudo networksetup -setdnsservers Wi-Fi 208.67.222.222 208.67.220.220
-        sudo networksetup -setdnsservers Ethernet 208.67.222.222 208.67.220.220
-        sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
-
-        sudo networksetup -switchtolocation DNSCrypt # switch back to DNSCrypt
+        # sudo networksetup -createlocation OpenDNS populate
+        # sudo networksetup -switchtolocation OpenDNS
+        # sudo networksetup -setdnsservers Wi-Fi 208.67.222.222 208.67.220.220
+        # sudo networksetup -setdnsservers Ethernet 208.67.222.222 208.67.220.220
     fi
+
+    sudo networksetup -setnetworkserviceenabled "Bluetooth PAN" off
+    sudo networksetup -switchtolocation DNSCrypt # switch back to DNSCrypt
 
     info "I have disabled Bluetooth PAN. You can enable it again in network settings."
 
