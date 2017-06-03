@@ -142,7 +142,6 @@ function install_shell() {
 
     heading "Installing zsh"
     run_safe brew install zsh
-    run_safe brew cask install p4merge
 
     heading "Set zsh as default shell"
     info "I need to gain sudo access to install zsh as you default shell."

@@ -20,7 +20,7 @@ if [[ "$OSTYPE" != darwin* ]]; then
 fi
 
 info "If you are on a fresh install than please install all AppStore apps first!"
-info "eg. The Unarchiver, Pocket, Airmail2, Sip, Caffine, Spotify, Dash, Memory Diag"
+info "eg. The Unarchiver, Pocket, Airmail2, Sip, Caffine, Dash, Affinity Photo/Design"
 
 info "\nIt is recommended to them in order:"
 
@@ -49,7 +49,7 @@ info "\nIt is recommended to them in order:"
                     info "Cleaning brew cache"
                     run_safe brew cleanup
                 fi
-                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Java, GitHub Desktop, Sublime Text 3, Atom, SourceTree, ImageOptim, CodeKit, AppCleaner, BlockBlock, Onyx, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
+                if ask "Do you want to install GUI apps from Caskfile.sh?\nThis will install: VLC Player, Google Chrome, Firefox, Java, GitUp, Sublime Text 3, Visual Studio Code, SourceTree, ImageOptim, CodeKit, AppCleaner, BlockBlock, Onyx, Docker, GPGtools, Macpaw-Gemini, Steam, Spotify, Adapter and HandBrake" N; then
                     heading "Installing Applications"
                     run_safe sh Caskfile.sh
                 fi
