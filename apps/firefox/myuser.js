@@ -316,6 +316,9 @@ user_pref("browser.tabs.closeWindowWithLastTab", true); // [I'm on a mac and pre
 // 3012: spellchecking: 0=none, 1-multi-line controls, 2=multi-line & single-line controls
 user_pref("layout.spellcheckDefault", 2); // [the more spell checking the better]
 
+/* 3020: FYI: urlbar click behaviour (with defaults) ***/
+user_pref("browser.urlbar.clickSelectsAll", false);
+user_pref("browser.urlbar.doubleClickSelectsAll", true);
 /******************************************************************************
  * user.js - Additions                                                        *
  * https://github.com/pyllyukko/user.js                                       *
@@ -401,6 +404,10 @@ user_pref("browser.urlbar.autocomplete.enabled", true); // autocomplete bookmark
 user_pref("browser.urlbar.maxRichResults", 6); // number of entries to show in the drop down
 user_pref("browser.urlbar.oneOffSearches", true); // It's a nice feature (easily switch between duckduckgo or startpage etc.)
 user_pref("keyword.enabled", true); // enable search in URLbar
+
+// I <3 Rust
+user_pref("network.standard-url.enable-rust", true);
+user_pref("layout.css.servo.enabled", true);
 
 user_pref("ghacks_user.js.parrot", "9999 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
 
