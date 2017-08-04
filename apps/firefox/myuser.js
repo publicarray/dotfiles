@@ -245,22 +245,23 @@ user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has 
 ***/
 /* 2697a: navigator.userAgent leaks in JS
  * [NOTE] setting this will break any UA spoofing add-on whitelisting ***/
-    user_pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"); // (hidden pref)
-                                        // Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0 [Tor]
-                                        // Mozilla/5.0 (Windows NT 6.1; rv:51.0) Gecko/20100101 Firefox/51.0 [current FF]
+    // user_pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0); // (hidden pref)
+                                        // Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0 [Tor]
+                                        // Mozilla/5.0 (Windows NT 6.1; rv:54.0) Gecko/20100101 Firefox/54.0 [current FF]
+                                        // Mozilla/5.0 (Windows NT 6.1; rv:50.0) Gecko/20100101 Firefox/50.0
                                         // Mozilla/5.0 (Windows NT 10.0; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0 [Windows 10, 64bit, v51]
 /* 2697b: navigator.buildID (see gecko.buildID in about:config) reveals build time
  * down to the second which defeats user agent spoofing and can compromise OS etc
  * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=583181 ***/
-   user_pref("general.buildID.override", "20100101"); // (hidden pref)
+   // user_pref("general.buildID.override", "20100101"); // (hidden pref)
 /* 2697c: navigator.appName ***/
-   user_pref("general.appname.override", "Netscape"); // (hidden pref)
+   // user_pref("general.appname.override", "Netscape"); // (hidden pref)
 /* 2697d: navigator.appVersion ***/
-   user_pref("general.appversion.override", "5.0 (Windows)"); // (hidden pref)
+   // user_pref("general.appversion.override", "5.0 (Windows)"); // (hidden pref)
 /* 2697e: navigator.platform leaks in JS ***/
-   user_pref("general.platform.override", "Win32"); // (hidden pref)
+   // user_pref("general.platform.override", "Win32"); // (hidden pref)
 /* 2697f: navigator.oscpu leaks in JS ***/
-   user_pref("general.oscpu.override", "Windows NT 6.1"); // (hidden pref)
+   // user_pref("general.oscpu.override", "Windows NT 6.1"); // (hidden pref)
 /* 2697g: also see 0204 for general.useragent.locale ***/
 
 /*** 2698: FIRST PARTY ISOLATION (FPI) [Not ready yet] ***/
@@ -378,14 +379,19 @@ user_pref("browser.download.folderList", 1);
 // https://developer.mozilla.org/en/Download_Manager_preferences
 user_pref("browser.download.useDownloadDir", true);
 
-// [WebGL - only when absolutely needed]
+// [WebGL]
 // user_pref("webgl.disabled", false);
-// user_pref("pdfjs.enableWebGL", false);
-// user_pref("webgl.min_capability_mode", true);
+user_pref("pdfjs.enableWebGL", true);
+// user_pref("webgl.min_capability_mode", false);
 // user_pref("webgl.disable-extensions", true);
+// user_pref("webgl.enable-draft-extensions", true);
+// user_pref("webgl.perf.max-warnings", 32);
+// user_pref("webgl.max-warnings-per-context", 32);
+// user_pref("webgl.lose-context-on-memory-pressure", true);
+// user_pref("webgl.disable-fail-if-major-performance-caveat", true);
 // 2012: two more webgl preferences (FF51+)
-// user_pref("webgl.dxgl.enabled", false);
-// user_pref("webgl.enable-webgl2", false);
+// user_pref("webgl.dxgl.enabled", true);
+// user_pref("webgl.enable-webgl2", true);
 
 // [js contextmenu events]
 // user_pref("dom.event.contextmenu.enabled", false);
@@ -408,6 +414,8 @@ user_pref("keyword.enabled", true); // enable search in URLbar
 // I <3 Rust
 user_pref("network.standard-url.enable-rust", true);
 user_pref("layout.css.servo.enabled", true);
+
+user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS resolver with dnscrypt
 
 user_pref("ghacks_user.js.parrot", "9999 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
 
