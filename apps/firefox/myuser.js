@@ -14,40 +14,6 @@ user_pref("services.sync.engine.history", false);
 user_pref("services.sync.engine.passwords", false);
 user_pref("services.sync.engine.prefs.modified", false);
 user_pref("services.sync.engine.tabs", false);
-user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.myFiltersPane", true);
-user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.myRulesPane", true);
-user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.tpFiltersPane", true);
-user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPane", true);
-
-/****** Extensions ******/
-user_pref("extensions.@no-resource-uri-leak.uri.chrome.blocking.enabled", true);
-
-user_pref("extensions.https_everywhere._observatory.popup_shown", true);
-user_pref("extensions.https_everywhere.firstrun_context_menu", false);
-user_pref("extensions.https_everywhere.toolbar_hint_shown", true);
-
-// [I need to be able to change the setting in the UI]
-// user_pref("extensions.CanvasBlocker@kkapsner.de.blockMode","blockReadout");
-
-user_pref("extensions.ssleuth.ui.urlbar.colorize", true);
-
-// user_pref("extensions.agentSpoof.acceptDefault", true);
-// user_pref("extensions.agentSpoof.acceptEncoding", true);
-// user_pref("extensions.agentSpoof.acceptLang", true);
-// user_pref("extensions.agentSpoof.acceptLangChoice", "en-US");
-// user_pref("extensions.agentSpoof.authorization", false);
-// user_pref("extensions.agentSpoof.canvas", false);
-// user_pref("extensions.agentSpoof.disableRef", true);
-// user_pref("extensions.agentSpoof.ifnone", true);
-// user_pref("extensions.agentSpoof.limitTab", false);
-// user_pref("extensions.agentSpoof.screenSize", "1366x768");
-// user_pref("extensions.agentSpoof.scriptInjection", true);
-// user_pref("extensions.agentSpoof.timeInterval", "none");
-// user_pref("extensions.agentSpoof.tzOffset", "0");
-// user_pref("extensions.agentSpoof.uaChosen", "default");
-// user_pref("extensions.agentSpoof.via", false);
-// user_pref("extensions.agentSpoof.windowName", true);
-// user_pref("extensions.agentSpoof.xff", false);
 
 /******************************************************************************
  * ghacks-user.js - Modifications                                             *
@@ -133,7 +99,7 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
 // user_pref("browser.sessionstore.resume_from_crash", true);
 /* 1103: enable WebExtension add-on code to run in a separate process (webext-oop) (FF53+)
  * [1] https://wiki.mozilla.org/WebExtensions/Implementing_APIs_out-of-process ***/
-   user_pref("extensions.webextensions.remote", true);
+   // user_pref("extensions.webextensions.remote", true); // [pref not ready yet (crashes browser with uBlock Origin)]
 // 1209: control TLS versions with min and max
    // 1=min version of TLS 1.0, 2-min version of TLS 1.1, 3=min version of TLS 1.2 etc
    // WARNING: FF/chrome currently allow TLS 1.0 by default, so this is your call.
@@ -213,8 +179,8 @@ user_pref("full-screen-api.enabled", true); // [Fix for full screen video (e.g. 
    // https://wiki.mozilla.org/Platform/GFX/HardwareAcceleration
    // WARNING: This changes text rendering (fonts will look different)
    //          If you watch a lot of video, this will impact performance
-// user_pref("gfx.direct2d.disabled", false); // Need to investigate
-// user_pref("layers.acceleration.disabled", false);
+user_pref("gfx.direct2d.disabled", false); // [Need to investigate]
+user_pref("layers.acceleration.disabled", false);
 // 2614: disable SPDY as it can contain identifiers
    // https://www.torproject.org/projects/torbrowser/design/#identifier-linkability (no. 10)
 user_pref("network.http.spdy.enabled", true); // [needed for http/2 to work]
