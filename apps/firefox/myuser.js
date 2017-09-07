@@ -1,3 +1,4 @@
+
 /******************************************************************************
  * Publicarray's Custom Settings - add the contents of this file              *
  *                                 to the bottom of the user.js               *
@@ -99,7 +100,7 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
 // user_pref("browser.sessionstore.resume_from_crash", true);
 /* 1103: enable WebExtension add-on code to run in a separate process (webext-oop) (FF53+)
  * [1] https://wiki.mozilla.org/WebExtensions/Implementing_APIs_out-of-process ***/
-   // user_pref("extensions.webextensions.remote", true); // [pref not ready yet (crashes browser with uBlock Origin)]
+   // user_pref("extensions.webextensions.remote", false); // pref not ready yet
 // 1209: control TLS versions with min and max
    // 1=min version of TLS 1.0, 2-min version of TLS 1.1, 3=min version of TLS 1.2 etc
    // WARNING: FF/chrome currently allow TLS 1.0 by default, so this is your call.
@@ -119,6 +120,9 @@ user_pref("browser.safebrowsing.provider.mozilla.updateURL", "https://shavar.ser
    // [https://www.bleepingcomputer.com/news/security/firefox-users-fingerprinted-via-cached-intermediate-https-certificates/]
    // demo: [https://fiprinca.0x90.eu/poc/]
    // user_pref("security.nocertdb", true); // (hidden pref)
+/* 1403: disable rendering of SVG OpenType fonts
+ * [1] https://wiki.mozilla.org/SVGOpenTypeFonts - iSECPartnersReport recommends to disable this ***/
+user_pref("gfx.font_rendering.opentype_svg.enabled", true); // [fix Firefox tab close buttons]
 // 1405: disable woff2
 // [use uBlock for more control: https://github.com/gorhill/uBlock/wiki/Per-site-switches#no-remote-fonts]
 user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
@@ -167,20 +171,22 @@ user_pref("media.autoplay.enabled", true); // [Fix for youtube.com]
 // user_pref("dom.serviceWorkers.enabled", false);
 // 2302: disable service workers cache and cache storage
 // user_pref("dom.caches.enabled", false);
+/* 2404: disable JS storing data permanently [SETUP]
+ * [WARNING] This *may* break some add-ons and *will* break some sites [twitter]***/
+user_pref("dom.indexedDB.enabled", false);
 // 2418: disable full-screen API
    // This setting WAS under about:permissions>All Sites>Fullscreen
    // NOTE: about:permissions is no longer available since FF46 but you can still override
    // individual domains: use info icon in urlbar etc or right click on a web page>view page info
    // set to false=block, set to true=ask
 user_pref("full-screen-api.enabled", true); // [Fix for full screen video (e.g. youtube)]
-// 2508: disable graphics fingerprinting (the loss of hardware acceleration is negligible)
-   // These prefs are under Options>Advanced>General>Use hardware acceleration when available
-   // NOTE: changing this option changes BOTH these preferences
-   // https://wiki.mozilla.org/Platform/GFX/HardwareAcceleration
-   // WARNING: This changes text rendering (fonts will look different)
-   //          If you watch a lot of video, this will impact performance
-user_pref("gfx.direct2d.disabled", false); // [Need to investigate]
-user_pref("layers.acceleration.disabled", false);
+/* 2508: disable hardware acceleration to reduce graphics fingerprinting
+ * [SETTING] Options>General>Performance>Custom>Use hardware acceleration when available
+ * [NOTE] Changing this option changes BOTH these preferences
+ * [WARNING] [SETUP] Affects text rendering (fonts will look different) and impacts video performance
+ * [1] https://wiki.mozilla.org/Platform/GFX/HardwareAcceleration ***/
+// user_pref("gfx.direct2d.disabled", false); // [WINDOWS]
+user_pref("layers.acceleration.disabled", false); // [reduce you-tube cpu usage]
 // 2614: disable SPDY as it can contain identifiers
    // https://www.torproject.org/projects/torbrowser/design/#identifier-linkability (no. 10)
 user_pref("network.http.spdy.enabled", true); // [needed for http/2 to work]
@@ -260,7 +266,7 @@ user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has 
    // 0=allow all 1=allow same host 2=disallow all 3=allow 3rd party if it already set a cookie
    // [2 is too restrictive, fix: twitter login. Setting also impacts local storage and indexedDB.
    // The problem was that that selectively allowing cookies for Twitter did not allow indexedDB. Twitter needs indexedDB for login]
-user_pref("network.cookie.cookieBehavior", 1);
+// user_pref("network.cookie.cookieBehavior", 1);
 // 2706: disable Storage API (FF51+) which gives sites' code the ability to find out how much space
    // they can use, how much they are already using, and even control whether or not they need to
    // be alerted before the user agent disposes of site data in order to make room for other things.
@@ -273,6 +279,15 @@ user_pref("network.cookie.cookieBehavior", 1);
    // If you use custom settings for History in Options, this is the setting under
    // Privacy>Accept cookies from sites>Keep until <they expire/I close Firefox>
    // user_pref("network.cookie.lifetimePolicy", 2); // use extension
+
+/* 2699b: set new window sizes to round to hundreds (FF55+) [SETUP]
+ * [NOTE] Width will round to multiples of 200s and height to 100s, to fit your screen.
+ * The override values are a starting point to round from if you want some control
+ * [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1330882
+ * [2] https://metrics.mozilla.com/firefox-hardware-report/ ***/
+   user_pref("privacy.window.maxInnerWidth", 1200); // (hidden pref)
+   user_pref("privacy.window.maxInnerHeight", 700); // (hidden pref)
+
 
 // 3000: PERSONAL SETTINGS //
 // 3002: disable closing browser with last tab
@@ -384,4 +399,3 @@ user_pref("layout.css.servo.enabled", true);
 user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS resolver with dnscrypt
 
 user_pref("ghacks_user.js.parrot", "9999 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
-
