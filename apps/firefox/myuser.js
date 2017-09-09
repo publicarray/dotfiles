@@ -172,8 +172,8 @@ user_pref("media.autoplay.enabled", true); // [Fix for youtube.com]
 // 2302: disable service workers cache and cache storage
 // user_pref("dom.caches.enabled", false);
 /* 2404: disable JS storing data permanently [SETUP]
- * [WARNING] This *may* break some add-ons and *will* break some sites [twitter]***/
-user_pref("dom.indexedDB.enabled", false);
+ * [WARNING] This *may* break some add-ons and *will* break some sites [twitter and web-extensions]***/
+// user_pref("dom.indexedDB.enabled", false);
 // 2418: disable full-screen API
    // This setting WAS under about:permissions>All Sites>Fullscreen
    // NOTE: about:permissions is no longer available since FF46 but you can still override
