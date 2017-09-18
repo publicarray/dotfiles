@@ -1,3 +1,4 @@
+// Add custom shortcuts (or use 'unbound' to remove existing one).
 [
     { "keys": ["f9"], "command": "expand_fqcn" },
     { "keys": ["f10"], "command": "find_use" },
