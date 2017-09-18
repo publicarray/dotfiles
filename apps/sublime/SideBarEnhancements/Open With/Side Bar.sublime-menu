@@ -1,69 +1,106 @@
 [
-	{"id": "side-bar-files-open-with",
-		"children":
-		[
+    {"id": "side-bar-files-open-with",
+        "children":
+        [
+            //Group 1
+            // {
+            //     "caption": "Photoshop",
+            //     "id": "side-bar-files-open-with-photoshop",
 
-			//application 1
-			{
-				"caption": "Photoshop",
-				"id": "side-bar-files-open-with-photoshop",
+            //     "command": "side_bar_files_open_with",
+            //     "args": {
+            //                         "paths": [],
+            //                         "application": "Adobe Photoshop CC 2014.app", // OSX
+            //                         "extensions":"psd|tiff|png|jpg|jpeg|gif|svg|eps|exr|hdr",  //any file with these extensions
+            //                         "args":[]
+            //                     },
+            //     "open_automatically" : false // will close the view/tab and launch the application
+            // },
+            {
+                "caption": "Affinity Photo",
+                "id": "side-bar-files-open-with-affinityphoto",
 
-				"command": "side_bar_files_open_with",
-				"args": {
-									"paths": [],
-									"application": "Adobe Photoshop CC 2014.app", // OSX
-									"extensions":"psd|png|jpg|jpeg",  //any file with these extensions
-									"args":[]
-								},
-				"open_automatically" : false // will close the view/tab and launch the application
-			},
+                "command": "side_bar_files_open_with",
+                "args": {
+                                    "paths": [],
+                                    "application": "Affinity Photo.app", // OSX
+                                    "extensions":"afdesign|afphoto|psd|tiff|png|jpg|jpeg|gif|svg|eps|exr|hdr",  //any file with these extensions
+                                    "args":[]
+                                },
+                "open_automatically" : false // will close the view/tab and launch the application
+            },
+            {
+                "caption": "Affinity Designer",
+                "id": "side-bar-files-open-with-affinitydesigner",
 
-			//separator
-			{"caption":"-"},
+                "command": "side_bar_files_open_with",
+                "args": {
+                                    "paths": [],
+                                    "application": "Affinity Designer.app", // OSX
+                                    "extensions":"afdesign|afphoto|psd|tiff|png|jpg|jpeg|gif|svg|eps|exr|hdr",  //any file with these extensions
+                                    "args":[]
+                                },
+                "open_automatically" : false // will close the view/tab and launch the application
+            },
+            {
+                "caption": "ImageOptim",
+                "id": "side-bar-files-open-with-imageoptim",
 
-			//application 2
-			{
-				"caption": "Atom",
-				"id": "side-bar-files-open-with-atom",
+                "command": "side_bar_files_open_with",
+                "args": {
+                                    "paths": [],
+                                    "application": "ImageOptim.app", // OSX
+                                    "extensions":"svg|gif|png|jpg|jpeg",  //any file with these extensions
+                                    "args":[]
+                                },
+                "open_automatically" : false // will close the view/tab and launch the application
+            },
 
-				"command": "side_bar_files_open_with",
-				"args": {
-									"paths": [],
-									"application": "Atom.app",
-									"extensions":"", //open all even folders
-									"args":[]
-								},
-				"open_automatically" : false // will close the view/tab and launch the application
-			},
-			//application n
-			{
-				"caption": "Chrome",
-				"id": "side-bar-files-open-with-chrome",
+            //separator
+            {"caption":"-"},
 
-				"command": "side_bar_files_open_with",
-				"args": {
-									"paths": [],
-									"application": "Google Chrome.app",
-									"extensions":".*", //any file with extension
-									"args":[]
-						},
-				"open_automatically" : false // will close the view/tab and launch the application
-			},
-			{
-				"caption": "Terminal",
-				"id": "side-bar-files-open-with-terminal",
+            //Group 2
+            // {
+            //     "caption": "Atom",
+            //     "id": "side-bar-files-open-with-atom",
 
-				"command": "side_bar_files_open_with",
-				"args": {
-									"paths": [],
-									"application": "Terminal.app",
-									"extensions":"", //open all even folders
-									"args":[]
-						},
-				"open_automatically" : false // will close the view/tab and launch the application
-			},
+            //     "command": "side_bar_files_open_with",
+            //     "args": {
+            //                         "paths": [],
+            //                         "application": "Atom.app",
+            //                         "extensions":"", //open all even folders
+            //                         "args":[]
+            //                     },
+            //     "open_automatically" : false // will close the view/tab and launch the application
+            // },
+            // {
+            //     "caption": "Chrome",
+            //     "id": "side-bar-files-open-with-chrome",
 
-			{"caption":"-"}
-		]
-	}
+            //     "command": "side_bar_files_open_with",
+            //     "args": {
+            //                         "paths": [],
+            //                         "application": "Google Chrome.app",
+            //                         "extensions":".*", //any file with extension
+            //                         "args":[]
+            //             },
+            //     "open_automatically" : false // will close the view/tab and launch the application
+            // },
+            {
+                "caption": "Terminal",
+                "id": "side-bar-files-open-with-terminal",
+
+                "command": "side_bar_files_open_with",
+                "args": {
+                                    "paths": [],
+                                    "application": "Terminal.app",
+                                    "extensions":"", //open all even folders
+                                    "args":[]
+                        },
+                "open_automatically" : false // will close the view/tab and launch the application
+            },
+
+            {"caption":"-"}
+        ]
+    }
 ]
