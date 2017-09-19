@@ -1,10 +1,10 @@
-# My Recommended extensions
+# [My Recommended extensions](https://addons.mozilla.org/en-US/firefox/collections/publicarray/privacy-kit-57/)
 
 [uBlock Origin](https://github.com/gorhill/uBlock) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
 
 [Decentraleyes](https://decentraleyes.org/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/)
 
-[1password](https://1password.com/downloads/) [Get the Extension](https://agilebits.com/onepassword/extensions) / [LastPass](https://lastpass.com/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/) or any other password manager
+[1password](https://1password.com/downloads/) - [Get the Extension](https://agilebits.com/onepassword/extensions) / [LastPass](https://lastpass.com/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/lastpass-password-manager/) or any other password manager
 
 [HTTPS Everywhere](https://www.eff.org/https-everywhere) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/)
 
@@ -28,7 +28,7 @@
 
 <!-- [Violentmonkey](https://violentmonkey.github.io/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) or [Tampermonkey][https://tampermonkey.net/] - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) -->
 
-<!-- and install https://greasyfork.org/en/scripts/735-anti-adblock-killer-reek  andd https://github.com/ghacksuserjs/ghacks-user.js/wiki/3.1-User-Scripts-->
+<!-- and install https://greasyfork.org/en/scripts/735-anti-adblock-killer-reek  and https://github.com/ghacksuserjs/ghacks-user.js/wiki/3.1-User-Scripts-->
 
 <!-- [SSleuth](https://github.com/sibiantony/ssleuth/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/ssleuth/) -->
 
