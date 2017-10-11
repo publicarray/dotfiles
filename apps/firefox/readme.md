@@ -12,7 +12,7 @@
 
 [Smart Referer](https://github.com/meh/smart-referer) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/smart-referer/)
 
-[Canvas Defender](https://multiloginapp.com/canvasdefender-browser-extension/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/no-canvas-fingerprinting/) - [Test on browserleaks.com](http://www.browserleaks.com/canvas)
+[CanvasBlocker](https://github.com/kkapsner/CanvasBlocker/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/) - [Test on browserleaks.com](http://www.browserleaks.com/canvas)
 
 [Neat URL](https://github.com/Smile4ever/firefoxaddons) - [Get the Extension](https://addons.mozilla.org/firefox/addon/neat-url/)
 
@@ -26,9 +26,8 @@
 
 [Request Control](https://github.com/tumpio/requestcontrol) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/requestcontrol/) - [Rules](https://github.com/ghacksuserjs/ghacks-user.js/wiki/3.5-Request-Control)
 
-<!-- [Violentmonkey](https://violentmonkey.github.io/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) or [Tampermonkey][https://tampermonkey.net/] - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) -->
-
-<!-- and install https://greasyfork.org/en/scripts/735-anti-adblock-killer-reek  and https://github.com/ghacksuserjs/ghacks-user.js/wiki/3.1-User-Scripts-->
+[Violentmonkey](https://violentmonkey.github.io/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/violentmonkey/) or [Tampermonkey](https://tampermonkey.net/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) 
+Some Privacy related scripts: https://github.com/ghacksuserjs/ghacks-user.js/wiki/3.1-User-Scripts. For those that use the AAK-Cont list in uBlockOrigin I recommend installing the companion user-script: https://xuhaiyang1234.gitlab.io/AAK-Cont/
 
 <!-- [SSleuth](https://github.com/sibiantony/ssleuth/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/ssleuth/) -->
 
