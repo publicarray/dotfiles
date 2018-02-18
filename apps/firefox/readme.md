@@ -32,3 +32,23 @@ Some Privacy related scripts: https://github.com/ghacksuserjs/ghacks-user.js/wik
 <!-- [SSleuth](https://github.com/sibiantony/ssleuth/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/ssleuth/) -->
 
 ## [Also see ghacks-user.js/wiki/Appendix-B:-Extensions](https://github.com/ghacksuserjs/ghacks-user.js/wiki/Appendix-B:-Extensions)
+
+# User.js
+
+Install/update user.js with wget on MacOS
+
+```sh
+cd (find ~/Library/Application\ Support/Firefox/Profiles/ -maxdepth 1 -type d -name '*.default')
+wget https://raw.githubusercontent.com/ghacksuserjs/ghacks-user.js/master/user.js
+wget https://raw.githubusercontent.com/publicarray/dotfiles/master/apps/firefox/myuser.js -O user-overrides.js
+cat user-overrides.js >> user.js
+```
+
+Update user.js with git on MacOS
+
+```sh
+cd (find ~/Library/Application\ Support/Firefox/Profiles/ -maxdepth 1 -type d -name '*.default')
+git fetch
+git checkout origin/master -- user.js
+cat user-overrides.js >> user.js
+```

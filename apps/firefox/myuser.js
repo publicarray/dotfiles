@@ -275,7 +275,7 @@ user_pref("devtools.debugger.force-local",          true);
 // http://kb.mozillazine.org/Browser.startup.page
 user_pref("browser.startup.page", 0);
 // [set home page]
-user_pref("browser.startup.homepage", "about:newtab");
+user_pref("browser.startup.homepage", "about:blank");
 // [I don't see any harm because it is a blank page anyway]
 user_pref("browser.newtab.preload", true);
 
