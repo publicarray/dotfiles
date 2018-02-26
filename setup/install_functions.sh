@@ -357,7 +357,7 @@ function setup_DNSCrypt() {
     require_brew
     run_safe brew install dnscrypt-proxy
     info "copy configuration"
-    run_safe cp -fv "$DOTFILES/apps/dnscrypt-proxy/dnscrypt-proxy.conf" /usr/local/etc/dnscrypt-proxy.conf
+    run_safe cp -fv "$DOTFILES/apps/dnscrypt-proxy/dnscrypt-proxy.toml" /usr/local/etc/dnscrypt-proxy.toml
     info "Creating the LaunchDaemon so that the DNSCrypt-proxy service will start on every boot"
     sudo brew services start dnscrypt-proxy
     if ask "Do you want to install DNSCrypt with dnsmasq?" Y; then
