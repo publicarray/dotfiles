@@ -25,6 +25,7 @@ brew 'php70-mcrypt'
 brew 'composer'
 brew 'ruby'
 brew 'mas' # Mac App Store cl # https://github.com/argon/mas
+brew 'ncdu' # list files/folders by file size (find big files)
 
 # optional:
 # brew homebrew/dupes/tidy # installs htmltidy
