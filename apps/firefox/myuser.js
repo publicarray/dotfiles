@@ -342,4 +342,14 @@ user_pref("layout.css.servo.enabled", true);
 
 user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS resolver with dnscrypt
 
+// New Open Decoder: AV1
+//  by Alliance for Open Media (Amazon, Cisco, Google, Intel, Microsoft, Mozilla, Netflix)
+// https://en.wikipedia.org/wiki/AV1
+// https://bitmovin.com/av1/
+// Demo: https://demo.bitmovin.com/public/firefox/av1/
+// Demo2: http://video.1ko.ch/codec-comparison/videos/av1-2018-06_550.webm
+// http://video.1ko.ch/codec-comparison/?v2018
+// https://people.xiph.org/~tdaede/av1stilldemo/
+user_pref("media.av1.enabled", true);
+
 user_pref("ghacks_user.js.parrot", "9090909 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
