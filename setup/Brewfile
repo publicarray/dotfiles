@@ -6,6 +6,7 @@ tap 'homebrew/versions'
 tap 'homebrew/homebrew-php'
 
 brew 'htop'
+brew 'prettyping'
 brew 'wget'
 brew 'curl', args: ['with-libssh2', 'with-nghttp2']
 brew 'iproute2mac' # add new ip command
@@ -17,11 +18,13 @@ brew 'git-ftp'
 brew 'nmap'
 brew 'p7zip'
 brew 'coreutils'
+brew 'ripgrep'
+brew 'axa'
 brew 'ddrescue' # http://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
 brew 'ffmpeg'
 brew 'youtube-dl'
-brew 'php70'
-brew 'php70-mcrypt'
+brew 'php'
+# brew 'php70-mcrypt'
 brew 'composer'
 brew 'ruby'
 brew 'mas' # Mac App Store cl # https://github.com/argon/mas
