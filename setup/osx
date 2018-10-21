@@ -120,6 +120,13 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 #sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
 #sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
 
+# macOS Mojave (10.14) Font rendering on non-retena Macs (Subpixel anti-alias was removed)
+#
+# Thicken text in some Apps
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+# Disable font smoothing (can be set from 0 to 3)
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 0
+
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
