@@ -56,6 +56,8 @@ Than you should open your terminal and execute `which shellcheck`. Than copy the
 
 [https://github.com/kevinSuttle/OSXDefaults](https://github.com/kevinSuttle/OSXDefaults)
 
+[https://github.com/mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos) macOS Defaults
+
 [https://github.com/paulmillr/dotfiles](https://github.com/paulmillr/dotfiles)
 
 [https://bitbucket.org/rjchatfield/dotfiles](https://bitbucket.org/rjchatfield/dotfiles)
