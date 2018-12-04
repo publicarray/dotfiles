@@ -347,9 +347,14 @@ user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS
 // https://en.wikipedia.org/wiki/AV1
 // https://bitmovin.com/av1/
 // Demo: https://demo.bitmovin.com/public/firefox/av1/
+// FB demo: https://www.facebook.com/330716120785217/videos/330723190784510/
 // Demo2: http://video.1ko.ch/codec-comparison/videos/av1-2018-06_550.webm
 // http://video.1ko.ch/codec-comparison/?v2018
 // https://people.xiph.org/~tdaede/av1stilldemo/
 user_pref("media.av1.enabled", true);
+
+// security keys, 2fa keys, google advanced protection program, github, twitter
+// https://twofactorauth.org/
+user_pref("security.webauth.u2f", true);
 
 user_pref("ghacks_user.js.parrot", "9090909 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
