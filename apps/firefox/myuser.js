@@ -1,4 +1,5 @@
 
+
 /******************************************************************************
  * Publicarray's Custom Settings - add the contents of this file              *
  *                                 to the bottom of the user.js               *
@@ -20,15 +21,7 @@ user_pref("services.sync.engine.tabs", false);
  * ghacks-user.js - Modifications                                             *
  * https://github.com/ghacksuserjs/ghacks-user.js                             *
  ******************************************************************************/
-/* 0001: start Firefox in PB (Private Browsing) mode
- * [SETTING] Options>Privacy>History>Custom Settings>Always use private browsing mode
- * [NOTE] In this mode *all* windows are "private windows" and the PB mode icon is not displayed
- * [NOTE] The P in PB mode is misleading: it means no "persistent" local storage of history,
- * caches, searches or cookies (which you can achieve in normal mode). In fact, it limits or
- * removes the ability to control these, and you need to quit Firefox to clear them. PB is best
- * used as a one off window (File>New Private Window) to provide a temporary self-contained
- * new instance. Closing all Private Windows clears all traces. Repeat as required.
- * [1] https://wiki.mozilla.org/Private_Browsing ***/
+// 0001: start Firefox in PB (Private Browsing) mode
    // user_pref("browser.privatebrowsing.autostart", true);
 
 // 0301: browser auto update
@@ -43,6 +36,9 @@ user_pref("extensions.update.enabled", true);
 // 0305:
 user_pref("extensions.update.autoUpdateDefault", true);
 
+// [Remember Cookies and use a whitelist]!!
+user_pref("privacy.clearOnShutdown.cookies", true);
+
 // 0380:
 // user_pref("services.sync.enabled", true); // (hidden pref)
 
@@ -53,15 +49,6 @@ user_pref("extensions.update.autoUpdateDefault", true);
 user_pref("dom.event.clipboardevents.enabled", true);
 
 // 0410: disable safe browsing
-   // I have redesigned this sub-section to differentiate between "real-time"/"user initiated"
-   // data being sent to Google from all other settings such as using local blocklists/whitelists
-   // and updating those lists. There SHOULD be NO privacy issues here. Even *IF* an URL was sent
-   // to Google, they swear it is anonymized and only used to flag malicious sites/activity. Firefox
-   // also takes measures such as striping out identifying parameters and storing safe browsing
-   // cookies in a separate jar. (#Turn on browser.safebrowsing.debug to monitor this activity)
-   // To use safebrowsing but not "leak" binary download info to Google, only use 0410e and 0410f
-   // #Required reading: https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/
-   // https://wiki.mozilla.org/Security/Safe_Browsing
 // 0410a: disable "Block dangerous and deceptive content" This setting is under Options>Security
    // in FF47 and under this is was titled "Block reported web forgeries"
    // this covers deceptive sites such as phishing and social engineering
@@ -107,6 +94,7 @@ user_pref("browser.safebrowsing.downloads.enabled", true);
    // WARNING: FF/chrome currently allow TLS 1.0 by default, so this is your call.
    // http://kb.mozillazine.org/Security.tls.version.*
    // https://www.ssl.com/how-to/turn-off-ssl-3-0-and-tls-1-0-in-your-browser/
+   // [Disable TLS 1.0 but support TLS 1.1 (for now), TLS 1.2 and TLS 1.3]
    user_pref("security.tls.version.min", 2);
    // user_pref("security.tls.version.fallback-limit", 3); // [default 3]
    // user_pref("security.tls.version.max", 4); // allow up to and including TLS 1.3 // [default 4]
@@ -151,11 +139,10 @@ user_pref("gfx.downloadable_fonts.woff2.enabled", true); // [Why not?]
    // NOTE: you can still over-ride individual sites eg youtube via site permissions
    // http://www.ghacks.net/2013/07/09/how-to-make-sure-that-a-firefox-plugin-never-activates-again/
    user_pref("plugin.state.flash", 0);
-// 1807: disable auto-play of HTML5 media
+   // /* 2030: disable auto-play of HTML5 media [FF63+]
    // WARNING: This may break youtube video playback (and probably other sites). If you block
-   // autoplay but occasionally would like a toggle button, try the following add-on
-   // https://addons.mozilla.org/en-US/firefox/addon/autoplay-toggle
-user_pref("media.autoplay.enabled", true); // [Fix for youtube.com]
+   // * 0=Allowed (default), 1=Blocked, 2=Prompt
+// user_pref("media.autoplay.default", 2); // [Fix for youtube.com]
 // 2204: disable links opening in a new window
    // https://trac.torproject.org/projects/tor/ticket/9881
    // test url: https://people.torproject.org/~gk/misc/entire_desktop.html
@@ -187,22 +174,17 @@ user_pref("full-screen-api.enabled", true); // [Fix for full screen video (e.g. 
  * [WARNING] [SETUP] Affects text rendering (fonts will look different) and impacts video performance
  * [1] https://wiki.mozilla.org/Platform/GFX/HardwareAcceleration ***/
 // user_pref("gfx.direct2d.disabled", false); // [WINDOWS]
-user_pref("layers.acceleration.disabled", false); // [reduce you-tube cpu usage]
+user_pref("layers.acceleration.disabled", false); // [reduce YouTube cpu usage]
 // 2614: disable SPDY as it can contain identifiers
    // https://www.torproject.org/projects/torbrowser/design/#identifier-linkability (no. 10)
 user_pref("network.http.spdy.enabled", true); // [needed for http/2 to work]
-// user_pref("network.http.spdy.enabled.deps", false);
+user_pref("network.http.spdy.enabled.deps", false);
 // 2615: disable http2 for now as well
 user_pref("network.http.spdy.enabled.http2", true); // [sorry, but I <3 http/2]
-// 2617: disable pdf.js as an option to preview PDFs within Firefox
-   // see mime-types under Options>Applications) - EXPLOIT risk
-   // Enabling this (set to true) will change your option most likely to "Ask" or "Open with
-   // some external pdf reader". This does NOT necessarily prevent pdf.js being used via
-   // other means, it only removes the option. I think this should be left at default (false).
-   // 1. It won't stop JS bypassing it. 2. Depending on external pdf viewers there is just as
-   // much risk or more (acrobat). 3. Mozilla are very quick to patch these sorts of exploits,
-   // they treat them as severe/critical and 4. for convenience
-user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has less of chance of infecting the machine than the preview.app]
+user_pref("security.tls.enable_0rtt_data", true); // [only on GET requests]
+
+// 2617: pdf.js
+user_pref("pdfjs.disabled", false); // [enable pdf.js it's a pretty good reader]
 
 // 2701: disable cookies on all sites [breaks many websites, use cookie auto-delete extension]
    // you can set exceptions under site permissions or use an extension (eg Cookie Controller)
@@ -210,7 +192,7 @@ user_pref("pdfjs.disabled", false); // [I'm 50:50 with this. I think pdf.js has 
    // 0=allow all 1=allow same host 2=disallow all 3=allow 3rd party if it already set a cookie
    // [2 is too restrictive, fix: twitter login. Setting also impacts local storage and indexedDB.
    // The problem was that that selectively allowing cookies for Twitter did not allow indexedDB. Twitter needs indexedDB for login]
-user_pref("network.cookie.cookieBehavior", 1);
+// user_pref("network.cookie.cookieBehavior", 1);
 // 2706: disable Storage API (FF51+) which gives sites' code the ability to find out how much space
    // they can use, how much they are already using, and even control whether or not they need to
    // be alerted before the user agent disposes of site data in order to make room for other things.
@@ -245,6 +227,7 @@ user_pref("layout.spellcheckDefault", 2); // [the more spell checking the better
 /* 3020: FYI: urlbar click behaviour (with defaults) ***/
 user_pref("browser.urlbar.clickSelectsAll", false);
 user_pref("browser.urlbar.doubleClickSelectsAll", false);
+
 /******************************************************************************
  * user.js - Additions                                                        *
  * https://github.com/pyllyukko/user.js                                       *
@@ -263,9 +246,6 @@ user_pref("devtools.debugger.force-local",          true);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=855326 [personal preference]
 // user_pref("security.csp.experimentalEnabled",           true);
 
-// CIPHERS
-// [most recent version of FF will have reasonable secure ciphers by default]
-
 /******************************************************************************
  * My own preferences and overrides                                           *
  ******************************************************************************/
@@ -273,11 +253,12 @@ user_pref("devtools.debugger.force-local",          true);
 // ** [Startup] ** //
 // Start with 0 = blank page, 1 = home page, 3 = last session
 // http://kb.mozillazine.org/Browser.startup.page
-user_pref("browser.startup.page", 0);
+user_pref("browser.startup.page", 1); // [dark theme mode]
 // [set home page]
-user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.startup.homepage", "about:newtab"); //[ ]dark theme mode]
 // [I don't see any harm because it is a blank page anyway]
 user_pref("browser.newtab.preload", true);
+user_pref("browser.newtabpage.enabled", true); // [dark theme mode]
 
 // [disable annoying notifications]
 user_pref("browser.feeds.showFirstRunUI", false);
@@ -296,6 +277,20 @@ user_pref("dom.disable_window_open_feature.directories", true);
 
 // [use global zoom]
 user_pref("browser.zoom.siteSpecific", false);
+
+// [unbreak websites with an already broken certificate revocation system when OCSP servers are down
+// OCSP server breakage is still way to common:
+// An error occurred during a connection to ...
+// www.ssllabs.com / bugzilla.mozilla.org / github.com / twitter.com / www.facebook.com
+// .. The OCSP server experienced an internal error. Error code: SEC_ERROR_OCSP_SERVER_ERROR
+// server operators should staple the OSCP response and not rely on the OCSP servers.
+// Ideally the operators also add must staple to their certificate
+// https://scotthelme.co.uk/revocation-is-broken/
+// https://scotthelme.co.uk/ocsp-stapling-speeding-up-ssl/
+// https://scotthelme.co.uk/ocsp-must-staple/
+// https://scotthelme.co.uk/ocsp-expect-staple/
+// ]
+user_pref("security.OCSP.require", false);
 
 // ** [Browser] ** //
 // Downloading to Downloads folder
@@ -323,10 +318,6 @@ user_pref("pdfjs.enableWebGL", true); // [lower CPU usage]
 // [js contextmenu events]
 // user_pref("dom.event.contextmenu.enabled", false);
 
-// [GeoLocation (google maps) - risk of physical security]
-// http://www.mozilla.org/en-US/firefox/geolocation/
-// user_pref("geo.enabled", true);
-
 // [auto-complete bookmarks (warning shoulder surfers can read them too)]
 user_pref("browser.urlbar.suggest.bookmark", true); // suggest bookmarks
 // http://kb.mozillazine.org/Browser.urlbar.default.behavior
@@ -340,8 +331,58 @@ user_pref("keyword.enabled", true); // enable search in URLbar
 user_pref("network.standard-url.enable-rust", true);
 user_pref("layout.css.servo.enabled", true);
 
+// perf
 user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS resolver with dnscrypt
 
+//
+// I'm on an IPv4 only network (ISP is not ready yet)
+user_pref("network.dns.disableIPv6", true);
+// user_pref("network.http.fast-fallback-to-IPv4", true);
+
+// DNS Trusted Recursive Resolver
+// 0 - off, 1 - race, 2 TRR first, 3 TRR only, 4 shadow
+// user_pref("network.trr.mode", 3);
+// DNS-over-HTTP service to use, must be HTTPS://
+user_pref("network.trr.uri", "https://35.201.20.179/dns-query");
+// credentials to pass to DOH end-point
+// user_pref("network.trr.credentials", "");
+// Wait for captive portal confirmation before enabling TRR
+// user_pref("network.trr.wait-for-portal", true);
+// Allow RFC1918 address in responses?
+// user_pref("network.trr.allow-rfc1918", false);
+// Use GET (rather than POST)
+// user_pref("network.trr.useGET", false);
+// Before TRR is widely used the NS record for this host is fetched
+// from the DOH end point to ensure proper configuration
+// user_pref("network.trr.confirmationNS", "example.com");
+// hardcode the resolution of the hostname in network.trr.uri instead of
+// relying on the system resolver to do it for you
+// user_pref("network.trr.bootstrapAddress", "45.76.113.31")
+// TRR blacklist entry expire time (in seconds). Default is 72 hours.
+// user_pref("network.trr.blacklist-duration", 259200);
+// Single TRR request timeout, in milliseconds
+// user_pref("network.trr.request-timeout", 3000);
+// Allow AAAA entries to be used "early", before the A results are in
+// user_pref("network.trr.early-AAAA", false);
+
+//user_pref("privacy.window.maxInnerWidth", 1400);
+//user_pref("privacy.window.maxInnerHeight", 800);
+// user_pref("browser.urlbar.decodeURLsOnCopy", true);
+user_pref("browser.bookmarks.max_backups", 3);
+user_pref("network.manage-offline-status", false);
+user_pref("extensions.webextensions.restrictedDomains", ""); // allow extensions on AMO etc
+user_pref("full-screen-api.warning.delay", 0);
+user_pref("full-screen-api.warning.timeout", 0);
+user_pref("findbar.highlightAll", true);
+// [GeoLocation (google maps) - risk of physical security]
+// http://www.mozilla.org/en-US/firefox/geolocation/
+user_pref("geo.enabled", false);
+// user_pref("security.ssl.require_safe_negotiation", true); // 1201;
+user_pref("browser.cache.offline.enable", false);
+// [It's new and shiny, for now let's enable it]
+user_pref("dom.forms.datetime", true);
+// https://github.com/ghacksuserjs/ghacks-user.js/issues/599
+user_pref("javascript.options.wasm", true);
 // New Open Decoder: AV1
 //  by Alliance for Open Media (Amazon, Cisco, Google, Intel, Microsoft, Mozilla, Netflix)
 // https://en.wikipedia.org/wiki/AV1
@@ -351,10 +392,8 @@ user_pref("network.dns.disablePrefetch", false); // I run my own non logging DNS
 // Demo2: http://video.1ko.ch/codec-comparison/videos/av1-2018-06_550.webm
 // http://video.1ko.ch/codec-comparison/?v2018
 // https://people.xiph.org/~tdaede/av1stilldemo/
-user_pref("media.av1.enabled", true);
-
+user_pref("media.av1.enabled", true); // [testing]
 // security keys, 2fa keys, google advanced protection program, github, twitter
 // https://twofactorauth.org/
 user_pref("security.webauth.u2f", true);
-
 user_pref("ghacks_user.js.parrot", "9090909 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
