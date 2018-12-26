@@ -37,7 +37,7 @@ user_pref("extensions.update.enabled", true);
 user_pref("extensions.update.autoUpdateDefault", true);
 
 // [Remember Cookies and use a whitelist]!!
-user_pref("privacy.clearOnShutdown.cookies", true);
+user_pref("privacy.clearOnShutdown.cookies", false);
 
 // 0380:
 // user_pref("services.sync.enabled", true); // (hidden pref)
