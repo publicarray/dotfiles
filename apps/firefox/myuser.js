@@ -343,7 +343,7 @@ user_pref("network.dns.disableIPv6", true);
 // 0 - off, 1 - race, 2 TRR first, 3 TRR only, 4 shadow
 // user_pref("network.trr.mode", 3);
 // DNS-over-HTTP service to use, must be HTTPS://
-user_pref("network.trr.uri", "https://35.201.20.179/dns-query");
+user_pref("network.trr.uri", "https://doh.seby.io:8443/dns-query");
 // credentials to pass to DOH end-point
 // user_pref("network.trr.credentials", "");
 // Wait for captive portal confirmation before enabling TRR
@@ -357,7 +357,7 @@ user_pref("network.trr.uri", "https://35.201.20.179/dns-query");
 // user_pref("network.trr.confirmationNS", "example.com");
 // hardcode the resolution of the hostname in network.trr.uri instead of
 // relying on the system resolver to do it for you
-// user_pref("network.trr.bootstrapAddress", "45.76.113.31")
+user_pref("network.trr.bootstrapAddress", "45.76.113.31")
 // TRR blacklist entry expire time (in seconds). Default is 72 hours.
 // user_pref("network.trr.blacklist-duration", 259200);
 // Single TRR request timeout, in milliseconds
