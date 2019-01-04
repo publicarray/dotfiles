@@ -8,15 +8,19 @@
 
 [HTTPS Everywhere](https://www.eff.org/https-everywhere) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/)
 
-[Cookie-AutoDelete](https://github.com/Cookie-AutoDelete/Cookie-AutoDelete) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)
+~~[Cookie-AutoDelete](https://github.com/Cookie-AutoDelete/Cookie-AutoDelete) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)~~ I've since used a whitelist approach, but I'll leave this here.
 
 [Smart Referer](https://github.com/meh/smart-referer) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/smart-referer/)
 
-[CanvasBlocker](https://github.com/kkapsner/CanvasBlocker/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/canvasblocker/) - [Test on browserleaks.com](http://www.browserleaks.com/canvas)
+[Temporary Containers](https://github.com/stoically/temporary-containers) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/temporary-containers/)
 
 [Neat URL](https://github.com/Smile4ever/firefoxaddons) - [Get the Extension](https://addons.mozilla.org/firefox/addon/neat-url/)
 
 [Don't touch my tabs! (rel=noopener)](https://mathiasbynens.github.io/rel-noopener/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/dont-touch-my-tabs/)
+
+And for those that still use Facebook:
+
+[Facebook Container](https://github.com/mozilla/contain-facebook) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/facebook-container/)
 
 ## Additional Extensions
 
@@ -33,7 +37,7 @@ Some Privacy related scripts: https://github.com/ghacksuserjs/ghacks-user.js/wik
 
 ## [Also see ghacks-user.js/wiki/Appendix-B:-Extensions](https://github.com/ghacksuserjs/ghacks-user.js/wiki/Appendix-B:-Extensions)
 
-# User.js
+# User.js (Out-of-date instructions)
 
 Install/update user.js with wget on MacOS
 
