@@ -186,6 +186,28 @@ user_pref("security.tls.enable_0rtt_data", true); // [only on GET requests]
 // 2617: pdf.js
 user_pref("pdfjs.disabled", false); // [enable pdf.js it's a pretty good reader]
 
+// Install Temporary container
+// enable Delete history - Advanced -> Delete history -> check box
+// enable Automatically create "Deletes History Temporary Containers"
+//
+// use container tabs (private/work etc for online accounts)
+//
+user_pref("privacy.sanitize.sanitizeOnShutdown", true);
+/* 2803: set what history items to clear on shutdown
+ * [NOTE] If 'history' is true, downloads will also be cleared regardless of the value
+ * but if 'history' is false, downloads can still be cleared independently
+ * However, this may not always be the case. The interface combines and syncs these
+ * prefs when set from there, and the sanitize code may change at any time
+ * [SETTING] Privacy & Security>History>Custom Settings>Clear history when Firefox closes>Settings ***/
+user_pref("privacy.clearOnShutdown.cache", false);
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.downloads", true); // see note above
+user_pref("privacy.clearOnShutdown.formdata", true); // Form & Search History
+user_pref("privacy.clearOnShutdown.history", true); // Browsing & Download History
+user_pref("privacy.clearOnShutdown.offlineApps", true); // Offline Website Data
+user_pref("privacy.clearOnShutdown.sessions", false); // Active Logins
+user_pref("privacy.clearOnShutdown.siteSettings", false); // Site Preferences
+
 // 2701: disable cookies on all sites [breaks many websites, use cookie auto-delete extension]
    // you can set exceptions under site permissions or use an extension (eg Cookie Controller)
    // http://kb.mozillazine.org/Network.cookie.cookieBehavior
