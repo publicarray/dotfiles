@@ -13,8 +13,13 @@
 [Smart Referer](https://github.com/meh/smart-referer) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/smart-referer/)
 
 [Temporary Containers](https://github.com/stoically/temporary-containers) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/temporary-containers/)
+ * Delete history:  Advanced -> Delete history -> Tick Check box
+ * Enable Automatically create "Deletes History Temporary Containers"
+ * Use Container Tabs (Persoonal, Work, Shopping etc.) for logging in to your accounts.
+ * Optional: [Containerise](https://github.com/kintesh/containerise) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/containerise/)
 
-[Neat URL](https://github.com/Smile4ever/firefoxaddons) - [Get the Extension](https://addons.mozilla.org/firefox/addon/neat-url/)
+[ClearUrls](https://gitlab.com/KevinRoebert/ClearUrls) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/clearurls/) or [Neat URL](https://github.com/Smile4ever/firefoxaddons) - [Get the Extension](https://addons.mozilla.org/firefox/addon/neat-url/)
+
 
 [Don't touch my tabs! (rel=noopener)](https://mathiasbynens.github.io/rel-noopener/) - [Get the Extension](https://addons.mozilla.org/en-US/firefox/addon/dont-touch-my-tabs/)
 
