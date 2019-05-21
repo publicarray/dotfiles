@@ -367,6 +367,7 @@ user_pref("network.dns.disableIPv6", true);
 // user_pref("network.trr.mode", 3);
 // DNS-over-HTTP service to use, must be HTTPS://
 user_pref("network.trr.uri", "https://doh.seby.io:8443/dns-query");
+user_pref("network.trr.custom_uri", "https://doh.seby.io:8443/dns-query");
 // credentials to pass to DOH end-point
 // user_pref("network.trr.credentials", "");
 // Wait for captive portal confirmation before enabling TRR
