@@ -1,108 +1,128 @@
-cask_args appdir: '/Applications'
-tap 'homebrew/dupes'
-# tap 'caskroom/fonts'
-tap 'homebrew/versions'
-# tap 'homebrew/completions'
-tap 'homebrew/homebrew-php'
-
-brew 'htop'
-brew 'prettyping'
-brew 'wget'
-brew 'curl', args: ['with-libssh2', 'with-nghttp2']
-brew 'iproute2mac' # add new ip command
-brew 'ssh-copy-id'
-brew 'git'
-brew 'hub' # github -> https://hub.github.com/
-brew 'bfg'
-brew 'git-ftp'
-brew 'nmap'
-brew 'p7zip'
-brew 'coreutils'
-brew 'ripgrep'
-brew 'axa'
-brew 'ddrescue' # http://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html
-brew 'ffmpeg'
-brew 'youtube-dl'
-brew 'php'
-# brew 'php70-mcrypt'
-brew 'composer'
-brew 'ruby'
-brew 'mas' # Mac App Store cl # https://github.com/argon/mas
-brew 'ncdu' # list files/folders by file size (find big files)
-
-# optional:
-# brew homebrew/dupes/tidy # installs htmltidy
-# brew python
-# brew heroku-toolbelt
-# brew aws-elasticbeanstalk
-# brew php56-pdo-pgsql
-# brew sqlite
-# brew libdvdcss
-# brew postgresql
-# brew awscli
-# brew cmake
-# brew hashcat
-
-# Brew Cask
-## Core
-# cask 'google-chrome'
-# cask 'firefox'
-## Quick look plugins
-# cask 'betterzipql'
-# cask 'qlcolorcode'
-# cask 'qlimagesize'
-# cask 'qlmarkdown'
-# cask 'qlprettypatch'
-# cask 'quicklook-csv'
-# cask 'quicklook-json'
-# cask 'suspicious-package'
-# cask 'webpquicklook'
-## Music/Video
-# cask 'spotify'
-# cask 'adapter'
-# cask 'handbrake'
-# cask 'burn'
-## Networking/InfoSec
-# cask 'owasp-zap'
-# cask 'wireshark'
-## Dev
-# cask 'java'
-# cask 'virtualbox'
-# cask 'imageoptim'
-# cask 'sublime-text3' # free trial / needs licence
-# cask 'atom'
-# cask 'github-desktop'
-# cask 'sourcetree'
-## ftp clients
-# cask 'filezilla'
-# cask 'cyberduck'
-## Utility
-# cask 'flux' # warm your display colour at night
-# cask 'appcleaner'
-# cask 'spectacle' # resize apps to maximise desktop space
-# cask 'macpaw-gemini' # needs licence
-# cask 'blockblock' # security app - warns about demons or agents that install themselves permanently
-# cask 'gpgtools' # encrypt everything
-# cask 'onyx' # toolbox for mac
-## Games
-# cask 'steam'
-# cask 'minecraft' # needs licence
-
-# MacAPPStore
-# mas 'Keynote', id: 409183694
-# mas 'GarageBand', id: 682658836
-# mas 'The Unarchiver', id: 425424353
-# mas 'Caffeine', id: 411246225
-# mas 'Pixelmator', id: 407963104 # Paid app
-# mas '1Password', id: 443987910 # Paid app
-# mas 'Numbers', id: 409203825
-# mas 'Xcode', id: 497799835
-# mas 'Affinity Photo', id: 824183456 # Paid app
-# mas 'Pages', id: 409201541
-# mas 'iMovie', id: 408981434
-# mas 'Airmail 2', id: 918858936 # Paid app
-# mas 'Slack', id: 803453959
-# mas 'Monit', id: 1014850245
-# mas 'Parcel', id: 639968404
-# mas 'Dash', id: 449589707 # Paid app
-# mas 'Sip', id: 507257563
+tap "adoptopenjdk/openjdk"
+tap "colindean/fonts-nonfree"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/command-not-found"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "rigellute/tap"
+brew "ack"
+brew "archey"
+brew "aria2"
+brew "bat"
+brew "bettercap"
+brew "python"
+brew "cdrtools"
+brew "gnutls"
+brew "ffmpeg"
+brew "cmus"
+brew "composer"
+brew "coreutils"
+brew "ddrescue"
+brew "dnscrypt-proxy", restart_service: true
+brew "dnsmasq"
+brew "dust"
+brew "dvd+rw-tools"
+brew "dvdauthor"
+brew "dvdbackup"
+brew "exa"
+brew "fd"
+brew "fish"
+brew "fortune"
+brew "git"
+brew "git-extras"
+brew "gnu-units"
+brew "go"
+brew "grc"
+brew "grep"
+brew "guetzli"
+brew "hashcat"
+brew "hexyl"
+brew "htop"
+brew "httpie"
+brew "hub"
+brew "hyperfine"
+brew "ipcalc"
+brew "iproute2mac"
+brew "jq"
+brew "knot-resolver"
+brew "ldns"
+brew "make"
+brew "mariadb"
+brew "mas"
+brew "mono"
+brew "mtr"
+brew "nano"
+brew "ncdu"
+brew "nginx"
+brew "ngrep"
+brew "nikto"
+brew "nmap"
+brew "php"
+brew "php-cs-fixer"
+brew "prettyping"
+brew "procs"
+brew "proselint"
+brew "pwgen"
+brew "ripgrep"
+brew "ruby"
+brew "rustup-init"
+brew "shellcheck"
+brew "shfmt"
+brew "spoof-mac"
+brew "starship"
+brew "streamlink"
+brew "terminal-notifier"
+brew "thefuck"
+brew "tldr"
+brew "tokei"
+brew "topgrade"
+brew "tree"
+brew "unar"
+brew "watchexec"
+brew "wget"
+brew "wp-cli"
+brew "yadm"
+brew "yamllint"
+brew "yarn"
+brew "youtube-dl"
+brew "z"
+brew "zsh"
+brew "zsh-completions"
+cask "aerial"
+cask "alacritty"
+cask "docker"
+cask "font-fira-code"
+cask "font-fira-mono"
+cask "font-fira-sans"
+cask "gpg-suite"
+cask "lunchy"
+cask "makemkv"
+cask "mounty"
+cask "podman"
+cask "signal"
+cask "syncthing"
+cask "transmission"
+cask "visual-studio-code"
+cask "adoptopenjdk/openjdk/adoptopenjdk8-jre"
+cask "colindean/fonts-nonfree/font-microsoft-office"
+mas "1Blocker", id: 1107421413
+mas "Color Note", id: 1099028591
+mas "EtreCheck", id: 1423715984
+mas "Final Cut Pro", id: 424389933
+mas "GarageBand", id: 682658836
+mas "Gemini 2", id: 1090488118
+mas "iMovie", id: 408981434
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Monit", id: 1014850245
+mas "Parcel", id: 639968404
+mas "Pixelmator", id: 407963104
+mas "Pixelmator Pro", id: 1289583905
+mas "RAW Power", id: 1157116444
+mas "Textual IRC Client", id: 1262957439
+mas "The Unarchiver", id: 425424353
+mas "Toast DVD", id: 829469267
+mas "WiFi Explorer", id: 494803304
+mas "WireGuard", id: 1451685025
+mas "Xcode", id: 497799835

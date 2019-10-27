@@ -1,0 +1,24 @@
+b0x v1.0.0:
+    b0x
+cargo-crev v0.9.0:
+    cargo-crev
+cargo-geiger v0.7.3:
+    cargo-geiger
+chars v0.4.1 (https://github.com/antifuchs/chars.git#34334c6a):
+    chars
+checkpwn v0.3.2:
+    checkpwn
+cicada v0.9.8:
+    cicada
+ddh v0.10.6:
+    ddh
+dot v0.1.4 (https://github.com/ubnt-intrepid/dot.git#97d18be5):
+    dot
+dssim v2.9.9:
+    dssim
+eva v0.2.6:
+    eva
+hx v0.2.1:
+    hx
+titlecase v0.10.0:
+    titlecase
