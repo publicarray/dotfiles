@@ -14,8 +14,8 @@
   fi
 } &!
 
-if command -v archey >/dev/null; then
-   archey --offline
-else
-   uptime
-fi
+#if command -v archey >/dev/null; then
+#   archey --offline
+#else
+#   uptime
+#fi
