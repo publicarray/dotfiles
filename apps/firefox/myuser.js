@@ -325,10 +325,10 @@ user_pref("browser.download.folderList", 1);
 user_pref("browser.download.useDownloadDir", true);
 
 // [WebGL]
-// user_pref("webgl.disabled", false);
+user_pref("webgl.disabled", false);
 user_pref("pdfjs.enableWebGL", true); // [lower CPU usage]
-// user_pref("webgl.min_capability_mode", false);
-// user_pref("webgl.disable-extensions", true);
+user_pref("webgl.min_capability_mode", false);
+user_pref("webgl.disable-extensions", false);
 // user_pref("webgl.enable-draft-extensions", true);
 // user_pref("webgl.perf.max-warnings", 32);
 // user_pref("webgl.max-warnings-per-context", 32);
@@ -420,4 +420,19 @@ user_pref("media.av1.enabled", true); // [testing]
 // security keys, 2fa keys, google advanced protection program, github, twitter
 // https://twofactorauth.org/
 user_pref("security.webauth.u2f", true);
+
+/* 4504: enable RFP letterboxing [FF67+]
+ * Dynamically resizes the inner window (FF67; 200w x100h: FF68+; stepped ranges) by applying letterboxing,
+ * using dimensions which waste the least content area, If you use the dimension pref, then it will only apply
+ * those resolutions. The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000, 1600x900")
+ * [SETUP-WEB] This does NOT require RFP (see 4501) **for now**, so if you're not using 4501, or you are but you're
+ * not taking anti-fingerprinting seriously and a little visual change upsets you, then feel free to flip this pref
+ * [WARNING] The dimension pref is only meant for testing, and we recommend you DO NOT USE it
+ * [1] https://bugzilla.mozilla.org/1407366 ***/
+user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
+   // user_pref("privacy.resistFingerprinting.letterboxing.dimensions", ""); // [HIDDEN PREF]
+/* 4510: disable showing about:blank as soon as possible during startup [FF60+]
+ * When default true (FF62+) this no longer masks the RFP chrome resizing activity
+ * [1] https://bugzilla.mozilla.org/1448423 ***/
+user_pref("browser.startup.blankWindow", true);
 user_pref("ghacks_user.js.parrot", "9090909 syntax error: The parrot is alive! Nope. I lied. The parrot is in heaven.");
