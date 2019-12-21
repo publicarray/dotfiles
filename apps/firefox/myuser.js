@@ -330,13 +330,13 @@ user_pref("pdfjs.enableWebGL", true); // [lower CPU usage]
 user_pref("webgl.min_capability_mode", false);
 user_pref("webgl.disable-extensions", false);
 // user_pref("webgl.enable-draft-extensions", true);
-user_pref("webgl.perf.max-warnings", 32);
-user_pref("webgl.max-warnings-per-context", 32);
-user_pref("webgl.lose-context-on-memory-pressure", true);
-user_pref("webgl.disable-fail-if-major-performance-caveat", true);
+// user_pref("webgl.perf.max-warnings", 32);
+// user_pref("webgl.max-warnings-per-context", 32);
+// user_pref("webgl.lose-context-on-memory-pressure", true);
+// user_pref("webgl.disable-fail-if-major-performance-caveat", true);
 // 2012: two more webgl preferences (FF51+)
 // user_pref("webgl.dxgl.enabled", true);
-user_pref("webgl.enable-webgl2", true);
+// user_pref("webgl.enable-webgl2", true);
 
 // [js contextmenu events]
 // user_pref("dom.event.contextmenu.enabled", false);
