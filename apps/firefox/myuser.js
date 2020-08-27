@@ -276,9 +276,9 @@ user_pref("devtools.debugger.force-local",          true);
 // ** [Startup] ** //
 // Start with 0 = blank page, 1 = home page, 3 = last session
 // http://kb.mozillazine.org/Browser.startup.page
-user_pref("browser.startup.page", 1); // [dark theme mode]
+user_pref("browser.startup.page", 0); // [dark theme mode]
 // [set home page]
-user_pref("browser.startup.homepage", "about:newtab"); //[ ]dark theme mode]
+user_pref("browser.startup.homepage", "about:blank"); //[ ]dark theme mode]
 // [I don't see any harm because it is a blank page anyway]
 user_pref("browser.newtab.preload", true);
 user_pref("browser.newtabpage.enabled", true); // [dark theme mode]
