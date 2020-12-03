@@ -19,7 +19,7 @@
     // To learn more about profiles, visit https://aka.ms/terminal-profile-settings
     "profiles": {
         "defaults": {
-            "fontFace": "FiraCode Nerd Font",
+            "fontFace": "Cascadia Code PL",
             // Put settings here that you want to apply to all profiles.
         },
         "list": [
