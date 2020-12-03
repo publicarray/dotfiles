@@ -1,5 +1,6 @@
 Invoke-Expression (&starship init powershell)
 Import-Module -Name Terminal-Icons
+
 # https://dev.to/ofhouse/add-a-bash-like-autocomplete-to-your-powershell-4257
 New-Alias open ii
 # Shows navigable menu of all options when hitting Tab

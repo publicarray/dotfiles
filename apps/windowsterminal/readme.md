@@ -4,6 +4,19 @@
 winget install Microsoft.WindowsTerminal
 ```
 
+# Explorer extension to open Terminal
+
+https://github.com/KUTlime/PowerShell-Open-Here-Module
+
+```powershell
+Install-Module OpenHere
+
+# As Administrator:
+> Set-OpenHereShortcut -ShortcutType:WindowsTerminal
+# Uninstall:
+# > Remove-OpenHereShortcut -ShortcutType:WindowsTerminal
+```
+
 # Font
 
 Download: https://www.nerdfonts.com/font-downloads
@@ -13,7 +26,6 @@ Download: https://www.nerdfonts.com/font-downloads
 Download: https://github.com/starship/starship/releases/
 
 place in `$HOME/.cargo/bin` or in any other folder that is in $PATH
-
 
 ## Other resources
 
