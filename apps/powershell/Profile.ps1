@@ -12,3 +12,17 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 # auto completion for ripgrep
 # . _rg.ps1
+
+function touch {
+    $file = $args[0]
+    if ($null -eq $file) {
+        throw "No filename supplied"
+    }
+
+    if (Test-Path $file) {
+        (Get-ChildItem $file).LastWriteTime = Get-Date
+    }
+    else {
+        Write-Output $null > $file
+    }
+}
