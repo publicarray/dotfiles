@@ -21,7 +21,7 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 4. Install plug-ins, [prompt](https://github.com/publicarray/pure) and configure shell to my preferences
 
 ```sh
-fisher publicarray/my-fish
+fisher install publicarray/my-fish
 my-fish
 ```
 
