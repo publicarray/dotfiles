@@ -4,9 +4,9 @@
 winget install Microsoft.WindowsTerminal
 ```
 
-<!-- # Font
+# Font
 
-Download: https://www.nerdfonts.com/font-downloads -->
+Download: https://www.nerdfonts.com/font-downloads
 
 # Shell (starship-x86_64-pc-windows-msvc.zip)
 
@@ -18,3 +18,7 @@ place in `$HOME/.cargo/bin` or in any other folder that is in $PATH
 ## Other resources
 
 https://docs.microsoft.com/en-us/windows/terminal/tutorials/powerline-setup
+
+https://devblogs.microsoft.com/commandline/windows-terminal-tips-and-tricks/
+
+https://www.powershellgallery.com/
