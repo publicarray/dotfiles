@@ -23,6 +23,6 @@ function touch {
         (Get-ChildItem $file).LastWriteTime = Get-Date
     }
     else {
-        Write-Output $null > $file
+        New-Item -ItemType file $file
     }
 }
